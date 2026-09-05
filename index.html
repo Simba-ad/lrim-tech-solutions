@@ -3,117 +3,975 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Lrim-Tech Solutions — a global product discovery and shopping platform featuring useful products, comparisons and buying guides.">
+<meta name="description" content="Lrim-Tech Solutions — a global product discovery and shopping platform featuring useful products, comparisons, buying guides and digital solutions for growing businesses.">
 <title>Lrim-Tech Solutions | Smart Shopping, Better Choices</title>
+
 <style>
-:root{--ink:#101828;--muted:#667085;--line:#eaecf0;--bg:#f8fafc;--card:#fff;--accent:#155eef;--accent2:#0b4fce}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
-a{text-decoration:none;color:inherit}.wrap{max-width:1120px;margin:auto;padding:0 22px}
-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;font-size:20px}.brand span{color:var(--accent)}
-nav a{margin-left:24px;color:#475467;font-size:14px;font-weight:600}
-.hero{background:linear-gradient(135deg,#eef4ff,#fff);padding:78px 0 70px}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
-.eyebrow{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:12px}
-h1{font-size:clamp(40px,6vw,64px);line-height:1.03;margin:12px 0 20px;letter-spacing:-.04em}
-.lead{font-size:19px;color:#475467;max-width:650px}.btn{display:inline-block;background:var(--accent);color:#fff;padding:13px 20px;border-radius:10px;font-weight:700;margin-top:14px}.btn:hover{background:var(--accent2)}
-.hero-card{background:#101828;color:#fff;border-radius:22px;padding:30px;box-shadow:0 20px 60px #10182820}.hero-card h3{font-size:24px;margin-top:0}.hero-card p{color:#d0d5dd}
-section{padding:62px 0}.section-title{text-align:center;font-size:34px;margin:0 0 10px}.section-lead{text-align:center;color:var(--muted);margin:0 auto 35px;max-width:680px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}.icon{font-size:30px}.card h3{margin:12px 0 6px}.card p{color:var(--muted);margin:0}
-.note{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}.disclosure{font-size:13px;color:var(--muted)}
-footer{background:#101828;color:#fff;padding:42px 0}.footer-grid{display:flex;justify-content:space-between;gap:30px}.footer-grid p{color:#d0d5dd;max-width:650px}.footer-links a{display:block;color:#d0d5dd;margin:7px 0}
-@media(max-width:760px){.hero-grid,.grid{grid-template-columns:1fr}nav{display:none}.hero{padding:55px 0}.footer-grid{flex-direction:column}}
+:root{
+  --ink:#101828;
+  --muted:#667085;
+  --line:#eaecf0;
+  --bg:#f8fafc;
+  --card:#fff;
+  --accent:#155eef;
+  --accent2:#0b4fce;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.55;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.wrap{
+  max-width:1120px;
+  margin:auto;
+  padding:0 22px;
+}
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:5;
+}
+
+.nav{
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  font-weight:800;
+  font-size:20px;
+}
+
+.brand span{
+  color:var(--accent);
+}
+
+nav a{
+  margin-left:24px;
+  color:#475467;
+  font-size:14px;
+  font-weight:600;
+}
+
+nav a:hover{
+  color:var(--accent);
+}
+
+.hero{
+  background:linear-gradient(135deg,#eef4ff,#fff);
+  padding:78px 0 70px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:50px;
+  align-items:center;
+}
+
+.eyebrow{
+  color:var(--accent);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-size:12px;
+}
+
+h1{
+  font-size:clamp(40px,6vw,64px);
+  line-height:1.03;
+  margin:12px 0 20px;
+  letter-spacing:-.04em;
+}
+
+.lead{
+  font-size:19px;
+  color:#475467;
+  max-width:650px;
+}
+
+.btn{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  padding:13px 20px;
+  border-radius:10px;
+  font-weight:700;
+  margin-top:14px;
+}
+
+.btn:hover{
+  background:var(--accent2);
+}
+
+.hero-card{
+  background:#101828;
+  color:#fff;
+  border-radius:22px;
+  padding:30px;
+  box-shadow:0 20px 60px #10182820;
+}
+
+.hero-card h3{
+  font-size:24px;
+  margin-top:0;
+}
+
+.hero-card p{
+  color:#d0d5dd;
+}
+
+section{
+  padding:62px 0;
+}
+
+.section-title{
+  text-align:center;
+  font-size:34px;
+  margin:0 0 10px;
+}
+
+.section-lead{
+  text-align:center;
+  color:var(--muted);
+  margin:0 auto 35px;
+  max-width:680px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px;
+}
+
+.card:hover{
+  border-color:#cfd7e6;
+}
+
+.icon{
+  font-size:30px;
+}
+
+.card h3{
+  margin:12px 0 6px;
+}
+
+.card p{
+  color:var(--muted);
+  margin:0;
+}
+
+.card-link{
+  display:inline-block;
+  margin-top:16px;
+  color:var(--accent);
+  font-weight:700;
+  font-size:14px;
+}
+
+.card-link:hover{
+  text-decoration:underline;
+}
+
+.note{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px;
+}
+
+.disclosure{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* Business Services */
+
+.services{
+  background:#fff;
+}
+
+.service-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
+
+.service-card.featured{
+  border:2px solid var(--accent);
+  box-shadow:0 12px 35px rgba(21,94,239,.10);
+}
+
+.badge{
+  display:inline-block;
+  align-self:flex-start;
+  background:#eef4ff;
+  color:var(--accent);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.service-card.featured .badge{
+  background:var(--accent);
+  color:#fff;
+}
+
+.price{
+  font-size:30px;
+  font-weight:800;
+  margin:8px 0 14px;
+}
+
+.price span{
+  font-size:13px;
+  font-weight:500;
+  color:var(--muted);
+}
+
+.service-card ul{
+  margin:18px 0 0;
+  padding-left:20px;
+  color:#475467;
+}
+
+.service-card li{
+  margin:8px 0;
+}
+
+.services-note{
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+  max-width:760px;
+  margin:28px auto 0;
+}
+
+/* Footer */
+
+footer{
+  background:#101828;
+  color:#fff;
+  padding:42px 0;
+}
+
+.footer-grid{
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.footer-grid p{
+  color:#d0d5dd;
+  max-width:650px;
+}
+
+.footer-links a{
+  display:block;
+  color:#d0d5dd;
+  margin:7px 0;
+}
+
+.footer-links a:hover{
+  color:#fff;
+}
+
+/* Mobile */
+
+@media(max-width:760px){
+
+  .hero-grid,
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  nav{
+    display:none;
+  }
+
+  .hero{
+    padding:55px 0;
+  }
+
+  .footer-grid{
+    flex-direction:column;
+  }
+
+}
 </style>
 </head>
+
 <body>
-<header><div class="wrap nav"><a class="brand" href="index.html">Lrim-Tech <span>Solutions</span></a><nav><a href="#categories">Categories</a><a href="#about">About</a><a href="#partners">Partner With Us</a><a href="#disclosure">Disclosure</a><a href="#contact">Contact</a></nav></div></header>
+
+<header>
+  <div class="wrap nav">
+
+    <a class="brand" href="index.html">
+      Lrim-Tech <span>Solutions</span>
+    </a>
+
+    <nav>
+      <a href="#categories">Categories</a>
+      <a href="#services">Business Services</a>
+      <a href="#about">About</a>
+      <a href="#partners">Partner With Us</a>
+      <a href="#disclosure">Disclosure</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
 
 <main>
-<section class="hero"><div class="wrap hero-grid">
-<div><div class="eyebrow">Global product discovery</div><h1>Smart shopping starts with better choices.</h1>
-<p class="lead">Lrim-Tech Solutions helps shoppers discover useful products, compare options and find buying ideas from reputable online merchants around the world.</p>
-<a class="btn" href="#categories">Explore categories</a></div>
-<div class="hero-card"><div class="eyebrow" style="color:#84adff">What we do</div><h3>Discover. Compare. Choose.</h3><p>We curate products and shopping resources so you can spend less time searching and more time making confident decisions.</p><p>Our platform is being developed to feature trusted merchant offers, product guides and useful recommendations.</p></div>
-</div></section>
 
-<section id="categories"><div class="wrap"><h2 class="section-title">Explore our categories</h2><p class="section-lead">Our catalogue will grow as we add reputable merchants and useful product recommendations.</p>
-<div class="grid">
-<a href="technology.html" class="card" style="text-decoration:none;color:inherit;display:block;">
-  <div class="icon">💻</div>
-  <h3>Technology</h3>
-  <p>Laptops, accessories, connectivity products and useful tech for everyday life.</p>
-</a>
-<div class="card">
-  <div class="icon">🏠</div>
-  <h3>Home & Living</h3>
-  <p>Practical products and smart solutions designed to make your home more comfortable, organized, efficient, and enjoyable.</p>
-  <a href="home-living.html" class="card-link">Explore Home & Living →</a>
-</div>
-<div class="card">
-  <div class="icon">🎯</div>
-  <h3>Everyday Essentials</h3>
-  <p>Useful products, tools and accessories selected for everyday convenience, value, and practical living.</p>
-  <a href="everyday-essentials.html" class="card-link">Explore Everyday Essentials →</a>
-</div>
-<div class="card">
-  <div class="icon">✈️</div>
-  <h3>Travel</h3>
-  <p>Travel gear, services, and useful solutions selected to make planning, journeys, and trips easier.</p>
-  <a href="travel.html" class="card-link">Explore Travel →</a>
-</div>
-<div class="card">
-  <div class="icon">📱</div>
-  <h3>Digital Services</h3>
-  <p>Software, subscriptions, online tools, and digital services selected to help individuals and businesses work smarter.</p>
-  <a href="digital-services.html" class="card-link">Explore Digital Services →</a>
-</div>
-<div class="card">
-  <div class="icon">⭐</div>
-  <h3>Featured Picks</h3>
-  <p>Curated recommendations and comparisons highlighting useful products, software, and services worth considering.</p>
-  <a href="featured-picks.html" class="card-link">Explore Featured Picks →</a>
-</div>
-</div></div></section>
+<!-- HERO -->
 
-<section id="about"><div class="wrap"><div class="note"><h2>About Lrim-Tech Solutions</h2><p>Lrim-Tech Solutions is a global online product discovery platform focused on useful recommendations, product comparisons and practical shopping guides. We aim to help visitors discover products, understand their options and make more informed purchasing decisions.</p><p>We work toward connecting visitors with reputable merchants, services and affiliate partners. Where appropriate, links on this site may direct visitors to third-party merchants or services, where purchases or other qualifying actions may take place.</p><p>Our platform is designed to grow through carefully selected products, useful content and transparent recommendations, with the goal of making online product research simpler and more convenient.</p></div></div></section>
+<section class="hero">
+  <div class="wrap hero-grid">
 
-<section id="disclosure"><div class="wrap"><div class="note"><h2>Affiliate Disclosure</h2><p class="disclosure">Some links on Lrim-Tech Solutions may be affiliate links. If you purchase through an affiliate link or complete a qualifying action, we may receive a commission at no additional cost to you. Affiliate partners may use cookies or similar tracking technologies to attribute referrals and qualifying purchases. Our goal is to provide useful information, comparisons and recommendations; affiliate relationships do not guarantee that a product is the right choice for every shopper.</p></div></div></section>
-<section id="partners">
+    <div>
+
+      <div class="eyebrow">
+        Global product discovery
+      </div>
+
+      <h1>
+        Smart shopping starts with better choices.
+      </h1>
+
+      <p class="lead">
+        Lrim-Tech Solutions helps shoppers discover useful products,
+        compare options and find buying ideas from reputable online
+        merchants around the world.
+      </p>
+
+      <a class="btn" href="#categories">
+        Explore categories
+      </a>
+
+    </div>
+
+    <div class="hero-card">
+
+      <div class="eyebrow" style="color:#84adff">
+        What we do
+      </div>
+
+      <h3>
+        Discover. Compare. Choose.
+      </h3>
+
+      <p>
+        We curate products and shopping resources so you can spend less
+        time searching and more time making confident decisions.
+      </p>
+
+      <p>
+        Our platform is being developed to feature trusted merchant
+        offers, product guides and useful recommendations.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section id="categories">
+
   <div class="wrap">
+
+    <h2 class="section-title">
+      Explore our categories
+    </h2>
+
+    <p class="section-lead">
+      Our catalogue will grow as we add reputable merchants and useful
+      product recommendations.
+    </p>
+
+    <div class="grid">
+
+
+      <!-- Technology -->
+
+      <a href="technology.html"
+         class="card"
+         style="text-decoration:none;color:inherit;display:block;">
+
+        <div class="icon">💻</div>
+
+        <h3>
+          Technology
+        </h3>
+
+        <p>
+          Laptops, accessories, connectivity products and useful tech
+          for everyday life.
+        </p>
+
+        <span class="card-link">
+          Explore Technology →
+        </span>
+
+      </a>
+
+
+      <!-- Home & Living -->
+
+      <div class="card">
+
+        <div class="icon">🏠</div>
+
+        <h3>
+          Home & Living
+        </h3>
+
+        <p>
+          Practical products and smart solutions designed to make your
+          home more comfortable, organized, efficient, and enjoyable.
+        </p>
+
+        <a href="home-living.html" class="card-link">
+          Explore Home & Living →
+        </a>
+
+      </div>
+
+
+      <!-- Everyday Essentials -->
+
+      <div class="card">
+
+        <div class="icon">🎯</div>
+
+        <h3>
+          Everyday Essentials
+        </h3>
+
+        <p>
+          Useful products, tools and accessories selected for everyday
+          convenience, value, and practical living.
+        </p>
+
+        <a href="everyday-essentials.html" class="card-link">
+          Explore Everyday Essentials →
+        </a>
+
+      </div>
+
+
+      <!-- Travel -->
+
+      <div class="card">
+
+        <div class="icon">✈️</div>
+
+        <h3>
+          Travel
+        </h3>
+
+        <p>
+          Travel gear, services, and useful solutions selected to make
+          planning, journeys, and trips easier.
+        </p>
+
+        <a href="travel.html" class="card-link">
+          Explore Travel →
+        </a>
+
+      </div>
+
+
+      <!-- Digital Services -->
+
+      <div class="card">
+
+        <div class="icon">📱</div>
+
+        <h3>
+          Digital Services
+        </h3>
+
+        <p>
+          Software, subscriptions, online tools, and digital services
+          selected to help individuals and businesses work smarter.
+        </p>
+
+        <a href="digital-services.html" class="card-link">
+          Explore Digital Services →
+        </a>
+
+      </div>
+
+
+      <!-- Featured Picks -->
+
+      <div class="card">
+
+        <div class="icon">⭐</div>
+
+        <h3>
+          Featured Picks
+        </h3>
+
+        <p>
+          Curated recommendations and comparisons highlighting useful
+          products, software, and services worth considering.
+        </p>
+
+        <a href="featured-picks.html" class="card-link">
+          Explore Featured Picks →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- BUSINESS SERVICES -->
+
+<section id="services" class="services">
+
+  <div class="wrap">
+
+    <h2 class="section-title">
+      Digital Solutions for Growing Businesses
+    </h2>
+
+    <p class="section-lead">
+      We help small businesses establish a professional online presence
+      with affordable websites and practical digital solutions.
+    </p>
+
+
+    <div class="grid">
+
+
+      <!-- STARTER -->
+
+      <div class="card service-card">
+
+        <span class="badge">
+          Starter
+        </span>
+
+        <h3>
+          Business Launch Website
+        </h3>
+
+        <div class="price">
+          From $150
+          <span>
+            starting price
+          </span>
+        </div>
+
+        <p>
+          A professional one-page website designed to help customers
+          understand your business and contact you.
+        </p>
+
+        <ul>
+          <li>
+            One-page mobile-friendly website
+          </li>
+
+          <li>
+            About and services/products sections
+          </li>
+
+          <li>
+            WhatsApp/contact button
+          </li>
+
+          <li>
+            Social-media links
+          </li>
+
+          <li>
+            Basic search-engine setup
+          </li>
+        </ul>
+
+      </div>
+
+
+      <!-- PROFESSIONAL -->
+
+      <div class="card service-card featured">
+
+        <span class="badge">
+          Most Popular
+        </span>
+
+        <h3>
+          Complete Business Website
+        </h3>
+
+        <div class="price">
+          From $300
+          <span>
+            starting price
+          </span>
+        </div>
+
+        <p>
+          A stronger online presence for businesses that need more
+          information, pages and customer contact options.
+        </p>
+
+        <ul>
+
+          <li>
+            Up to 5 pages
+          </li>
+
+          <li>
+            Products/services catalogue
+          </li>
+
+          <li>
+            Contact form and location
+          </li>
+
+          <li>
+            Basic SEO optimisation
+          </li>
+
+          <li>
+            Promotional graphics
+          </li>
+
+          <li>
+            14 days minor support
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- BUSINESS PLUS -->
+
+      <div class="card service-card">
+
+        <span class="badge">
+          Business Plus
+        </span>
+
+        <h3>
+          Complete Digital Presence
+        </h3>
+
+        <div class="price">
+          From $500
+          <span>
+            starting price
+          </span>
+        </div>
+
+        <p>
+          A broader package for businesses ready to strengthen their
+          website, content and online customer experience.
+        </p>
+
+        <ul>
+
+          <li>
+            Everything in Professional
+          </li>
+
+          <li>
+            Expanded catalogue
+          </li>
+
+          <li>
+            Additional landing page
+          </li>
+
+          <li>
+            Social-media starter content
+          </li>
+
+          <li>
+            Google Business Profile assistance
+          </li>
+
+          <li>
+            30 days minor support
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <p class="services-note">
+      Every project can be tailored to the business's needs, goals,
+      content and required features. Final pricing is confirmed before
+      work begins.
+    </p>
+
+
+    <div style="text-align:center;margin-top:28px">
+
+      <a class="btn" href="#contact">
+        Request a Website
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="wrap">
+
     <div class="note">
-      <h2>Partner With Us</h2>
+
+      <h2>
+        About Lrim-Tech Solutions
+      </h2>
+
+      <p>
+        Lrim-Tech Solutions is a global online product discovery
+        platform focused on useful recommendations, product comparisons
+        and practical shopping guides. We aim to help visitors discover
+        products, understand their options and make more informed
+        purchasing decisions.
+      </p>
+
+      <p>
+        We work toward connecting visitors with reputable merchants,
+        services and affiliate partners. Where appropriate, links on
+        this site may direct visitors to third-party merchants or
+        services, where purchases or other qualifying actions may take
+        place.
+      </p>
+
+      <p>
+        Our platform is designed to grow through carefully selected
+        products, useful content and transparent recommendations, with
+        the goal of making online product research simpler and more
+        convenient.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- AFFILIATE DISCLOSURE -->
+
+<section id="disclosure">
+
+  <div class="wrap">
+
+    <div class="note">
+
+      <h2>
+        Affiliate Disclosure
+      </h2>
+
+      <p class="disclosure">
+        Some links on Lrim-Tech Solutions may be affiliate links. If you
+        purchase through an affiliate link or complete a qualifying
+        action, we may receive a commission at no additional cost to
+        you. Affiliate partners may use cookies or similar tracking
+        technologies to attribute referrals and qualifying purchases.
+        Our goal is to provide useful information, comparisons and
+        recommendations; affiliate relationships do not guarantee that
+        a product is the right choice for every shopper.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PARTNER WITH US -->
+
+<section id="partners">
+
+  <div class="wrap">
+
+    <div class="note">
+
+      <h2>
+        Partner With Us
+      </h2>
+
       <p>
         Lrim-Tech Solutions is open to working with trusted merchants,
         technology providers, affiliate programs and business partners
         offering valuable products and services to customers worldwide.
       </p>
+
       <p>
         If you are interested in a partnership, affiliate opportunity,
         merchant collaboration or business promotion, we would be happy
         to hear from you.
       </p>
+
       <p>
-        <strong>Partnership enquiries:</strong>
+
+        <strong>
+          Partnership enquiries:
+        </strong>
+
         <a href="mailto:lrimtechsolutions@outlook.com">
           lrimtechsolutions@outlook.com
         </a>
+
       </p>
+
     </div>
+
   </div>
+
 </section>
+
+
+<!-- CONTACT -->
+
 <section id="contact">
+
   <div class="wrap">
+
     <div class="note">
-      <h2>Contact</h2>
-      <p>For partnership, merchant or general enquiries, please contact Lrim-Tech Solutions.</p>
+
+      <h2>
+        Contact
+      </h2>
+
       <p>
-        <strong>Email:</strong>
-        <a href="mailto:lrimtechsolutions@outlook.com">lrimtechsolutions@outlook.com</a>
+        Interested in a website or digital solution for your business?
+        Contact Lrim-Tech Solutions with your business name, what you
+        offer, and what you would like your website to achieve.
       </p>
+
+      <p>
+        For partnership, merchant or general enquiries, you can also
+        contact us using the email below.
+      </p>
+
+      <p>
+
+        <strong>
+          Email:
+        </strong>
+
+        <a href="mailto:lrimtechsolutions@outlook.com">
+          lrimtechsolutions@outlook.com
+        </a>
+
+      </p>
+
     </div>
+
   </div>
+
 </section>
+
 </main>
 
-<a href="privacy-policy.html">Privacy Policy</a>
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="wrap footer-grid">
+
+    <div>
+
+      <strong>
+        Lrim-Tech Solutions
+      </strong>
+
+      <p>
+        Smart product discovery, useful recommendations and practical
+        digital solutions for growing businesses.
+      </p>
+
+    </div>
+
+    <div class="footer-links">
+
+      <a href="#categories">
+        Categories
+      </a>
+
+      <a href="#services">
+        Business Services
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#partners">
+        Partner With Us
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
+      <a href="privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+
 </body>
 </html>
