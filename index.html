@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Lrim-Tech Solutions — a global product discovery and shopping platform featuring useful products, comparisons, buying guides and digital solutions for growing businesses.">
-<title>Lrim-Tech Solutions | Smart Shopping, Better Choices</title>
+
+<meta name="description" content="Lrim-Tech Solutions — smart technology, better business, better choices. Discover useful products and services or request a professional website or application for your business.">
+
+<title>Lrim-Tech Solutions | Smart Technology. Better Business.</title>
 
 <style>
 :root{
@@ -12,13 +14,20 @@
   --muted:#667085;
   --line:#eaecf0;
   --bg:#f8fafc;
-  --card:#fff;
+  --card:#ffffff;
   --accent:#155eef;
   --accent2:#0b4fce;
+  --soft:#eef4ff;
+  --dark:#101828;
+  --success:#067647;
 }
 
 *{
   box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
@@ -29,9 +38,20 @@ body{
   line-height:1.55;
 }
 
+body.modal-open{
+  overflow:hidden;
+}
+
 a{
   text-decoration:none;
   color:inherit;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
 }
 
 .wrap{
@@ -40,32 +60,45 @@ a{
   padding:0 22px;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 header{
   background:#fff;
   border-bottom:1px solid var(--line);
   position:sticky;
   top:0;
-  z-index:5;
+  z-index:50;
 }
 
 .nav{
-  height:70px;
+  min-height:70px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:20px;
 }
 
 .brand{
   font-weight:800;
   font-size:20px;
+  white-space:nowrap;
 }
 
 .brand span{
   color:var(--accent);
 }
 
+nav{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
 nav a{
-  margin-left:24px;
+  margin-left:22px;
   color:#475467;
   font-size:14px;
   font-weight:600;
@@ -75,15 +108,21 @@ nav a:hover{
   color:var(--accent);
 }
 
+/* =========================
+   HERO
+========================= */
+
 .hero{
-  background:linear-gradient(135deg,#eef4ff,#fff);
-  padding:78px 0 70px;
+  background:
+    radial-gradient(circle at 85% 20%,#dce8ff 0,transparent 30%),
+    linear-gradient(135deg,#eef4ff,#fff);
+  padding:78px 0 72px;
 }
 
 .hero-grid{
   display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:50px;
+  grid-template-columns:1.12fr .88fr;
+  gap:48px;
   align-items:center;
 }
 
@@ -105,21 +144,42 @@ h1{
 .lead{
   font-size:19px;
   color:#475467;
-  max-width:650px;
+  max-width:680px;
+}
+
+.hero-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:25px;
 }
 
 .btn{
   display:inline-block;
+  border:none;
+  cursor:pointer;
   background:var(--accent);
   color:#fff;
-  padding:13px 20px;
+  padding:14px 21px;
   border-radius:10px;
   font-weight:700;
-  margin-top:14px;
+  transition:.2s ease;
 }
 
 .btn:hover{
   background:var(--accent2);
+  transform:translateY(-1px);
+}
+
+.btn-secondary{
+  background:#fff;
+  color:var(--accent);
+  border:1px solid #b8ccf8;
+}
+
+.btn-secondary:hover{
+  background:#f7f9ff;
+  color:var(--accent2);
 }
 
 .hero-card{
@@ -131,30 +191,235 @@ h1{
 }
 
 .hero-card h3{
-  font-size:24px;
-  margin-top:0;
+  font-size:26px;
+  margin:10px 0 12px;
 }
 
 .hero-card p{
   color:#d0d5dd;
 }
 
+.hero-mini{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:22px;
+}
+
+.hero-mini div{
+  background:#1d2939;
+  border:1px solid #344054;
+  border-radius:12px;
+  padding:15px;
+}
+
+.hero-mini strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+.hero-mini span{
+  font-size:13px;
+  color:#d0d5dd;
+}
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
 section{
-  padding:62px 0;
+  padding:68px 0;
 }
 
 .section-title{
   text-align:center;
   font-size:34px;
   margin:0 0 10px;
+  letter-spacing:-.02em;
 }
 
 .section-lead{
   text-align:center;
   color:var(--muted);
-  margin:0 auto 35px;
-  max-width:680px;
+  margin:0 auto 38px;
+  max-width:700px;
 }
+
+/* =========================
+   SOLUTIONS
+========================= */
+
+.solution-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.solution-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:30px;
+  transition:.2s ease;
+}
+
+.solution-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 35px #10182812;
+}
+
+.solution-icon{
+  font-size:34px;
+}
+
+.solution-card h3{
+  font-size:23px;
+  margin:12px 0 7px;
+}
+
+.solution-card p{
+  color:var(--muted);
+}
+
+.solution-link{
+  color:var(--accent);
+  font-weight:700;
+  display:inline-block;
+  margin-top:10px;
+}
+
+/* =========================
+   WEB SERVICES
+========================= */
+
+.services-section{
+  background:#fff;
+}
+
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.service-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:25px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
+
+.service-card.featured{
+  border:2px solid var(--accent);
+  box-shadow:0 14px 40px #155eef18;
+}
+
+.badge{
+  position:absolute;
+  top:16px;
+  right:16px;
+  background:#eef4ff;
+  color:var(--accent);
+  font-size:11px;
+  font-weight:800;
+  padding:6px 9px;
+  border-radius:999px;
+  text-transform:uppercase;
+}
+
+.service-icon{
+  font-size:32px;
+}
+
+.service-card h3{
+  font-size:21px;
+  margin:12px 0 7px;
+}
+
+.service-card p{
+  color:var(--muted);
+}
+
+.service-card ul{
+  padding-left:20px;
+  color:#475467;
+  margin:16px 0;
+}
+
+.service-card li{
+  margin:7px 0;
+}
+
+.price{
+  font-size:21px;
+  font-weight:800;
+  margin-top:auto;
+  padding-top:10px;
+}
+
+.price small{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:500;
+}
+
+.service-card .btn{
+  width:100%;
+  text-align:center;
+  margin-top:18px;
+}
+
+/* =========================
+   PROCESS
+========================= */
+
+.process{
+  background:#f2f5f9;
+}
+
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.process-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:22px;
+}
+
+.process-number{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:var(--accent);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  margin-bottom:13px;
+}
+
+.process-card h3{
+  margin:0 0 6px;
+}
+
+.process-card p{
+  color:var(--muted);
+  font-size:14px;
+  margin:0;
+}
+
+/* =========================
+   CATEGORIES
+========================= */
 
 .grid{
   display:grid;
@@ -167,10 +432,12 @@ section{
   border:1px solid var(--line);
   border-radius:16px;
   padding:24px;
+  transition:.2s ease;
 }
 
 .card:hover{
-  border-color:#cfd7e6;
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px #1018280d;
 }
 
 .icon{
@@ -183,26 +450,32 @@ section{
 
 .card p{
   color:var(--muted);
-  margin:0;
+  margin:0 0 12px;
 }
 
 .card-link{
-  display:inline-block;
-  margin-top:16px;
   color:var(--accent);
   font-weight:700;
   font-size:14px;
 }
 
-.card-link:hover{
-  text-decoration:underline;
-}
+/* =========================
+   NOTES / ABOUT
+========================= */
 
 .note{
   background:#fff;
   border:1px solid var(--line);
   border-radius:16px;
-  padding:24px;
+  padding:28px;
+}
+
+.note h2{
+  margin-top:0;
+}
+
+.note p{
+  color:#475467;
 }
 
 .disclosure{
@@ -210,106 +483,244 @@ section{
   color:var(--muted);
 }
 
-/* Business Services */
+/* =========================
+   CONTACT
+========================= */
 
-.services{
-  background:#fff;
+.contact-box{
+  background:linear-gradient(135deg,#101828,#1d2939);
+  color:#fff;
+  border-radius:20px;
+  padding:38px;
+  text-align:center;
 }
 
-.service-card{
-  position:relative;
+.contact-box p{
+  color:#d0d5dd;
+  max-width:650px;
+  margin:10px auto;
+}
+
+.contact-box a{
+  color:#9bbcff;
+  font-weight:700;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(16,24,40,.72);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:100;
+  backdrop-filter:blur(4px);
+}
+
+.modal.active{
   display:flex;
-  flex-direction:column;
 }
 
-.service-card.featured{
-  border:2px solid var(--accent);
-  box-shadow:0 12px 35px rgba(21,94,239,.10);
+.modal-box{
+  background:#fff;
+  width:100%;
+  max-width:680px;
+  max-height:92vh;
+  overflow-y:auto;
+  border-radius:20px;
+  box-shadow:0 30px 90px rgba(0,0,0,.25);
+  position:relative;
 }
 
-.badge{
-  display:inline-block;
-  align-self:flex-start;
-  background:#eef4ff;
-  color:var(--accent);
-  padding:6px 10px;
-  border-radius:999px;
+.modal-header{
+  padding:25px 28px 10px;
+  border-bottom:1px solid var(--line);
+}
+
+.modal-header h2{
+  margin:0 40px 5px 0;
+  font-size:26px;
+}
+
+.modal-header p{
+  color:var(--muted);
+  margin:0 0 18px;
+  font-size:14px;
+}
+
+.close-modal{
+  position:absolute;
+  top:18px;
+  right:20px;
+  border:none;
+  background:#f2f4f7;
+  color:#344054;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:22px;
+  line-height:1;
+}
+
+.close-modal:hover{
+  background:#eaecf0;
+}
+
+.form-body{
+  padding:25px 28px 30px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.form-group{
+  margin-bottom:16px;
+}
+
+.form-group.full{
+  grid-column:1 / -1;
+}
+
+.form-group label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  border:1px solid #d0d5dd;
+  border-radius:9px;
+  padding:12px 13px;
+  outline:none;
+  background:#fff;
+  color:var(--ink);
+}
+
+.form-group textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px #155eef18;
+}
+
+.form-note{
   font-size:12px;
-  font-weight:800;
-  margin-bottom:8px;
+  color:var(--muted);
+  margin:0 0 15px;
 }
 
-.service-card.featured .badge{
+.submit-btn{
+  width:100%;
+  border:none;
+  cursor:pointer;
   background:var(--accent);
   color:#fff;
-}
-
-.price{
-  font-size:30px;
+  padding:14px 20px;
+  border-radius:10px;
   font-weight:800;
-  margin:8px 0 14px;
+  font-size:15px;
 }
 
-.price span{
-  font-size:13px;
-  font-weight:500;
-  color:var(--muted);
+.submit-btn:hover{
+  background:var(--accent2);
 }
 
-.service-card ul{
-  margin:18px 0 0;
-  padding-left:20px;
-  color:#475467;
+.required{
+  color:#d92d20;
 }
 
-.service-card li{
-  margin:8px 0;
-}
-
-.services-note{
-  text-align:center;
-  color:var(--muted);
-  font-size:14px;
-  max-width:760px;
-  margin:28px auto 0;
-}
-
-/* Footer */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
   background:#101828;
   color:#fff;
-  padding:42px 0;
+  padding:44px 0 25px;
 }
 
 .footer-grid{
-  display:flex;
-  justify-content:space-between;
-  gap:30px;
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:40px;
 }
 
 .footer-grid p{
   color:#d0d5dd;
-  max-width:650px;
+  max-width:680px;
 }
 
 .footer-links a{
   display:block;
   color:#d0d5dd;
   margin:7px 0;
+  font-size:14px;
 }
 
 .footer-links a:hover{
   color:#fff;
 }
 
-/* Mobile */
+.footer-bottom{
+  border-top:1px solid #344054;
+  margin-top:30px;
+  padding-top:20px;
+  color:#98a2b3;
+  font-size:13px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+  nav a{
+    margin-left:13px;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .service-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .process-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
 
 @media(max-width:760px){
 
-  .hero-grid,
-  .grid{
-    grid-template-columns:1fr;
+  header{
+    position:relative;
+  }
+
+  .nav{
+    padding-top:15px;
+    padding-bottom:15px;
+    align-items:flex-start;
   }
 
   nav{
@@ -320,8 +731,53 @@ footer{
     padding:55px 0;
   }
 
-  .footer-grid{
+  .hero-buttons{
     flex-direction:column;
+  }
+
+  .hero-buttons .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .solution-grid,
+  .service-grid,
+  .process-grid,
+  .grid,
+  .form-grid,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-group.full{
+    grid-column:auto;
+  }
+
+  .hero-mini{
+    grid-template-columns:1fr;
+  }
+
+  section{
+    padding:55px 0;
+  }
+
+  .section-title{
+    font-size:29px;
+  }
+
+  .modal{
+    padding:10px;
+  }
+
+  .modal-box{
+    max-height:95vh;
+    border-radius:16px;
+  }
+
+  .modal-header,
+  .form-body{
+    padding-left:20px;
+    padding-right:20px;
   }
 
 }
@@ -329,6 +785,10 @@ footer{
 </head>
 
 <body>
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
   <div class="wrap nav">
@@ -338,11 +798,11 @@ footer{
     </a>
 
     <nav>
+      <a href="#solutions">Solutions</a>
+      <a href="#websites-apps">Websites & Apps</a>
       <a href="#categories">Categories</a>
-      <a href="#services">Business Services</a>
       <a href="#about">About</a>
       <a href="#partners">Partner With Us</a>
-      <a href="#disclosure">Disclosure</a>
       <a href="#contact">Contact</a>
     </nav>
 
@@ -352,32 +812,46 @@ footer{
 
 <main>
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
+
   <div class="wrap hero-grid">
 
     <div>
 
       <div class="eyebrow">
-        Global product discovery
+        Lrim-Tech Solutions
       </div>
 
       <h1>
-        Smart shopping starts with better choices.
+        Smart technology.<br>
+        Better business.<br>
+        Better choices.
       </h1>
 
       <p class="lead">
-        Lrim-Tech Solutions helps shoppers discover useful products,
-        compare options and find buying ideas from reputable online
-        merchants around the world.
+        Discover useful products, digital services and technology —
+        or let Lrim-Tech Solutions build the professional website or
+        application your business needs.
       </p>
 
-      <a class="btn" href="#categories">
-        Explore categories
-      </a>
+      <div class="hero-buttons">
+
+        <a class="btn" href="#categories">
+          Explore Products & Services
+        </a>
+
+        <button class="btn btn-secondary" type="button" onclick="openRequestForm()">
+          Build My Website / App
+        </button>
+
+      </div>
 
     </div>
+
 
     <div class="hero-card">
 
@@ -386,48 +860,482 @@ footer{
       </div>
 
       <h3>
-        Discover. Compare. Choose.
+        Discover. Build. Grow.
       </h3>
 
       <p>
-        We curate products and shopping resources so you can spend less
-        time searching and more time making confident decisions.
+        Lrim-Tech Solutions brings together useful technology,
+        products and digital solutions in one growing platform.
       </p>
 
-      <p>
-        Our platform is being developed to feature trusted merchant
-        offers, product guides and useful recommendations.
-      </p>
+      <div class="hero-mini">
+
+        <div>
+          <strong>🛒 Discover</strong>
+          <span>Products, services and useful digital tools.</span>
+        </div>
+
+        <div>
+          <strong>💻 Build</strong>
+          <span>Websites and applications for businesses.</span>
+        </div>
+
+      </div>
 
     </div>
 
   </div>
+
 </section>
 
 
-<!-- CATEGORIES -->
+<!-- =========================
+     TWO SOLUTIONS
+========================= -->
+
+<section id="solutions">
+
+  <div class="wrap">
+
+    <h2 class="section-title">
+      Our Solutions
+    </h2>
+
+    <p class="section-lead">
+      Whether you're looking for something useful to buy or need
+      a digital solution built for your business, Lrim-Tech is
+      being developed to help.
+    </p>
+
+
+    <div class="solution-grid">
+
+      <div class="solution-card">
+
+        <div class="solution-icon">🛒</div>
+
+        <h3>
+          Products & Digital Services
+        </h3>
+
+        <p>
+          Explore technology, home products, travel solutions,
+          software, digital services and carefully selected
+          recommendations from reputable online partners.
+        </p>
+
+        <a class="solution-link" href="#categories">
+          Explore our categories →
+        </a>
+
+      </div>
+
+
+      <div class="solution-card">
+
+        <div class="solution-icon">💻</div>
+
+        <h3>
+          Websites & Applications
+        </h3>
+
+        <p>
+          We create professional digital solutions for businesses,
+          including company websites, e-commerce websites,
+          web applications and mobile applications.
+        </p>
+
+        <button
+          class="solution-link"
+          style="border:0;background:none;padding:0;cursor:pointer;"
+          type="button"
+          onclick="openRequestForm()">
+          Request a digital solution →
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     WEBSITES & APPS
+========================= -->
+
+<section id="websites-apps" class="services-section">
+
+  <div class="wrap">
+
+    <h2 class="section-title">
+      Websites & Apps Built for Your Business
+    </h2>
+
+    <p class="section-lead">
+      Give your business a professional digital presence with a
+      website or application designed around your goals, customers
+      and services.
+    </p>
+
+
+    <div class="service-grid">
+
+
+      <!-- BUSINESS WEBSITE -->
+
+      <div class="service-card">
+
+        <div class="service-icon">🌐</div>
+
+        <h3>
+          Business Websites
+        </h3>
+
+        <p>
+          Professional websites that help customers understand
+          your business, services and how to contact you.
+        </p>
+
+        <ul>
+          <li>Professional homepage</li>
+          <li>About & Services sections</li>
+          <li>Mobile-friendly design</li>
+          <li>WhatsApp/contact integration</li>
+          <li>Social media links</li>
+          <li>Basic SEO setup</li>
+        </ul>
+
+        <div class="price">
+          From $150
+          <small>Final price depends on requirements.</small>
+        </div>
+
+        <button
+          class="btn"
+          type="button"
+          onclick="openRequestForm('Business Website')">
+          Request a Site
+        </button>
+
+      </div>
+
+
+      <!-- ECOMMERCE -->
+
+      <div class="service-card featured">
+
+        <div class="badge">
+          Popular
+        </div>
+
+        <div class="service-icon">🛍️</div>
+
+        <h3>
+          E-commerce Websites
+        </h3>
+
+        <p>
+          Give customers a professional way to browse your products
+          and make enquiries or purchases online.
+        </p>
+
+        <ul>
+          <li>Product catalogue</li>
+          <li>Product categories</li>
+          <li>Shopping-focused layout</li>
+          <li>Contact/WhatsApp ordering</li>
+          <li>Mobile-friendly design</li>
+          <li>Business information</li>
+        </ul>
+
+        <div class="price">
+          From $300
+          <small>Final price depends on requirements.</small>
+        </div>
+
+        <button
+          class="btn"
+          type="button"
+          onclick="openRequestForm('E-commerce Website')">
+          Request a Site
+        </button>
+
+      </div>
+
+
+      <!-- WEB APPLICATION -->
+
+      <div class="service-card">
+
+        <div class="service-icon">⚙️</div>
+
+        <h3>
+          Web Applications
+        </h3>
+
+        <p>
+          Custom browser-based applications designed around specific
+          business processes and customer needs.
+        </p>
+
+        <ul>
+          <li>Custom functionality</li>
+          <li>Business dashboards</li>
+          <li>Customer-facing systems</li>
+          <li>Forms and workflows</li>
+          <li>Responsive design</li>
+          <li>Project-specific features</li>
+        </ul>
+
+        <div class="price">
+          From $500
+          <small>Complex projects are quoted individually.</small>
+        </div>
+
+        <button
+          class="btn"
+          type="button"
+          onclick="openRequestForm('Web Application')">
+          Discuss Your Project
+        </button>
+
+      </div>
+
+
+      <!-- MOBILE APP -->
+
+      <div class="service-card">
+
+        <div class="service-icon">📱</div>
+
+        <h3>
+          Mobile Applications
+        </h3>
+
+        <p>
+          Mobile application solutions designed around your business,
+          customers and intended functionality.
+        </p>
+
+        <ul>
+          <li>Android application projects</li>
+          <li>Customer-facing apps</li>
+          <li>Business utility apps</li>
+          <li>Custom interfaces</li>
+          <li>Project planning</li>
+          <li>Feature-based quotations</li>
+        </ul>
+
+        <div class="price">
+          From $500
+          <small>Complexity determines final pricing.</small>
+        </div>
+
+        <button
+          class="btn"
+          type="button"
+          onclick="openRequestForm('Mobile Application')">
+          Discuss Your App
+        </button>
+
+      </div>
+
+
+      <!-- WEBSITE + APP -->
+
+      <div class="service-card">
+
+        <div class="service-icon">🚀</div>
+
+        <h3>
+          Website + App
+        </h3>
+
+        <p>
+          A complete digital presence combining a professional
+          website with an application built around your business.
+        </p>
+
+        <ul>
+          <li>Business website</li>
+          <li>Application planning</li>
+          <li>Connected customer experience</li>
+          <li>Mobile-friendly interface</li>
+          <li>Business-focused design</li>
+          <li>Custom project scope</li>
+        </ul>
+
+        <div class="price">
+          Custom Quote
+          <small>Tell us what you want to build.</small>
+        </div>
+
+        <button
+          class="btn"
+          type="button"
+          onclick="openRequestForm('Website + App')">
+          Start a Project
+        </button>
+
+      </div>
+
+
+      <!-- NOT SURE -->
+
+      <div class="service-card">
+
+        <div class="service-icon">💡</div>
+
+        <h3>
+          Not Sure What You Need?
+        </h3>
+
+        <p>
+          Tell us about your business and what you want to achieve.
+          We can discuss the type of digital solution that may fit.
+        </p>
+
+        <ul>
+          <li>Explain your business</li>
+          <li>Describe your idea</li>
+          <li>Tell us your goals</li>
+          <li>Share your budget</li>
+          <li>Choose your preferred timeline</li>
+        </ul>
+
+        <div class="price">
+          Let's Talk
+          <small>No obligation to proceed.</small>
+        </div>
+
+        <button
+          class="btn"
+          type="button"
+          onclick="openRequestForm('Not sure — I need advice')">
+          Tell Us Your Idea
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     HOW IT WORKS
+========================= -->
+
+<section class="process">
+
+  <div class="wrap">
+
+    <h2 class="section-title">
+      How It Works
+    </h2>
+
+    <p class="section-lead">
+      Starting a website or application project is simple.
+    </p>
+
+
+    <div class="process-grid">
+
+      <div class="process-card">
+
+        <div class="process-number">1</div>
+
+        <h3>
+          Tell Us
+        </h3>
+
+        <p>
+          Submit your project requirements using our request form.
+        </p>
+
+      </div>
+
+
+      <div class="process-card">
+
+        <div class="process-number">2</div>
+
+        <h3>
+          Discuss
+        </h3>
+
+        <p>
+          We review your requirements and discuss the best approach.
+        </p>
+
+      </div>
+
+
+      <div class="process-card">
+
+        <div class="process-number">3</div>
+
+        <h3>
+          Build
+        </h3>
+
+        <p>
+          Once the project is agreed, development begins according
+          to the agreed scope.
+        </p>
+
+      </div>
+
+
+      <div class="process-card">
+
+        <div class="process-number">4</div>
+
+        <h3>
+          Launch
+        </h3>
+
+        <p>
+          Your completed digital solution is prepared for launch
+          and handover.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     AFFILIATE CATEGORIES
+========================= -->
 
 <section id="categories">
 
   <div class="wrap">
 
     <h2 class="section-title">
-      Explore our categories
+      Explore Our Categories
     </h2>
 
     <p class="section-lead">
-      Our catalogue will grow as we add reputable merchants and useful
-      product recommendations.
+      Discover useful products, software, services and recommendations
+      from reputable online partners.
     </p>
+
 
     <div class="grid">
 
 
-      <!-- Technology -->
-
-      <a href="technology.html"
-         class="card"
-         style="text-decoration:none;color:inherit;display:block;">
+      <a href="technology.html" class="card">
 
         <div class="icon">💻</div>
 
@@ -436,8 +1344,8 @@ footer{
         </h3>
 
         <p>
-          Laptops, accessories, connectivity products and useful tech
-          for everyday life.
+          Laptops, accessories, connectivity products and useful
+          technology for everyday life.
         </p>
 
         <span class="card-link">
@@ -447,9 +1355,7 @@ footer{
       </a>
 
 
-      <!-- Home & Living -->
-
-      <div class="card">
+      <a href="home-living.html" class="card">
 
         <div class="icon">🏠</div>
 
@@ -458,20 +1364,18 @@ footer{
         </h3>
 
         <p>
-          Practical products and smart solutions designed to make your
-          home more comfortable, organized, efficient, and enjoyable.
+          Practical products and smart solutions designed to make
+          your home more comfortable, organized and efficient.
         </p>
 
-        <a href="home-living.html" class="card-link">
+        <span class="card-link">
           Explore Home & Living →
-        </a>
+        </span>
 
-      </div>
+      </a>
 
 
-      <!-- Everyday Essentials -->
-
-      <div class="card">
+      <a href="everyday-essentials.html" class="card">
 
         <div class="icon">🎯</div>
 
@@ -480,20 +1384,18 @@ footer{
         </h3>
 
         <p>
-          Useful products, tools and accessories selected for everyday
-          convenience, value, and practical living.
+          Useful products, tools and accessories selected for
+          everyday convenience and practical living.
         </p>
 
-        <a href="everyday-essentials.html" class="card-link">
+        <span class="card-link">
           Explore Everyday Essentials →
-        </a>
+        </span>
 
-      </div>
+      </a>
 
 
-      <!-- Travel -->
-
-      <div class="card">
+      <a href="travel.html" class="card">
 
         <div class="icon">✈️</div>
 
@@ -502,20 +1404,18 @@ footer{
         </h3>
 
         <p>
-          Travel gear, services, and useful solutions selected to make
-          planning, journeys, and trips easier.
+          Travel gear, services and useful solutions selected to
+          make planning and journeys easier.
         </p>
 
-        <a href="travel.html" class="card-link">
+        <span class="card-link">
           Explore Travel →
-        </a>
+        </span>
 
-      </div>
+      </a>
 
 
-      <!-- Digital Services -->
-
-      <div class="card">
+      <a href="digital-services.html" class="card">
 
         <div class="icon">📱</div>
 
@@ -524,20 +1424,18 @@ footer{
         </h3>
 
         <p>
-          Software, subscriptions, online tools, and digital services
+          Software, subscriptions, online tools and digital services
           selected to help individuals and businesses work smarter.
         </p>
 
-        <a href="digital-services.html" class="card-link">
+        <span class="card-link">
           Explore Digital Services →
-        </a>
+        </span>
 
-      </div>
+      </a>
 
 
-      <!-- Featured Picks -->
-
-      <div class="card">
+      <a href="featured-picks.html" class="card">
 
         <div class="icon">⭐</div>
 
@@ -547,213 +1445,13 @@ footer{
 
         <p>
           Curated recommendations and comparisons highlighting useful
-          products, software, and services worth considering.
+          products, software and services worth considering.
         </p>
 
-        <a href="featured-picks.html" class="card-link">
+        <span class="card-link">
           Explore Featured Picks →
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- BUSINESS SERVICES -->
-
-<section id="services" class="services">
-
-  <div class="wrap">
-
-    <h2 class="section-title">
-      Digital Solutions for Growing Businesses
-    </h2>
-
-    <p class="section-lead">
-      We help small businesses establish a professional online presence
-      with affordable websites and practical digital solutions.
-    </p>
-
-
-    <div class="grid">
-
-
-      <!-- STARTER -->
-
-      <div class="card service-card">
-
-        <span class="badge">
-          Starter
         </span>
 
-        <h3>
-          Business Launch Website
-        </h3>
-
-        <div class="price">
-          From $150
-          <span>
-            starting price
-          </span>
-        </div>
-
-        <p>
-          A professional one-page website designed to help customers
-          understand your business and contact you.
-        </p>
-
-        <ul>
-          <li>
-            One-page mobile-friendly website
-          </li>
-
-          <li>
-            About and services/products sections
-          </li>
-
-          <li>
-            WhatsApp/contact button
-          </li>
-
-          <li>
-            Social-media links
-          </li>
-
-          <li>
-            Basic search-engine setup
-          </li>
-        </ul>
-
-      </div>
-
-
-      <!-- PROFESSIONAL -->
-
-      <div class="card service-card featured">
-
-        <span class="badge">
-          Most Popular
-        </span>
-
-        <h3>
-          Complete Business Website
-        </h3>
-
-        <div class="price">
-          From $300
-          <span>
-            starting price
-          </span>
-        </div>
-
-        <p>
-          A stronger online presence for businesses that need more
-          information, pages and customer contact options.
-        </p>
-
-        <ul>
-
-          <li>
-            Up to 5 pages
-          </li>
-
-          <li>
-            Products/services catalogue
-          </li>
-
-          <li>
-            Contact form and location
-          </li>
-
-          <li>
-            Basic SEO optimisation
-          </li>
-
-          <li>
-            Promotional graphics
-          </li>
-
-          <li>
-            14 days minor support
-          </li>
-
-        </ul>
-
-      </div>
-
-
-      <!-- BUSINESS PLUS -->
-
-      <div class="card service-card">
-
-        <span class="badge">
-          Business Plus
-        </span>
-
-        <h3>
-          Complete Digital Presence
-        </h3>
-
-        <div class="price">
-          From $500
-          <span>
-            starting price
-          </span>
-        </div>
-
-        <p>
-          A broader package for businesses ready to strengthen their
-          website, content and online customer experience.
-        </p>
-
-        <ul>
-
-          <li>
-            Everything in Professional
-          </li>
-
-          <li>
-            Expanded catalogue
-          </li>
-
-          <li>
-            Additional landing page
-          </li>
-
-          <li>
-            Social-media starter content
-          </li>
-
-          <li>
-            Google Business Profile assistance
-          </li>
-
-          <li>
-            30 days minor support
-          </li>
-
-        </ul>
-
-      </div>
-
-    </div>
-
-
-    <p class="services-note">
-      Every project can be tailored to the business's needs, goals,
-      content and required features. Final pricing is confirmed before
-      work begins.
-    </p>
-
-
-    <div style="text-align:center;margin-top:28px">
-
-      <a class="btn" href="#contact">
-        Request a Website
       </a>
 
     </div>
@@ -763,7 +1461,9 @@ footer{
 </section>
 
 
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section id="about">
 
@@ -776,26 +1476,27 @@ footer{
       </h2>
 
       <p>
-        Lrim-Tech Solutions is a global online product discovery
-        platform focused on useful recommendations, product comparisons
-        and practical shopping guides. We aim to help visitors discover
-        products, understand their options and make more informed
-        purchasing decisions.
+        Lrim-Tech Solutions is a global online platform focused on
+        useful technology, product discovery, practical recommendations
+        and digital solutions for businesses.
       </p>
 
       <p>
-        We work toward connecting visitors with reputable merchants,
-        services and affiliate partners. Where appropriate, links on
-        this site may direct visitors to third-party merchants or
-        services, where purchases or other qualifying actions may take
-        place.
+        Through our product and service categories, we aim to help
+        visitors discover useful products, understand their options
+        and make more informed purchasing decisions.
       </p>
 
       <p>
-        Our platform is designed to grow through carefully selected
-        products, useful content and transparent recommendations, with
-        the goal of making online product research simpler and more
-        convenient.
+        We are also developing a direct digital-solutions service
+        focused on professional websites, web applications and mobile
+        application projects for businesses.
+      </p>
+
+      <p>
+        Our goal is to combine useful technology discovery with
+        practical digital solutions that help individuals and businesses
+        move forward.
       </p>
 
     </div>
@@ -805,7 +1506,9 @@ footer{
 </section>
 
 
-<!-- AFFILIATE DISCLOSURE -->
+<!-- =========================
+     AFFILIATE DISCLOSURE
+========================= -->
 
 <section id="disclosure">
 
@@ -818,14 +1521,18 @@ footer{
       </h2>
 
       <p class="disclosure">
-        Some links on Lrim-Tech Solutions may be affiliate links. If you
-        purchase through an affiliate link or complete a qualifying
-        action, we may receive a commission at no additional cost to
-        you. Affiliate partners may use cookies or similar tracking
-        technologies to attribute referrals and qualifying purchases.
+        Some links on Lrim-Tech Solutions may be affiliate links.
+        If you purchase through an affiliate link or complete a
+        qualifying action, we may receive a commission at no additional
+        cost to you. Affiliate partners may use cookies or similar
+        tracking technologies to attribute referrals and qualifying
+        purchases.
+      </p>
+
+      <p class="disclosure">
         Our goal is to provide useful information, comparisons and
-        recommendations; affiliate relationships do not guarantee that
-        a product is the right choice for every shopper.
+        recommendations. Affiliate relationships do not guarantee that
+        a product or service is the right choice for every visitor.
       </p>
 
     </div>
@@ -835,7 +1542,9 @@ footer{
 </section>
 
 
-<!-- PARTNER WITH US -->
+<!-- =========================
+     PARTNER WITH US
+========================= -->
 
 <section id="partners">
 
@@ -860,15 +1569,12 @@ footer{
       </p>
 
       <p>
-
         <strong>
           Partnership enquiries:
         </strong>
-
         <a href="mailto:lrimtechsolutions@outlook.com">
           lrimtechsolutions@outlook.com
         </a>
-
       </p>
 
     </div>
@@ -878,40 +1584,37 @@ footer{
 </section>
 
 
-<!-- CONTACT -->
+<!-- =========================
+     CONTACT
+========================= -->
 
 <section id="contact">
 
   <div class="wrap">
 
-    <div class="note">
+    <div class="contact-box">
 
       <h2>
-        Contact
+        Let's Work Together
       </h2>
 
       <p>
-        Interested in a website or digital solution for your business?
-        Contact Lrim-Tech Solutions with your business name, what you
-        offer, and what you would like your website to achieve.
+        Have a business project, partnership opportunity or general
+        enquiry? We'd be happy to hear from you.
       </p>
 
       <p>
-        For partnership, merchant or general enquiries, you can also
-        contact us using the email below.
-      </p>
-
-      <p>
-
-        <strong>
-          Email:
-        </strong>
-
         <a href="mailto:lrimtechsolutions@outlook.com">
           lrimtechsolutions@outlook.com
         </a>
-
       </p>
+
+      <button
+        class="btn"
+        type="button"
+        onclick="openRequestForm()">
+        Request a Website or App
+      </button>
 
     </div>
 
@@ -922,56 +1625,420 @@ footer{
 </main>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     REQUEST FORM MODAL
+========================= -->
 
-<footer>
+<div
+  class="modal"
+  id="requestModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="requestTitle">
 
-  <div class="wrap footer-grid">
+  <div class="modal-box">
 
-    <div>
+    <button
+      class="close-modal"
+      type="button"
+      aria-label="Close form"
+      onclick="closeRequestForm()">
+      ×
+    </button>
 
-      <strong>
-        Lrim-Tech Solutions
-      </strong>
+
+    <div class="modal-header">
+
+      <h2 id="requestTitle">
+        Request a Website or App
+      </h2>
 
       <p>
-        Smart product discovery, useful recommendations and practical
-        digital solutions for growing businesses.
+        Tell us about your project and we'll review your requirements.
       </p>
 
     </div>
 
-    <div class="footer-links">
 
-      <a href="#categories">
-        Categories
-      </a>
+    <div class="form-body">
 
-      <a href="#services">
-        Business Services
-      </a>
+      <form
+        action="https://formspree.io/f/moeqnjow"
+        method="POST">
 
-      <a href="#about">
-        About
-      </a>
+        <input
+          type="hidden"
+          name="_subject"
+          value="New Lrim-Tech Website/App Project Request">
 
-      <a href="#partners">
-        Partner With Us
-      </a>
+        <!-- Honeypot spam protection -->
+        <input
+          type="text"
+          name="_gotcha"
+          tabindex="-1"
+          autocomplete="off"
+          style="position:absolute;left:-9999px;opacity:0;">
 
-      <a href="#contact">
-        Contact
-      </a>
+        <div class="form-grid">
 
-      <a href="privacy-policy.html">
-        Privacy Policy
-      </a>
+
+          <div class="form-group">
+
+            <label for="name">
+              Full Name <span class="required">*</span>
+            </label>
+
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Your full name"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="business">
+              Business / Company Name
+            </label>
+
+            <input
+              id="business"
+              name="business_name"
+              type="text"
+              placeholder="Your business name">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="email">
+              Email Address <span class="required">*</span>
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="phone">
+              WhatsApp / Phone
+            </label>
+
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder="+263 ...">
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label for="project">
+              What do you need? <span class="required">*</span>
+            </label>
+
+            <select
+              id="project"
+              name="project_type"
+              required>
+
+              <option value="">
+                Select a project type
+              </option>
+
+              <option value="Business Website">
+                Business Website
+              </option>
+
+              <option value="E-commerce Website">
+                E-commerce Website
+              </option>
+
+              <option value="Web Application">
+                Web Application
+              </option>
+
+              <option value="Mobile Application">
+                Mobile Application
+              </option>
+
+              <option value="Website + App">
+                Website + App
+              </option>
+
+              <option value="Not sure — need advice">
+                I'm not sure — I need advice
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label for="details">
+              Tell us about your project <span class="required">*</span>
+            </label>
+
+            <textarea
+              id="details"
+              name="project_details"
+              placeholder="Tell us about your business, what you want the website/app to do, the features you need, and anything else that would help us understand your project."
+              required></textarea>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="budget">
+              Estimated Budget
+            </label>
+
+            <select
+              id="budget"
+              name="estimated_budget">
+
+              <option value="">
+                Select a range
+              </option>
+
+              <option value="Under $150">
+                Under $150
+              </option>
+
+              <option value="$150 - $300">
+                $150 - $300
+              </option>
+
+              <option value="$300 - $500">
+                $300 - $500
+              </option>
+
+              <option value="$500 - $1,000">
+                $500 - $1,000
+              </option>
+
+              <option value="$1,000+">
+                $1,000+
+              </option>
+
+              <option value="Not sure">
+                Not sure
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="start">
+              Preferred Start Date
+            </label>
+
+            <input
+              id="start"
+              name="preferred_start_date"
+              type="date">
+
+          </div>
+
+        </div>
+
+
+        <p class="form-note">
+          By submitting this form, you are requesting a discussion
+          about your project. Submission does not create a contract
+          or guarantee acceptance of the project.
+        </p>
+
+
+        <button
+          class="submit-btn"
+          type="submit">
+          Send Project Request
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <div class="wrap">
+
+    <div class="footer-grid">
+
+      <div>
+
+        <div class="brand">
+          Lrim-Tech <span>Solutions</span>
+        </div>
+
+        <p>
+          Smart technology. Better business. Better choices.
+        </p>
+
+        <p>
+          Lrim-Tech Solutions combines global product discovery,
+          useful digital services and professional website and
+          application solutions for businesses.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <strong>
+          Quick Links
+        </strong>
+
+        <a href="#solutions">
+          Our Solutions
+        </a>
+
+        <a href="#websites-apps">
+          Websites & Apps
+        </a>
+
+        <a href="#categories">
+          Categories
+        </a>
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#partners">
+          Partner With Us
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      © 2026 Lrim-Tech Solutions. All rights reserved.
+      <br>
+      Chivhu, Zimbabwe.
 
     </div>
 
   </div>
 
 </footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+function openRequestForm(projectType){
+
+  const modal = document.getElementById("requestModal");
+
+  modal.classList.add("active");
+
+  document.body.classList.add("modal-open");
+
+  if(projectType){
+
+    const projectSelect = document.getElementById("project");
+
+    for(let i = 0; i < projectSelect.options.length; i++){
+
+      if(projectSelect.options[i].value === projectType){
+
+        projectSelect.selectedIndex = i;
+
+        break;
+
+      }
+
+    }
+
+  }
+
+  setTimeout(function(){
+
+    document.getElementById("name").focus();
+
+  },100);
+
+}
+
+
+function closeRequestForm(){
+
+  const modal = document.getElementById("requestModal");
+
+  modal.classList.remove("active");
+
+  document.body.classList.remove("modal-open");
+
+}
+
+
+document.getElementById("requestModal").addEventListener("click",function(event){
+
+  if(event.target === this){
+
+    closeRequestForm();
+
+  }
+
+});
+
+
+document.addEventListener("keydown",function(event){
+
+  if(event.key === "Escape"){
+
+    closeRequestForm();
+
+  }
+
+});
+
+</script>
 
 </body>
 </html>
