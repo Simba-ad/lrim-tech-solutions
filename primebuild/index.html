@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="PrimeBuild Construction — professional construction, renovations, and project management. Demo website by Lrim-Tech Solutions.">
+<title>PrimeBuild Construction | Built to Last</title>
+<style>
+:root{--ink:#111827;--muted:#667085;--line:#e5e7eb;--paper:#fff;--soft:#f4f5f7;--accent:#d89b2b;--accent-dark:#b9790e;--dark:#0d1726;--dark2:#172235;--success:#176c42}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}.wrap{max-width:1180px;margin:auto;padding:0 24px}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{display:flex;align-items:center;gap:12px;font-weight:800}.brand-mark{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:var(--dark);color:#fff;font-weight:900;border:2px solid var(--accent)}
+nav ul{list-style:none;display:flex;gap:24px;margin:0;padding:0;align-items:center}nav a{font-weight:600;color:#293241}.nav-cta{background:var(--accent);color:#111;padding:11px 17px;border-radius:9px;font-weight:800}.menu-btn{display:none;border:1px solid var(--line);background:white;border-radius:9px;padding:9px 12px;font-size:1.2rem}
+.hero{position:relative;min-height:680px;background:linear-gradient(90deg,rgba(8,17,30,.92) 0%,rgba(8,17,30,.80) 45%,rgba(8,17,30,.28) 100%),url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=85') center/cover;color:#fff;display:flex;align-items:center}.hero-content{max-width:720px;padding:88px 0}.eyebrow{display:inline-flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:1.7px;font-size:.78rem;font-weight:800;color:#f5ca6b;margin-bottom:18px}.eyebrow:before{content:"";width:32px;height:2px;background:var(--accent)}
+h1{font-size:clamp(2.8rem,6vw,5.4rem);line-height:.98;margin:0 0 24px;letter-spacing:-2px}.hero p{font-size:1.15rem;color:#e5e7eb;max-width:650px;margin:0 0 30px}.hero-actions{display:flex;flex-wrap:wrap;gap:14px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:9px;font-weight:800;border:1px solid transparent;cursor:pointer;font:inherit}.btn-primary{background:var(--accent);color:#111}.btn-outline{border-color:rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.06)}.btn-dark{background:var(--dark);color:#fff}
+.stats{margin-top:-48px;position:relative;z-index:3}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:16px;box-shadow:0 18px 45px rgba(16,24,40,.14);overflow:hidden;border:1px solid var(--line)}.stat{padding:28px;text-align:center;border-right:1px solid var(--line)}.stat:last-child{border-right:0}.stat strong{display:block;font-size:1.9rem}.stat span{color:var(--muted);font-size:.93rem}
+section{padding:86px 0}.section-head{max-width:700px;margin-bottom:34px}.kicker{color:var(--accent-dark);font-weight:800;text-transform:uppercase;letter-spacing:1.4px;font-size:.8rem;margin-bottom:8px}h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:0 0 14px;letter-spacing:-1px}.lead{color:var(--muted);font-size:1.05rem;margin:0}
+.services{background:var(--soft)}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:28px;box-shadow:0 10px 24px rgba(16,24,40,.05)}.icon{width:48px;height:48px;border-radius:12px;background:#fff4da;display:grid;place-items:center;font-size:1.35rem;margin-bottom:18px}.card h3{margin:0 0 9px}.card p{margin:0;color:var(--muted)}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}.photo-stack{position:relative}.photo-stack img{border-radius:18px;min-height:500px;object-fit:cover;box-shadow:0 18px 40px rgba(16,24,40,.12)}.badge{position:absolute;right:-16px;bottom:28px;background:var(--accent);color:#111;border-radius:14px;padding:20px 24px;font-weight:900;box-shadow:0 14px 35px rgba(0,0,0,.16)}.checklist{display:grid;gap:13px;margin:22px 0 28px}.check{display:flex;gap:10px}.check b{color:var(--success)}
+.projects{background:var(--dark);color:#fff}.projects .lead{color:#c9d1dc}.project-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:18px}.project{position:relative;min-height:360px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}.project img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.project:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,12,20,.9),rgba(6,12,20,.05) 65%)}.project-info{position:absolute;left:22px;right:22px;bottom:20px;z-index:2}.project-info h3{margin:0 0 4px}.project-info p{margin:0;color:#d0d5dd;font-size:.92rem}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.why{border-top:4px solid var(--accent);padding:24px 22px;background:#fff;box-shadow:0 10px 26px rgba(16,24,40,.06);border-radius:0 0 14px 14px}.why strong{display:block;margin-bottom:8px}.why p{margin:0;color:var(--muted)}
+.quote{background:linear-gradient(135deg,var(--dark),var(--dark2));color:#fff;border-radius:22px;padding:44px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:30px}.quote p{margin:0;color:#d6dbe4;max-width:700px}
+.contact{background:var(--soft)}.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px}.contact-panel,.form-panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px}.contact-list{display:grid;gap:18px;margin-top:24px}.contact-row{display:flex;gap:14px}.contact-row b{display:block}.contact-row small{color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}label{font-weight:700;font-size:.91rem}input,select,textarea{width:100%;margin-top:7px;padding:12px 13px;border:1px solid #cfd4dc;border-radius:9px;font:inherit;background:#fff}textarea{min-height:130px;resize:vertical}.full{grid-column:1/-1}.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+footer{background:#090f19;color:#cbd5e1;padding:34px 0}.footer-inner{display:flex;justify-content:space-between;gap:24px;align-items:center;flex-wrap:wrap}.footer-brand{font-weight:800;color:#fff}.credit a{color:#f2bd54;font-weight:800}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(5,10,18,.72);align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-card{width:min(620px,100%);background:#fff;border-radius:16px;padding:26px;position:relative;max-height:90vh;overflow:auto}.close{position:absolute;right:16px;top:14px;border:0;background:#eef0f3;width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer}
+@media(max-width:980px){.cards{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:1fr 1fr}.project:first-child{grid-column:1/-1}.about-grid,.contact-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.quote{grid-template-columns:1fr}}
+@media(max-width:760px){nav{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line)}nav.open{display:block}nav ul{flex-direction:column;align-items:stretch;padding:18px 24px}.menu-btn{display:block}.hero{min-height:620px;background-position:62% center}.cards,.why-grid,.project-grid,.form-grid{grid-template-columns:1fr}.project:first-child{grid-column:auto}.stats{margin-top:-28px}.photo-stack img{min-height:380px}.badge{right:10px}.quote{padding:30px}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap nav">
+<a class="brand" href="#home"><span class="brand-mark">PB</span><span>PrimeBuild Construction</span></a>
+<button class="menu-btn" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+<nav id="nav"><ul>
+<li><a href="#services" onclick="closeMenu()">Services</a></li>
+<li><a href="#about" onclick="closeMenu()">About</a></li>
+<li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+<li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+<li><a class="nav-cta" href="#quote" onclick="closeMenu()">Request a Quote</a></li>
+</ul></nav>
+</div>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="wrap"><div class="hero-content">
+<div class="eyebrow">Construction • Renovation • Project Management</div>
+<h1>Building strong.<br>Building for the future.</h1>
+<p>PrimeBuild Construction delivers reliable building solutions with a focus on quality workmanship, clear communication, and projects designed to stand the test of time.</p>
+<div class="hero-actions"><a class="btn btn-primary" href="#quote">Request a Quote</a><a class="btn btn-outline" href="#projects">View Projects</a></div>
+</div></div>
+</section>
+
+<div class="stats"><div class="wrap"><div class="stats-grid">
+<div class="stat"><strong>12+</strong><span>Years of experience</span></div>
+<div class="stat"><strong>180+</strong><span>Projects completed</span></div>
+<div class="stat"><strong>95%</strong><span>Repeat & referral clients</span></div>
+<div class="stat"><strong>100%</strong><span>Commitment to quality</span></div>
+</div></div></div>
+
+<section class="services" id="services"><div class="wrap">
+<div class="section-head"><div class="kicker">What we do</div><h2>Practical construction solutions from concept to completion.</h2><p class="lead">Whether you are building from the ground up or improving an existing property, PrimeBuild provides coordinated, dependable support at every stage.</p></div>
+<div class="cards">
+<article class="card"><div class="icon">🏠</div><h3>Residential Construction</h3><p>New homes, extensions, structural works, and complete residential building projects.</p></article>
+<article class="card"><div class="icon">🏢</div><h3>Commercial Construction</h3><p>Functional, professional spaces for offices, retail, hospitality, and growing businesses.</p></article>
+<article class="card"><div class="icon">🛠️</div><h3>Renovations</h3><p>Interior and exterior upgrades, refurbishments, modernisation, and property improvements.</p></article>
+<article class="card"><div class="icon">📐</div><h3>Project Management</h3><p>Planning, coordination, timelines, contractor oversight, and site progress management.</p></article>
+</div></div></section>
+
+<section id="about"><div class="wrap about-grid">
+<div class="photo-stack"><img src="https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=1200&q=85" alt="Construction team on site"><div class="badge">Built with purpose.<br>Delivered with care.</div></div>
+<div><div class="kicker">About PrimeBuild</div><h2>Construction that combines strength, detail, and accountability.</h2><p class="lead">We believe a successful project is about more than bricks and concrete. It is about planning carefully, communicating clearly, and delivering work the client can trust.</p>
+<div class="checklist"><div class="check"><b>✓</b><span>Clear project communication from start to finish</span></div><div class="check"><b>✓</b><span>Quality-focused workmanship and material selection</span></div><div class="check"><b>✓</b><span>Practical scheduling and project coordination</span></div><div class="check"><b>✓</b><span>Solutions tailored to each client's goals and budget</span></div></div>
+<a class="btn btn-dark" href="#contact">Talk to Our Team</a></div>
+</div></section>
+
+<section class="projects" id="projects"><div class="wrap">
+<div class="section-head"><div class="kicker">Selected work</div><h2>Projects designed around people, purpose, and performance.</h2><p class="lead">A sample of the types of projects PrimeBuild can deliver for residential and commercial clients.</p></div>
+<div class="project-grid">
+<article class="project"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85" alt="Modern residential home"><div class="project-info"><h3>Modern Family Residence</h3><p>Residential construction • Contemporary design</p></div></article>
+<article class="project"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=85" alt="Commercial office building"><div class="project-info"><h3>Commercial Office Build</h3><p>Commercial construction</p></div></article>
+<article class="project"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="Renovated interior"><div class="project-info"><h3>Property Renovation</h3><p>Interior and exterior upgrade</p></div></article>
+</div></div></section>
+
+<section><div class="wrap">
+<div class="section-head"><div class="kicker">Why choose us</div><h2>A straightforward way to build with confidence.</h2></div>
+<div class="why-grid"><div class="why"><strong>Reliable Communication</strong><p>Clients stay informed on milestones, progress, decisions, and next steps throughout the project.</p></div><div class="why"><strong>Quality Workmanship</strong><p>Attention to structural integrity, finishing detail, and long-term value is built into every stage.</p></div><div class="why"><strong>Project Discipline</strong><p>We focus on organised planning, coordinated execution, practical budgets, and responsible site management.</p></div></div>
+</div></section>
+
+<section id="quote"><div class="wrap"><div class="quote"><div><h2>Have a construction project in mind?</h2><p>Tell us what you are planning and we will help you identify the right next step for your project.</p></div><button class="btn btn-primary" onclick="openQuote()">Start Your Project</button></div></div></section>
+
+<section class="contact" id="contact"><div class="wrap contact-grid">
+<div class="contact-panel"><div class="kicker">Contact</div><h2>Let's discuss your project.</h2><p class="lead">Reach out for a consultation, project enquiry, or quotation.</p>
+<div class="contact-list">
+<div class="contact-row"><span>📍</span><div><b>Location</b><small>Client's address</small></div></div>
+<div class="contact-row"><span>📞</span><div><b>Phone / WhatsApp</b><small>+263 77 000 0000</small></div></div>
+<div class="contact-row"><span>✉️</span><div><b>Email</b><small>hello@primebuild.example</small></div></div>
+<div class="contact-row"><span>🕒</span><div><b>Business Hours</b><small>Mon–Fri: 8:00–17:00 • Sat: 8:00–13:00</small></div></div>
+</div></div>
+
+<div class="form-panel"><h3 style="margin-top:0">Request a consultation</h3>
+<form onsubmit="demoSubmit(event)"><div class="form-grid">
+<label>Name<input type="text" name="name" placeholder="Your name" required></label>
+<label>Phone / WhatsApp<input type="text" name="phone" placeholder="+263..." required></label>
+<label>Email<input type="email" name="email" placeholder="you@example.com"></label>
+<label>Project type<select name="project" required><option value="">Select one</option><option>Residential construction</option><option>Commercial construction</option><option>Renovation</option><option>Project management</option><option>Other</option></select></label>
+<label class="full">Project details<textarea name="details" placeholder="Tell us what you would like to build or improve..." required></textarea></label>
+<div class="full"><button class="btn btn-dark" type="submit">Send Enquiry</button><div class="note">Demo form only — no information is transmitted.</div></div>
+</div></form></div>
+</div></section>
+</main>
+
+<footer><div class="wrap footer-inner"><div><div class="footer-brand">PrimeBuild Construction</div><small>Professional construction website concept.</small></div><div class="credit">Demo website by <a href="#">Lrim-Tech Solutions</a></div></div></footer>
+
+<div class="modal" id="quoteModal" aria-hidden="true"><div class="modal-card">
+<button class="close" onclick="closeQuote()" aria-label="Close">×</button>
+<div class="kicker">Project enquiry</div><h2 style="font-size:2rem">Tell us about your project.</h2>
+<form onsubmit="demoSubmit(event)"><div class="form-grid">
+<label>Name<input type="text" required></label><label>Phone / WhatsApp<input type="text" required></label>
+<label>Email<input type="email"></label><label>Project type<select required><option value="">Select one</option><option>Residential construction</option><option>Commercial construction</option><option>Renovation</option><option>Project management</option><option>Other</option></select></label>
+<label class="full">Project details<textarea required></textarea></label>
+<div class="full"><button class="btn btn-primary" type="submit">Submit Enquiry</button><div class="note">This is a demonstration form. No information is transmitted.</div></div>
+</div></form>
+</div></div>
+
+<script>
+function toggleMenu(){document.getElementById('nav').classList.toggle('open')}
+function closeMenu(){document.getElementById('nav').classList.remove('open')}
+function openQuote(){const m=document.getElementById('quoteModal');m.classList.add('open');m.setAttribute('aria-hidden','false')}
+function closeQuote(){const m=document.getElementById('quoteModal');m.classList.remove('open');m.setAttribute('aria-hidden','true')}
+function demoSubmit(e){e.preventDefault();alert('Demo submitted successfully. On a live client website, this enquiry would be sent directly to the business.');e.target.reset();closeQuote()}
+document.getElementById('quoteModal').addEventListener('click',function(e){if(e.target===this)closeQuote()})
+</script>
+</body>
+</html>
