@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Glow Beauty Studio — elegant beauty services, appointments, and self-care. Demo website by Lrim-Tech Solutions.">
+<title>Glow Beauty Studio | Beauty, Care & Confidence</title>
+<style>
+:root{
+  --ink:#2d2630;
+  --muted:#7d6f79;
+  --line:#eadfe5;
+  --paper:#fffdfd;
+  --soft:#faf4f7;
+  --rose:#c9829d;
+  --rose-dark:#a9607a;
+  --gold:#b69055;
+  --deep:#3b2e36;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1160px;margin:auto;padding:0 24px}
+
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,253,253,.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800}
+.brand-mark{
+  width:42px;height:42px;border-radius:50%;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--rose),#e8b8c8);
+  color:white;font-weight:900;
+  box-shadow:0 8px 20px rgba(201,130,157,.25);
+}
+nav ul{list-style:none;display:flex;align-items:center;gap:24px;margin:0;padding:0}
+nav a{font-weight:600;color:#4d4148}
+.nav-cta{
+  background:var(--deep);color:white;padding:11px 18px;border-radius:999px;font-weight:800;
+}
+.menu-btn{
+  display:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font-size:1.2rem;
+}
+
+.hero{
+  min-height:690px;
+  display:flex;align-items:center;
+  background:
+    linear-gradient(90deg,rgba(255,250,252,.97) 0%,rgba(255,250,252,.88) 42%,rgba(255,250,252,.12) 72%),
+    url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1800&q=85') center/cover;
+}
+.hero-content{max-width:650px;padding:90px 0}
+.kicker{
+  color:var(--rose-dark);font-weight:800;text-transform:uppercase;letter-spacing:1.6px;font-size:.78rem;margin-bottom:12px
+}
+h1{
+  font-family:Georgia,serif;
+  font-size:clamp(3rem,6vw,5.5rem);
+  line-height:.98;letter-spacing:-2px;
+  margin:0 0 24px;
+}
+.hero p{font-size:1.12rem;color:#6b5d65;max-width:610px;margin:0 0 30px}
+.actions{display:flex;flex-wrap:wrap;gap:14px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid transparent;border-radius:999px;
+  padding:14px 20px;font-weight:800;cursor:pointer;font:inherit;
+}
+.btn-primary{background:var(--rose);color:#fff}
+.btn-primary:hover{background:var(--rose-dark)}
+.btn-outline{border-color:#bfaeb7;background:rgba(255,255,255,.75);color:var(--deep)}
+.btn-dark{background:var(--deep);color:white}
+
+section{padding:86px 0}
+.section-head{max-width:720px;margin-bottom:34px}
+.section-head.center{text-align:center;margin-left:auto;margin-right:auto}
+h2{
+  font-family:Georgia,serif;
+  font-size:clamp(2.1rem,4vw,3.3rem);
+  line-height:1.08;margin:0 0 14px;letter-spacing:-1px;
+}
+.lead{margin:0;color:var(--muted);font-size:1.04rem}
+
+.services{background:var(--soft)}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.service{
+  background:white;border:1px solid var(--line);border-radius:18px;
+  padding:28px 24px;text-align:center;
+  box-shadow:0 10px 28px rgba(87,57,70,.06);
+}
+.service .icon{
+  width:54px;height:54px;border-radius:50%;margin:0 auto 16px;
+  display:grid;place-items:center;font-size:1.5rem;background:#f8e8ee
+}
+.service h3{margin:0 0 8px}
+.service p{margin:0;color:var(--muted);font-size:.95rem}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.about-photo{position:relative}
+.about-photo img{border-radius:24px;min-height:520px;object-fit:cover;box-shadow:0 18px 40px rgba(70,49,59,.12)}
+.about-badge{
+  position:absolute;left:-18px;bottom:28px;
+  background:white;border:1px solid var(--line);border-radius:16px;
+  padding:18px 22px;box-shadow:0 14px 28px rgba(70,49,59,.14);
+}
+.about-badge strong{display:block;color:var(--rose-dark);font-size:1.4rem}
+.about-list{display:grid;gap:13px;margin:24px 0}
+.about-item{display:flex;gap:11px}
+.about-item b{color:var(--rose-dark)}
+
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.price-card{
+  border:1px solid var(--line);border-radius:18px;padding:26px;background:white;
+}
+.price-card.featured{border:2px solid var(--rose);box-shadow:0 14px 32px rgba(201,130,157,.14)}
+.price-card h3{margin:0 0 6px;font-size:1.25rem}
+.price{font-family:Georgia,serif;font-size:2rem;margin:8px 0 12px;color:var(--deep)}
+.price-card ul{padding-left:18px;color:var(--muted)}
+.price-card li{margin-bottom:8px}
+
+.gallery{background:var(--deep);color:white}
+.gallery .lead{color:#d8cdd3}
+.gallery-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:16px}
+.gallery-item{position:relative;min-height:350px;border-radius:18px;overflow:hidden}
+.gallery-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gallery-item:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(36,25,32,.72),rgba(36,25,32,.08) 65%);
+}
+.gallery-label{position:absolute;left:18px;bottom:16px;z-index:2;font-weight:800}
+
+.testimonials{background:var(--soft)}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testimonial{
+  background:white;border:1px solid var(--line);border-radius:18px;padding:26px;
+}
+.stars{letter-spacing:2px;color:var(--gold);margin-bottom:12px}
+.testimonial p{color:var(--muted)}
+.testimonial b{display:block;margin-top:14px}
+
+.booking{
+  background:linear-gradient(135deg,#f7e8ee,#fffafc);
+  border:1px solid var(--line);
+  border-radius:24px;padding:44px;
+  display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;
+}
+
+.contact{background:#fff}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px}
+.contact-panel,.form-panel{
+  border:1px solid var(--line);border-radius:18px;padding:30px;background:white;
+}
+.contact-list{display:grid;gap:18px;margin-top:24px}
+.contact-row{display:flex;gap:14px}
+.contact-row b{display:block}
+.contact-row small{color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{font-weight:700;font-size:.92rem}
+input,select,textarea{
+  width:100%;margin-top:7px;padding:12px 13px;border:1px solid #d9cdd3;border-radius:12px;
+  font:inherit;background:white;
+}
+textarea{min-height:130px;resize:vertical}
+.full{grid-column:1/-1}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+
+footer{background:#2d2329;color:#d9cdd3;padding:34px 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-brand{font-weight:800;color:white}
+.credit a{color:#e9b8ca;font-weight:800}
+
+.modal{
+  display:none;position:fixed;inset:0;z-index:100;background:rgba(36,25,32,.72);
+  align-items:center;justify-content:center;padding:20px;
+}
+.modal.open{display:flex}
+.modal-card{
+  width:min(640px,100%);background:white;border-radius:18px;padding:28px;position:relative;
+  max-height:90vh;overflow:auto;
+}
+.close{
+  position:absolute;right:16px;top:14px;border:0;background:#f5edf1;
+  width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+}
+
+@media(max-width:980px){
+  .service-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .price-grid,.testimonial-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item:first-child{grid-column:1/-1}
+  .booking{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  nav{display:none;position:absolute;top:76px;left:0;right:0;background:white;border-bottom:1px solid var(--line)}
+  nav.open{display:block}
+  nav ul{flex-direction:column;align-items:stretch;padding:18px 24px}
+  .menu-btn{display:block}
+  .hero{min-height:620px;background-position:64% center}
+  h1{letter-spacing:-1px}
+  .service-grid,.price-grid,.testimonial-grid,.gallery-grid,.form-grid{grid-template-columns:1fr}
+  .gallery-item:first-child{grid-column:auto}
+  .about-photo img{min-height:400px}
+  .about-badge{left:10px}
+  .booking{padding:30px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap nav">
+<a class="brand" href="#home"><span class="brand-mark">G</span><span>Glow Beauty Studio</span></a>
+<button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+<nav id="nav">
+<ul>
+<li><a href="#services" onclick="closeMenu()">Services</a></li>
+<li><a href="#about" onclick="closeMenu()">About</a></li>
+<li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
+<li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+<li><a class="nav-cta" href="#booking" onclick="closeMenu()">Book Appointment</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="wrap">
+<div class="hero-content">
+<div class="kicker">Beauty • Care • Confidence</div>
+<h1>Your glow,<br>your moment.</h1>
+<p>Glow Beauty Studio is a modern beauty destination for clients who want polished service, personal attention, and a relaxing experience from the moment they arrive.</p>
+<div class="actions">
+<a class="btn btn-primary" href="#booking">Book an Appointment</a>
+<a class="btn btn-outline" href="#services">Explore Services</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="services" id="services">
+<div class="wrap">
+<div class="section-head center">
+<div class="kicker">Our services</div>
+<h2>Beauty treatments designed around you.</h2>
+<p class="lead">From everyday grooming to special occasions, Glow Beauty Studio offers thoughtful services in a calm, stylish setting.</p>
+</div>
+<div class="service-grid">
+<div class="service"><div class="icon">💇🏽‍♀️</div><h3>Hair Styling</h3><p>Styling, treatments, blowouts, protective looks, and finishing services.</p></div>
+<div class="service"><div class="icon">💅🏽</div><h3>Nails</h3><p>Manicures, pedicures, gel polish, nail care, and elegant finishing touches.</p></div>
+<div class="service"><div class="icon">✨</div><h3>Facials</h3><p>Refreshing facial treatments focused on hydration, care, and healthy-looking skin.</p></div>
+<div class="service"><div class="icon">💄</div><h3>Makeup</h3><p>Natural, soft-glam, bridal, event, and special-occasion makeup services.</p></div>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="wrap about-grid">
+<div class="about-photo">
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=85" alt="Beauty studio interior">
+<div class="about-badge"><strong>Feel good.</strong><span>Look polished. Leave glowing.</span></div>
+</div>
+<div>
+<div class="kicker">About Glow</div>
+<h2>A beauty experience that feels personal from start to finish.</h2>
+<p class="lead">Glow Beauty Studio is designed around comfort, quality, and attention to detail. Every appointment is an opportunity to help the client feel refreshed, confident, and cared for.</p>
+<div class="about-list">
+<div class="about-item"><b>✓</b><span>Personalised beauty consultations</span></div>
+<div class="about-item"><b>✓</b><span>Clean, welcoming, professional environment</span></div>
+<div class="about-item"><b>✓</b><span>Flexible appointment options</span></div>
+<div class="about-item"><b>✓</b><span>Services for everyday care and special occasions</span></div>
+</div>
+<a class="btn btn-dark" href="#booking">Reserve Your Time</a>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<div class="section-head center">
+<div class="kicker">Popular packages</div>
+<h2>Simple packages for your next beauty appointment.</h2>
+<p class="lead">Sample pricing shown for demonstration purposes and can be customised for the real client.</p>
+</div>
+<div class="price-grid">
+<div class="price-card">
+<h3>Fresh & Simple</h3>
+<div class="price">$15</div>
+<ul><li>Basic manicure</li><li>Nail shaping & finish</li><li>Quick hand care</li></ul>
+<a class="btn btn-outline" href="#booking">Choose Package</a>
+</div>
+<div class="price-card featured">
+<h3>Glow Session</h3>
+<div class="price">$30</div>
+<ul><li>Facial treatment</li><li>Skin preparation</li><li>Light finishing care</li></ul>
+<a class="btn btn-primary" href="#booking">Book Glow Session</a>
+</div>
+<div class="price-card">
+<h3>Event Ready</h3>
+<div class="price">$45</div>
+<ul><li>Full makeup application</li><li>Lashes</li><li>Finishing touch-up</li></ul>
+<a class="btn btn-outline" href="#booking">Choose Package</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="gallery" id="gallery">
+<div class="wrap">
+<div class="section-head">
+<div class="kicker">Our look</div>
+<h2>Elegant details. Confident results.</h2>
+<p class="lead">A visual sample of the kind of beauty work and studio atmosphere a client could showcase on their website.</p>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item"><img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1200&q=85" alt="Beauty makeup result"><div class="gallery-label">Makeup & finishing</div></div>
+<div class="gallery-item"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=85" alt="Nail styling"><div class="gallery-label">Nail care</div></div>
+<div class="gallery-item"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=85" alt="Beauty styling"><div class="gallery-label">Beauty styling</div></div>
+</div>
+</div>
+</section>
+
+<section class="testimonials">
+<div class="wrap">
+<div class="section-head center">
+<div class="kicker">Client experience</div>
+<h2>Designed to make every appointment feel special.</h2>
+</div>
+<div class="testimonial-grid">
+<div class="testimonial"><div class="stars">★★★★★</div><p>“The atmosphere feels calm and professional, and the attention to detail makes the whole experience enjoyable.”</p><b>Sample Client</b></div>
+<div class="testimonial"><div class="stars">★★★★★</div><p>“Easy booking, friendly service, and a polished result. Exactly the kind of experience I want from a beauty studio.”</p><b>Sample Client</b></div>
+<div class="testimonial"><div class="stars">★★★★★</div><p>“A modern beauty space that feels warm, personal, and well organised from start to finish.”</p><b>Sample Client</b></div>
+</div>
+</div>
+</section>
+
+<section id="booking">
+<div class="wrap">
+<div class="booking">
+<div>
+<div class="kicker">Book your appointment</div>
+<h2>Ready for your next glow-up?</h2>
+<p class="lead">Choose your service, preferred date, and contact details. The real client version can send bookings directly to the business.</p>
+</div>
+<button class="btn btn-primary" onclick="openBooking()">Book Appointment</button>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="wrap contact-grid">
+<div class="contact-panel">
+<div class="kicker">Contact</div>
+<h2>Visit, message, or book online.</h2>
+<p class="lead">Glow Beauty Studio can make it simple for clients to connect however they prefer.</p>
+<div class="contact-list">
+<div class="contact-row"><span>📍</span><div><b>Location</b><small>Client's address</small></div></div>
+<div class="contact-row"><span>📞</span><div><b>Phone / WhatsApp</b><small>+263 77 000 0000</small></div></div>
+<div class="contact-row"><span>✉️</span><div><b>Email</b><small>hello@glowbeauty.example</small></div></div>
+<div class="contact-row"><span>🕒</span><div><b>Opening Hours</b><small>Mon–Sat: 09:00–18:00</small></div></div>
+</div>
+</div>
+
+<div class="form-panel">
+<h3 style="margin-top:0">Quick booking request</h3>
+<form onsubmit="demoSubmit(event)">
+<div class="form-grid">
+<label>Name<input type="text" required placeholder="Your name"></label>
+<label>Phone / WhatsApp<input type="text" required placeholder="+263..."></label>
+<label>Email<input type="email" placeholder="you@example.com"></label>
+<label>Service<select required><option value="">Select service</option><option>Hair Styling</option><option>Nails</option><option>Facial</option><option>Makeup</option><option>Other</option></select></label>
+<label>Preferred date<input type="date" required></label>
+<label>Preferred time<select required><option value="">Select time</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></label>
+<label class="full">Notes<textarea placeholder="Anything we should know?"></textarea></label>
+<div class="full">
+<button class="btn btn-dark" type="submit">Send Booking Request</button>
+<div class="note">Demo form only — no information is transmitted.</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap footer-inner">
+<div><div class="footer-brand">Glow Beauty Studio</div><small>Elegant beauty website concept.</small></div>
+<div class="credit">Demo website by <a href="#">Lrim-Tech Solutions</a></div>
+</div>
+</footer>
+
+<div class="modal" id="bookingModal" aria-hidden="true">
+<div class="modal-card">
+<button class="close" onclick="closeBooking()" aria-label="Close">×</button>
+<div class="kicker">Appointment request</div>
+<h2 style="font-size:2rem">Choose your beauty service.</h2>
+<form onsubmit="demoSubmit(event)">
+<div class="form-grid">
+<label>Name<input type="text" required></label>
+<label>Phone / WhatsApp<input type="text" required></label>
+<label>Service<select required><option value="">Select service</option><option>Hair Styling</option><option>Nails</option><option>Facial</option><option>Makeup</option><option>Other</option></select></label>
+<label>Preferred date<input type="date" required></label>
+<label class="full">Notes<textarea placeholder="Tell us what you would like..."></textarea></label>
+<div class="full">
+<button class="btn btn-primary" type="submit">Submit Booking Request</button>
+<div class="note">This is a demonstration form. No information is transmitted.</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+
+<script>
+function toggleMenu(){document.getElementById('nav').classList.toggle('open')}
+function closeMenu(){document.getElementById('nav').classList.remove('open')}
+function openBooking(){const m=document.getElementById('bookingModal');m.classList.add('open');m.setAttribute('aria-hidden','false')}
+function closeBooking(){const m=document.getElementById('bookingModal');m.classList.remove('open');m.setAttribute('aria-hidden','true')}
+function demoSubmit(e){
+  e.preventDefault();
+  alert('Demo booking submitted successfully. On a live client website, this request would be sent directly to the business.');
+  e.target.reset();
+  closeBooking();
+}
+document.getElementById('bookingModal').addEventListener('click',function(e){if(e.target===this)closeBooking()})
+</script>
+</body>
+</html>
