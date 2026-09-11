@@ -477,7 +477,7 @@ section{
 
 .portfolio-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:20px;
 }
 
@@ -520,6 +520,11 @@ section{
 .portfolio-preview.beauty{
   background:linear-gradient(135deg,#f8e8ee,#efd1dc);
   color:#513844;
+}
+
+.portfolio-preview.hotel{
+  background:linear-gradient(135deg,#0f6a55,#8e3f62);
+  color:#fff;
 }
 
 .portfolio-preview-icon{
@@ -1490,6 +1495,37 @@ footer{
           <a
             class="btn"
             href="glow-beauty-studio/"
+            target="_blank"
+            rel="noopener">
+            View Live Demo
+          </a>
+        </div>
+
+      </article>
+
+
+      <article class="portfolio-card">
+
+        <div class="portfolio-preview hotel">
+          <div>
+            <span class="portfolio-preview-icon">🏨</span>
+            <strong>Jacaranda Crest Hotel & Dining</strong>
+          </div>
+        </div>
+
+        <div class="portfolio-body">
+          <span class="portfolio-type">Hotel & Dining Website</span>
+
+          <h3>Jacaranda Crest Hotel & Dining</h3>
+
+          <p>
+            An interactive hospitality website concept featuring rooms,
+            dining options, table reservations, stay enquiries and Dine + Stay packages.
+          </p>
+
+          <a
+            class="btn"
+            href="demos/hotel/"
             target="_blank"
             rel="noopener">
             View Live Demo
