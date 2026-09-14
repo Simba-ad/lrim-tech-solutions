@@ -613,6 +613,33 @@ section{
 }
 
 
+
+/* =========================
+   WEBSITE COSTS & ONGOING CARE
+========================= */
+.costs-section{background:#fff}
+.costs-intro{max-width:760px;margin:0 auto 34px;text-align:center;color:var(--muted)}
+.cost-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cost-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;box-shadow:0 10px 28px rgba(16,24,40,.05)}
+.cost-card.featured{border:2px solid var(--accent);box-shadow:0 16px 40px rgba(21,94,239,.12)}
+.cost-card h3{margin:8px 0 8px;font-size:22px}
+.cost-card p{color:var(--muted);margin:0 0 14px}
+.cost-price{font-size:30px;font-weight:800;margin:4px 0 14px}
+.cost-price small{display:block;color:var(--muted);font-size:12px;font-weight:500;margin-top:2px}
+.cost-card ul{padding-left:20px;margin:0 0 20px;color:#475467}
+.cost-card li{margin:8px 0}
+.cost-card .btn{width:100%;text-align:center;margin-top:auto}
+.extra-costs{margin-top:26px;background:#f8fafc;border:1px solid var(--line);border-radius:18px;padding:28px}
+.extra-costs h3{margin:0 0 14px;font-size:22px}
+.extra-cost-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 24px}
+.extra-cost-item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px}
+.extra-cost-item strong{display:block;margin-bottom:4px}
+.extra-cost-item span{color:var(--muted);font-size:14px}
+.no-surprise{margin-top:20px;padding:18px 20px;border-radius:14px;background:#eef4ff;color:#344054;border:1px solid #c9d8fb}
+.no-surprise strong{color:var(--accent)}
+@media(max-width:900px){.cost-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.cost-grid,.extra-cost-grid{grid-template-columns:1fr}}
+
 /* =========================
    NOTES / ABOUT
 ========================= */
@@ -954,7 +981,8 @@ footer{
     <nav>
       <a href="#solutions">Solutions</a>
       <a href="#websites-apps">Websites & Apps</a>
-      <a href="#portfolio">Our Work</a>
+      <a href="#website-costs">Costs & Care</a>
+       <a href="#portfolio">Our Work</a>
       <a href="#categories">Categories</a>
       <a href="#about">About</a>
       <a href="#partners">Partner With Us</a>
@@ -1399,6 +1427,126 @@ footer{
 </section>
 
 
+
+
+<!-- =========================
+     WEBSITE COSTS & ONGOING CARE
+========================= -->
+<section id="website-costs" class="costs-section">
+  <div class="wrap">
+    <h2 class="section-title">Know Your Costs Before You Start</h2>
+    <p class="costs-intro">
+      Your website development fee is separate from any third-party services
+      and optional ongoing Lrim-Tech support. We explain any required costs
+      before your project begins so you can choose the setup that suits your business.
+    </p>
+
+    <div class="cost-grid">
+      <div class="cost-card">
+        <div class="eyebrow">Client-Owned Setup</div>
+        <h3>Website Care</h3>
+        <div class="cost-price">
+          From $25/month
+          <small>You own the technical accounts. Lrim-Tech provides ongoing care.</small>
+        </div>
+        <ul>
+          <li>Client-owned domain and hosting accounts</li>
+          <li>Routine website checks</li>
+          <li>Up to 2 small content changes per month</li>
+          <li>Basic link and form checks</li>
+          <li>Technical support</li>
+          <li>Major changes and new features quoted separately</li>
+        </ul>
+        <button class="btn btn-secondary" type="button" onclick="openRequestForm('Business Website')">
+          Ask About Website Care
+        </button>
+      </div>
+
+      <div class="cost-card featured">
+        <div class="eyebrow">Most Popular</div>
+        <h3>Managed Hosting + Care</h3>
+        <div class="cost-price">
+          From $35/month
+          <small>Lrim-Tech manages the technical hosting setup and website care.</small>
+        </div>
+        <ul>
+          <li>Hosting and deployment management</li>
+          <li>SSL/HTTPS configuration</li>
+          <li>Routine website checks</li>
+          <li>Up to 2 small content changes per month</li>
+          <li>Basic technical support</li>
+          <li>Domain renewal remains a separate client cost</li>
+        </ul>
+        <button class="btn" type="button" onclick="openRequestForm('Business Website')">
+          Choose Managed Hosting + Care
+        </button>
+      </div>
+
+      <div class="cost-card">
+        <div class="eyebrow">Priority Support</div>
+        <h3>Business Care</h3>
+        <div class="cost-price">
+          From $60/month
+          <small>For businesses that need more frequent support and oversight.</small>
+        </div>
+        <ul>
+          <li>Managed hosting and deployment</li>
+          <li>More frequent content updates</li>
+          <li>Priority technical support</li>
+          <li>Performance checks</li>
+          <li>Basic analytics and SEO checks</li>
+          <li>Major development work quoted separately</li>
+        </ul>
+        <button class="btn btn-secondary" type="button" onclick="openRequestForm('Business Website')">
+          Ask About Business Care
+        </button>
+      </div>
+    </div>
+
+    <div class="extra-costs">
+      <h3>Other Costs You May Need</h3>
+      <div class="extra-cost-grid">
+        <div class="extra-cost-item">
+          <strong>Domain Renewal</strong>
+          <span>Usually paid annually. The amount depends on the domain extension and registrar you choose.</span>
+        </div>
+        <div class="extra-cost-item">
+          <strong>Business Email</strong>
+          <span>May be free or paid depending on the email provider and features required.</span>
+        </div>
+        <div class="extra-cost-item">
+          <strong>Online Payments</strong>
+          <span>Payment gateways and transaction providers may charge their own setup, monthly or transaction fees.</span>
+        </div>
+        <div class="extra-cost-item">
+          <strong>Database / Backend Services</strong>
+          <span>Advanced websites and apps may need paid database, storage or server services as usage grows.</span>
+        </div>
+        <div class="extra-cost-item">
+          <strong>Third-Party Services & APIs</strong>
+          <span>Some integrations, messaging services, booking systems or external tools may have their own charges.</span>
+        </div>
+        <div class="extra-cost-item">
+          <strong>Major Changes & New Features</strong>
+          <span>New pages, redesigns, integrations and substantial functionality are quoted separately.</span>
+        </div>
+      </div>
+
+      <div class="no-surprise">
+        <strong>No surprise upgrades.</strong>
+        If your website grows to the point where a free service is no longer sufficient,
+        Lrim-Tech will explain the available options and costs before any paid upgrade is made.
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:28px;">
+      <button class="btn" type="button" onclick="openRequestForm()">Start My Website</button>
+      <button class="btn btn-secondary" type="button" style="margin-left:8px;" onclick="openRequestForm()">
+        Ask About Hosting & Maintenance
+      </button>
+    </div>
+  </div>
+</section>
 
 <!-- =========================
      PORTFOLIO / LIVE DEMOS
@@ -2152,6 +2300,25 @@ footer{
           </div>
 
 
+
+          <div class="form-group full">
+            <label for="aftercare">After-Launch Preference</label>
+            <select id="aftercare" name="after_launch_preference">
+              <option value="">Select an option</option>
+              <option value="Client-owned accounts + Website Care from $25/month">
+                I will own the accounts — Website Care from $25/month
+              </option>
+              <option value="Managed Hosting + Care from $35/month">
+                Lrim-Tech Managed Hosting + Care — from $35/month
+              </option>
+              <option value="Business Care from $60/month">
+                Lrim-Tech Business Care — from $60/month
+              </option>
+              <option value="No ongoing plan">No ongoing plan — handover only</option>
+              <option value="Not sure — advise me">I'm not sure — please advise me</option>
+            </select>
+          </div>
+
           <div class="form-group">
 
             <label for="budget">
@@ -2286,6 +2453,10 @@ footer{
 
         <a href="#websites-apps">
           Websites & Apps
+        </a>
+
+        <a href="#website-costs">
+          Costs & Care
         </a>
 
         <a href="#portfolio">
