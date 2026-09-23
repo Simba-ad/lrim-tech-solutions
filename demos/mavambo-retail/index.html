@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Mavambo Superstore demo — groceries, home & retail, and hardware in one convenient store.">
+<title>Mavambo Superstore | Retail Demo</title>
+<style>
+:root{--ink:#17211b;--muted:#657168;--green:#176b3a;--green2:#0f522c;--soft:#eef7f1;--line:#dfe7e1;--card:#fff;--bg:#f7f9f7;--gold:#f0b429;--red:#b42318}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+button,input,select{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}.wrap{max-width:1160px;margin:auto;padding:0 20px}
+.demo-bar{background:#101828;color:#fff;text-align:center;padding:9px 15px;font-size:12px}.demo-bar strong{color:#b7d9c3}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-weight:900;font-size:21px;color:var(--green)}.brand span{color:var(--ink)}nav{display:flex;gap:18px;align-items:center;font-size:14px;font-weight:700;color:#475467}
+.cart-btn,.btn{border:0;border-radius:10px;padding:13px 18px;font-weight:800;background:var(--green);color:#fff}.btn:hover,.cart-btn:hover{background:var(--green2)}
+.cart-btn span{background:#fff;color:var(--green);border-radius:999px;padding:2px 7px;margin-left:5px}
+.hero{
+background:
+linear-gradient(90deg,rgba(13,63,34,.68) 0%,rgba(13,63,34,.40) 42%,rgba(13,63,34,.12) 72%,rgba(13,63,34,.05) 100%),
+url('https://www.companysetup.ae/wp-content/uploads/2023/11/Start-a-Building-Materials-Trading-Company-in-Dubai.jpg') center/cover no-repeat;
+padding:70px 0;
+position:relative;
+}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:45px;align-items:center}
+.eyebrow{text-transform:uppercase;letter-spacing:.1em;font-size:12px;font-weight:900;color:var(--green)}h1{font-size:clamp(40px,6vw,65px);line-height:1.02;margin:12px 0 18px}.lead{font-size:18px;color:#f0f7f2;max-width:650px}.hero-grid>div:first-child{padding:22px 24px 22px 0;color:#fff}.hero-grid>div:first-child .eyebrow{color:#d5f0de}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.btn.secondary{background:#fff;color:var(--green);border:1px solid #a8cfb5}
+.hero-card{background:#173923;color:#fff;padding:28px;border-radius:22px;box-shadow:0 20px 50px #17211b25}.hero-card h2{margin:4px 0 8px}.hero-card p{color:#d8e8dd}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.stat{background:#234d31;border-radius:12px;padding:14px}.stat strong{display:block;font-size:18px}.stat span{font-size:12px;color:#d8e8dd}
+section{padding:62px 0}.title{text-align:center;font-size:33px;margin:0 0 8px}.subtitle{text-align:center;color:var(--muted);max-width:720px;margin:0 auto 32px}
+.departments{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.dept{border:1px solid var(--line);background:#fff;border-radius:18px;padding:25px;transition:.2s}.dept:hover{transform:translateY(-3px);box-shadow:0 12px 30px #17211b12}.dept-photo{width:100%;height:185px;object-fit:cover;border-radius:13px;margin-bottom:16px;display:block}.dept .icon{font-size:38px}.dept h3{font-size:22px;margin:10px 0 5px}.dept p{color:var(--muted)}
+.shop{background:#fff}.toolbar{display:grid;grid-template-columns:1fr 220px;gap:12px;margin-bottom:24px}.toolbar input,.toolbar select,.admin-form input,.admin-form select{width:100%;border:1px solid #cfd8d1;border-radius:10px;padding:12px;background:#fff}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.product{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column}.product-img{height:145px;display:flex;align-items:center;justify-content:center;font-size:55px;background:var(--soft)}
+.product-body{padding:17px;display:flex;flex-direction:column;flex:1}.tag{font-size:11px;text-transform:uppercase;font-weight:900;color:var(--green);letter-spacing:.06em}.product h3{font-size:17px;margin:7px 0}.price{font-size:21px;font-weight:900;margin:5px 0}.stock{font-size:12px;color:var(--green);margin-bottom:12px}.stock.low{color:#b54708}.product .btn{margin-top:auto;width:100%;padding:11px}
+.pos-note{margin-top:28px;background:#f7faf8;border:1px solid #cfe2d5;border-radius:16px;padding:22px;display:flex;gap:15px;align-items:flex-start}.pos-note strong{display:block;margin-bottom:4px}.pos-note p{margin:0;color:var(--muted)}
+.admin{background:#eef3ef}.admin-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px}.admin-head{display:flex;justify-content:space-between;gap:20px;align-items:center}.admin-head p{color:var(--muted);margin:4px 0 0}.admin-form{display:none;margin-top:22px;border-top:1px solid var(--line);padding-top:22px}.admin-form.open{display:block}.admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.admin-form .btn{margin-top:14px}
+footer{background:#14251a;color:#fff;padding:35px 0}.footer-flex{display:flex;justify-content:space-between;gap:30px}.footer-flex p{color:#cbd8cf;max-width:650px}
+.overlay{position:fixed;inset:0;background:#101828aa;display:none;align-items:center;justify-content:center;padding:18px;z-index:80}.overlay.open{display:flex}.drawer{background:#fff;width:100%;max-width:570px;max-height:90vh;overflow:auto;border-radius:18px;padding:25px}
+.drawer-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#eef1ef;border-radius:50%;width:36px;height:36px;font-size:20px}.cart-item{display:flex;justify-content:space-between;gap:15px;padding:14px 0;border-bottom:1px solid var(--line)}.qty button{border:1px solid var(--line);background:#fff;border-radius:6px;width:28px;height:28px}.cart-total{font-size:22px;font-weight:900;text-align:right;margin:20px 0}.whatsapp{background:#167c3d;width:100%;border:0;color:#fff;padding:14px;border-radius:10px;font-weight:900}.empty{text-align:center;color:var(--muted);padding:25px}
+.notice{display:none;margin-top:15px;background:#ecfdf3;color:#067647;padding:12px;border-radius:9px;font-size:14px}
+@media(max-width:900px){.products{grid-template-columns:repeat(2,1fr)}.hero-grid{grid-template-columns:1fr}.admin-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){nav a{display:none}.departments,.products{grid-template-columns:1fr}.toolbar,.admin-grid{grid-template-columns:1fr}.hero{padding:50px 0}.hero-actions .btn{width:100%;text-align:center}.stats{grid-template-columns:1fr}.admin-head,.footer-flex{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="demo-bar"><strong>Lrim-Tech Solutions Demo</strong> — Fictional business created for demonstration purposes.</div>
+<header><div class="wrap nav"><a class="brand" href="#">Mavambo <span>Superstore</span></a><nav><a href="#departments">Departments</a><a href="#shop">Shop</a><a href="#staff">Staff Demo</a><button class="cart-btn" onclick="openCart()">Basket <span id="cartCount">0</span></button></nav></div></header>
+
+<main>
+<section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">Everything you need • One store</div><h1>Three departments.<br>One convenient shop.</h1><p class="lead">Shop everyday groceries, practical home essentials and reliable hardware from one trusted local superstore.</p><div class="hero-actions"><a class="btn" href="#shop">Browse Products</a><a class="btn secondary" href="#departments">Explore Departments</a></div></div>
+<div class="hero-card"><div class="eyebrow" style="color:#a9ddb9">Mavambo Superstore</div><h2>Built around everyday needs.</h2><p>A modern customer-facing catalogue designed to work alongside the store's existing point-of-sale operations.</p><div class="stats"><div class="stat"><strong>3</strong><span>Departments</span></div><div class="stat"><strong>1</strong><span>Online Storefront</span></div><div class="stat"><strong>Easy</strong><span>WhatsApp Ordering</span></div></div></div></div></section>
+
+<section id="departments"><div class="wrap"><h2 class="title">Shop by Department</h2><p class="subtitle">Move easily between the three sections of Mavambo Superstore.</p><div class="departments">
+<div class="dept" onclick="filterDept('Groceries')" style="cursor:pointer"><img class="dept-photo" src="https://www.foodmanufacture.co.uk/resizer/v2/N6WM7HIYQ5EYVCGJBYE2UY6NTI.jpg?auth=4a348c2e1a5da6075b4600f441dd2fe455f832e6430dd57f2e80d53d3dd406a0" alt="Well-stocked grocery supermarket aisle"><div class="icon">🛒</div><h3>Groceries</h3><p>Food, drinks, household basics and everyday essentials.</p><strong style="color:var(--green)">Browse Groceries →</strong></div>
+<div class="dept" onclick="filterDept('Home & Retail')" style="cursor:pointer"><img class="dept-photo" src="https://www.motusbulut.com/uploads/blog/zuccaciye-ve-tahtakale-avmler-icin-barkod-sistemi-on-binlerce-urunu-kolayca-takip-edin.jpg" alt="Kitchenware and homeware retail store"><div class="icon">🏠</div><h3>Home & Retail</h3><p>Kitchenware, homeware, plasticware and useful household products.</p><strong style="color:var(--green)">Browse Home & Retail →</strong></div>
+<div class="dept" onclick="filterDept('Hardware')" style="cursor:pointer"><img class="dept-photo" src="https://cdn.thumbor.leadformance.com/960x/media/clients/58cbaafd8fb16710001f28b1/7bb8eadd-3756-4b5f-88df-f638bd1075a9-s1789-mrbricolage-figeac-rayons-bd-003-0.JPG" alt="Hardware store tool aisle"><div class="icon">🔨</div><h3>Hardware</h3><p>Tools, building supplies, electrical items and maintenance essentials.</p><strong style="color:var(--green)">Browse Hardware →</strong></div>
+</div></div></section>
+
+<section id="shop" class="shop"><div class="wrap"><h2 class="title">Browse Products</h2><p class="subtitle">Search the catalogue or choose a department. Prices and stock shown here are fictional demo information.</p>
+<div class="toolbar"><input id="search" placeholder="Search products..." oninput="renderProducts()"><select id="departmentFilter" onchange="renderProducts()"><option value="All">All Departments</option><option>Groceries</option><option>Home & Retail</option><option>Hardware</option></select></div>
+<div class="products" id="products"></div>
+<div class="pos-note"><div style="font-size:30px">🧾</div><div><strong>Designed to complement existing POS operations</strong><p>This demo represents the customer-facing online storefront. Product, price and stock synchronization with an existing POS system would depend on the POS software and available integration options.</p></div></div>
+</div></section>
+
+<section id="staff" class="admin"><div class="wrap"><h2 class="title">Staff Management Demo</h2><p class="subtitle">A simple example of how authorised staff could manage the online catalogue.</p><div class="admin-box"><div class="admin-head"><div><strong style="font-size:21px">Catalogue Management</strong><p>Add a product to this demonstration catalogue. Changes exist only in this browser session.</p></div><button class="btn" onclick="toggleAdmin()">+ Add Product</button></div>
+<div class="admin-form" id="adminForm"><div class="admin-grid"><input id="newName" placeholder="Product name"><select id="newDept"><option>Groceries</option><option>Home & Retail</option><option>Hardware</option></select><input id="newPrice" type="number" min="0" step=".01" placeholder="Price (USD)"><select id="newStock"><option>In Stock</option><option>Low Stock</option></select></div><button class="btn" onclick="addProduct()">Add to Catalogue</button><div class="notice" id="notice">Product added to the demo catalogue.</div></div></div></div></section>
+</main>
+
+<footer><div class="wrap footer-flex"><div><strong style="font-size:20px">Mavambo Superstore</strong><p>Groceries • Home & Retail • Hardware<br>This is a fictional demonstration website created by Lrim-Tech Solutions.</p></div><div><strong>Demo by Lrim-Tech Solutions</strong><p>Professional websites and business applications.</p></div></div></footer>
+
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><div class="drawer"><div class="drawer-head"><h2>Your Basket</h2><button class="close" onclick="closeCart()">×</button></div><div id="cartItems"></div><div class="cart-total" id="cartTotal"></div><button class="whatsapp" onclick="sendWhatsApp()">Send Order / Enquiry via WhatsApp</button><p style="font-size:12px;color:var(--muted);text-align:center">Demo only — no message will be sent to a real business number.</p></div></div>
+
+<script>
+let products=[
+{id:1,name:"Roller Meal 10kg",dept:"Groceries",price:9.50,stock:"In Stock",icon:"🌽"},
+{id:2,name:"Cooking Oil 2L",dept:"Groceries",price:4.80,stock:"In Stock",icon:"🫗"},
+{id:3,name:"Long Grain Rice 2kg",dept:"Groceries",price:3.90,stock:"Low Stock",icon:"🍚"},
+{id:4,name:"Laundry Powder 2kg",dept:"Groceries",price:5.20,stock:"In Stock",icon:"🧺"},
+{id:5,name:"Stainless Steel Pot Set",dept:"Home & Retail",price:28.00,stock:"In Stock",icon:"🍲"},
+{id:6,name:"Plastic Storage Set",dept:"Home & Retail",price:8.50,stock:"In Stock",icon:"📦"},
+{id:7,name:"Electric Kettle",dept:"Home & Retail",price:18.00,stock:"Low Stock",icon:"☕"},
+{id:8,name:"Dinner Plate Set",dept:"Home & Retail",price:14.00,stock:"In Stock",icon:"🍽️"},
+{id:9,name:"Claw Hammer",dept:"Hardware",price:7.50,stock:"In Stock",icon:"🔨"},
+{id:10,name:"LED Bulb 12W",dept:"Hardware",price:2.00,stock:"In Stock",icon:"💡"},
+{id:11,name:"Paint Roller Kit",dept:"Hardware",price:6.50,stock:"Low Stock",icon:"🖌️"},
+{id:12,name:"Extension Cable 5m",dept:"Hardware",price:12.00,stock:"In Stock",icon:"🔌"}
+];
+let cart={};
+
+function renderProducts(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const dept=document.getElementById("departmentFilter").value;
+ const shown=products.filter(p=>(dept==="All"||p.dept===dept)&&p.name.toLowerCase().includes(q));
+ document.getElementById("products").innerHTML=shown.length?shown.map(p=>`
+ <div class="product"><div class="product-img">${p.icon}</div><div class="product-body">
+ <span class="tag">${p.dept}</span><h3>${p.name}</h3><div class="price">$${p.price.toFixed(2)}</div>
+ <div class="stock ${p.stock==="Low Stock"?"low":""}">● ${p.stock}</div>
+ <button class="btn" onclick="addToCart(${p.id})">Add to Basket</button></div></div>`).join(""):'<p>No products found.</p>';
+}
+function filterDept(dept){document.getElementById("departmentFilter").value=dept;document.getElementById("search").value="";renderProducts();document.getElementById("shop").scrollIntoView();}
+function addToCart(id){cart[id]=(cart[id]||0)+1;updateCount();}
+function updateCount(){document.getElementById("cartCount").textContent=Object.values(cart).reduce((a,b)=>a+b,0);}
+function openCart(){renderCart();document.getElementById("cartOverlay").classList.add("open");}
+function closeCart(){document.getElementById("cartOverlay").classList.remove("open");}
+function changeQty(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];updateCount();renderCart();}
+function renderCart(){
+ const ids=Object.keys(cart);
+ const el=document.getElementById("cartItems");
+ if(!ids.length){el.innerHTML='<div class="empty">Your basket is empty.</div>';document.getElementById("cartTotal").textContent="";return;}
+ let total=0;
+ el.innerHTML=ids.map(id=>{const p=products.find(x=>x.id==id);if(!p)return "";const qty=cart[id];total+=p.price*qty;return `<div class="cart-item"><div><strong>${p.name}</strong><br><small>$${p.price.toFixed(2)} each</small></div><div class="qty"><button onclick="changeQty(${id},-1)">−</button> <strong>${qty}</strong> <button onclick="changeQty(${id},1)">+</button></div></div>`}).join("");
+ document.getElementById("cartTotal").textContent="Estimated total: $"+total.toFixed(2);
+}
+function sendWhatsApp(){
+ const ids=Object.keys(cart); if(!ids.length){alert("Add at least one product to the basket first.");return;}
+ let msg="Hello Mavambo Superstore, I would like to enquire about:%0A%0A";
+ ids.forEach(id=>{const p=products.find(x=>x.id==id);msg+=encodeURIComponent(cart[id]+" × "+p.name+" — $"+(p.price*cart[id]).toFixed(2))+"%0A";});
+ msg+="%0A"+encodeURIComponent("Please confirm availability and the final order total. [DEMO MESSAGE]");
+ alert("Demo complete. In a client website, this button would open WhatsApp with the customer's structured order ready to send.");
+}
+function toggleAdmin(){document.getElementById("adminForm").classList.toggle("open");}
+function addProduct(){
+ const name=document.getElementById("newName").value.trim(),price=parseFloat(document.getElementById("newPrice").value);
+ if(!name||isNaN(price)){alert("Enter a product name and price.");return;}
+ const dept=document.getElementById("newDept").value;
+ products.push({id:Date.now(),name,dept,price,stock:document.getElementById("newStock").value,icon:dept==="Groceries"?"🛒":dept==="Hardware"?"🔧":"🏠"});
+ document.getElementById("newName").value="";document.getElementById("newPrice").value="";
+ document.getElementById("departmentFilter").value="All";renderProducts();
+ const n=document.getElementById("notice");n.style.display="block";setTimeout(()=>n.style.display="none",2500);
+}
+renderProducts();
+</script>
+</body>
+</html>
