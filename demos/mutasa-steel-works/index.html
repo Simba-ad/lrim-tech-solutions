@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mutasa Steel Works | Welding & Steel Fabrication</title>
+<meta name="description" content="Modern website concept for Mutasa Steel Works in Chivhu — steel windows, doors, screen gates and custom fabrication enquiries.">
+<style>
+:root{--ink:#17201d;--muted:#68736f;--steel:#26332f;--accent:#d97706;--bg:#f5f6f4;--card:#fff;--line:#dde2df}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}a{text-decoration:none;color:inherit}
+.wrap{max-width:1120px;margin:auto;padding:0 22px}
+header{background:#111916;color:#fff;position:sticky;top:0;z-index:20}.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:900;font-size:20px}.brand span{color:#f59e0b}.links{display:flex;align-items:center;gap:20px;font-size:14px}.btn{display:inline-block;border:0;border-radius:9px;padding:12px 18px;background:var(--accent);color:#fff;font-weight:800;cursor:pointer}.btn.alt{background:#fff;color:var(--steel)}
+.hero{color:#fff;background:linear-gradient(100deg,rgba(10,16,14,.94),rgba(10,16,14,.67)),url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=85') center/cover;min-height:570px;display:flex;align-items:center}
+.hero-inner{max-width:760px;padding:75px 22px}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:900;color:#f59e0b}.hero h1{font-size:clamp(40px,7vw,72px);line-height:1.02;margin:12px 0 18px}.hero p{font-size:19px;color:#e4e8e6;max-width:650px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+section{padding:75px 0}.section-head{max-width:720px;margin-bottom:30px}.section-head h2{font-size:34px;margin:7px 0}.section-head p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}.card img{width:100%;height:210px;object-fit:cover}.card-body{padding:20px}.card h3{margin:0 0 8px}.card p{color:var(--muted);font-size:14px}
+.dark{background:#17201d;color:#fff}.dark .section-head p{color:#b9c2be}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{padding:22px;border:1px solid #39433f;border-radius:12px}.num{font-size:28px;font-weight:900;color:#f59e0b}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}.gallery img{width:100%;height:290px;object-fit:cover;border-radius:12px}
+.quote{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px}.quote-info{background:var(--steel);color:#fff;border-radius:16px;padding:28px}.quote-info p{color:#d8dfdc}.form{background:#fff;border:1px solid var(--line);border-radius:16px;padding:25px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}label{font-size:12px;font-weight:800}input,select,textarea{width:100%;border:1px solid #cfd6d2;border-radius:8px;padding:12px;font:inherit}textarea{min-height:100px;resize:vertical}.note{font-size:12px;color:var(--muted);margin-top:12px}
+.contact-strip{background:#e8ece9;padding:28px 0}.contact-row{display:flex;justify-content:space-between;align-items:center;gap:20px}
+footer{background:#0e1512;color:#aeb8b3;padding:35px 0;font-size:13px}.footer-row{display:flex;justify-content:space-between;gap:20px}.demo{border-top:1px solid #29332f;margin-top:22px;padding-top:18px;font-size:11px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:50;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{background:#fff;max-width:480px;width:100%;border-radius:15px;padding:25px}.close{float:right;border:0;background:#eee;border-radius:50%;width:34px;height:34px;font-size:20px;cursor:pointer}
+
+.menu-btn{display:none;border:1px solid #3d4844;background:#1d2824;color:#fff;border-radius:8px;padding:8px 11px;font-size:22px;cursor:pointer}
+.catalogue-hint{font-size:12px;color:var(--accent);font-weight:800;margin-top:12px}
+.product-modal{background:#fff;max-width:850px;width:100%;max-height:90vh;overflow:auto;border-radius:16px;padding:25px}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:20px}.product-item{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}.product-item img{width:100%;height:150px;object-fit:cover}.product-item div{padding:13px}.product-item h4{margin:0 0 5px}.product-item p{font-size:12px;color:var(--muted);margin:0}
+.mobile-quick{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:30;grid-template-columns:1fr 1fr;gap:8px}.mobile-quick a{padding:12px 8px;border-radius:9px;text-align:center;font-weight:800;color:#fff;background:#1d6b43;box-shadow:0 3px 12px rgba(0,0,0,.2)}.mobile-quick a:first-child{background:var(--accent)}
+
+@media(max-width:800px){.menu-btn{display:block}.links{display:none;position:absolute;top:70px;left:0;right:0;background:#111916;padding:18px 22px;flex-direction:column;align-items:stretch;border-top:1px solid #34403b}.links.open{display:flex}.links a{display:block!important;padding:10px 4px}.links .btn{text-align:center}.mobile-quick{display:grid}body{padding-bottom:70px}.grid,.steps{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}.gallery img:first-child{grid-column:1/-1}.quote{grid-template-columns:1fr}.contact-row,.footer-row{align-items:flex-start;flex-direction:column}}
+@media(max-width:560px){.grid,.steps,.fields,.product-grid{grid-template-columns:1fr}.hero{min-height:520px}.hero-inner{padding-top:55px}.gallery{grid-template-columns:1fr}.gallery img:first-child{grid-column:auto}.gallery img{height:240px}}
+</style></head>
+<body>
+<header><div class="wrap nav"><div class="brand">MUTASA <span>STEEL WORKS</span></div><button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button><nav class="links" id="mobileNav"><a href="#services" onclick="closeMenu()">Catalogue</a><a href="#work" onclick="closeMenu()">Our Work</a><a href="#process" onclick="closeMenu()">How It Works</a><a href="#quote" class="btn" onclick="closeMenu()">Request a Quote</a></nav></div></header>
+
+<section class="hero"><div class="wrap" style="width:100%"><div class="hero-inner"><div class="eyebrow">Welding • Fabrication • Chivhu</div><h1>Built strong.<br>Made for your space.</h1><p>A modern online presence for Mutasa Steel Works — helping customers discover your steelwork, view examples and request quotations without lengthy back-and-forth.</p><div class="actions"><a href="#quote" class="btn">Get a Free Quote</a><a href="https://wa.me/263789413637" class="btn alt">WhatsApp Us</a></div></div></div></section>
+
+<section id="services"><div class="wrap"><div class="section-head"><div class="eyebrow">What we make</div><h2>Steelwork for homes and businesses</h2><p>Based on the services requested by Mutasa Steel Works. Additional fabrication services can be added after confirmation.</p></div>
+<div class="grid">
+<div class="card" onclick="openCatalogue('windows')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"><div class="card-body"><h3>Steel Windows</h3><p>Custom-made steel window solutions designed around the customer's measurements and requirements.</p><div class="catalogue-hint">View sample catalogue →</div></div></div>
+<div class="card" onclick="openCatalogue('doors')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80"><div class="card-body"><h3>Steel Doors</h3><p>Strong steel door fabrication for residential and commercial requirements.</p><div class="catalogue-hint">View sample catalogue →</div></div></div>
+<div class="card" onclick="openCatalogue('gates')" style="cursor:pointer"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80"><div class="card-body"><h3>Screen & Security Gates</h3><p>Made-to-measure screen and steel gate enquiries, with designs discussed before fabrication.</p><div class="catalogue-hint">View sample catalogue →</div></div></div>
+</div></div></section>
+
+<section class="dark" id="process"><div class="wrap"><div class="section-head"><div class="eyebrow">Simple quotation process</div><h2>From idea to finished steelwork</h2><p>The website can turn informal enquiries into organised job requests.</p></div>
+<div class="steps"><div class="step"><div class="num">01</div><h3>Tell us what you need</h3><p>Choose the type of steelwork and describe the project.</p></div><div class="step"><div class="num">02</div><h3>Share measurements</h3><p>Provide approximate dimensions and location for an initial assessment.</p></div><div class="step"><div class="num">03</div><h3>Receive a quote</h3><p>Mutasa Steel Works reviews the request and confirms requirements and pricing.</p></div><div class="step"><div class="num">04</div><h3>Fabrication</h3><p>Once agreed, the job can move into fabrication and completion.</p></div></div></div></section>
+
+<section id="work"><div class="wrap"><div class="section-head"><div class="eyebrow">Project showcase</div><h2>Let the workmanship sell the business</h2><p>These are demonstration images. In the real website they would be replaced with photographs of Mutasa Steel Works' completed projects.</p></div>
+<div class="gallery"><img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=1100&q=80"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=700&q=80"></div></div></section>
+
+<section id="quote"><div class="wrap quote"><div class="quote-info"><div class="eyebrow">Request a quote</div><h2>Have a steelwork project in mind?</h2><p>Send the basic details here. This demonstration shows how customers could give Mutasa Steel Works the information needed before a follow-up call or site assessment.</p><p><strong>Location</strong><br>Chivhu, Zimbabwe</p><p><strong>Phone / WhatsApp</strong><br>0789 413 637</p><a href="https://wa.me/263789413637" class="btn">Chat on WhatsApp</a></div>
+<form class="form" onsubmit="submitQuote(event)"><h2 style="margin-top:0">Tell us about your project</h2><div class="fields">
+<div class="field"><label>Your name</label><input required placeholder="Full name"></div><div class="field"><label>Phone number</label><input required placeholder="e.g. 07..."></div>
+<div class="field"><label>Type of work</label><select required><option value="">Select...</option><option>Steel Windows</option><option>Steel Doors</option><option>Screen / Security Gate</option><option>Other Custom Steelwork</option></select></div>
+<div class="field"><label>Project location</label><input placeholder="Town / area"></div>
+<div class="field full"><label>Approximate dimensions</label><input placeholder="Example: 2m wide × 2.1m high"></div>
+<div class="field full"><label>Describe what you need</label><textarea required placeholder="Tell us about the design, quantity, size or other requirements..."></textarea></div>
+<div class="field full"><label>Reference photo / sketch (demo)</label><input type="file" accept="image/*"></div></div>
+<button class="btn" style="width:100%;margin-top:16px">Send Quote Request</button><div class="note">Demo form only — no information is transmitted. The live client website would connect this to the agreed enquiry system.</div></form></div></section>
+
+<div class="contact-strip"><div class="wrap contact-row"><div><strong style="font-size:22px">Need windows, doors or a screen gate?</strong><br><span style="color:var(--muted)">Start with a quotation request.</span></div><div class="actions" style="margin:0"><a href="tel:+263789413637" class="btn">Call 0789 413 637</a><a href="https://wa.me/263789413637" class="btn" style="background:#1d6b43">WhatsApp</a></div></div></div>
+
+<footer><div class="wrap"><div class="footer-row"><div><strong style="color:#fff">Mutasa Steel Works</strong><br>Welding & steel fabrication concept • Chivhu</div><div>Website concept prepared by <strong style="color:#fff">Lrim-Tech Solutions</strong></div></div><div class="demo">Interactive demonstration prepared from the client's website request. Sample project imagery and some descriptive wording are for presentation purposes and should be replaced/confirmed before production launch.</div></div></footer>
+
+
+<div class="modal" id="catalogueModal" onclick="if(event.target===this)closeCatalogue()"><div class="product-modal"><button class="close" onclick="closeCatalogue()">×</button><div class="eyebrow">Product Catalogue</div><h2 id="catalogueTitle">Steel Doors</h2><p style="color:var(--muted)">Example catalogue layout. On the final website these sample images can be replaced with Mutasa Steel Works' own completed products and designs.</p><div class="product-grid" id="productGrid"></div><div style="margin-top:20px"><a href="#quote" class="btn" onclick="closeCatalogue()">Request a Quote for This Type of Work</a></div></div></div>
+<div class="mobile-quick"><a href="#quote">Request Quote</a><a href="https://wa.me/263789413637">WhatsApp</a></div>
+
+<div class="modal" id="success"><div class="modal-box"><button class="close" onclick="closeSuccess()">×</button><div class="eyebrow">Request received</div><h2>Thank you.</h2><p>This demonstrates the professional confirmation a customer could receive after requesting a quotation.</p><button class="btn" onclick="closeSuccess()">Done</button></div></div>
+<script>
+
+const catalogue={
+ windows:{title:"Steel Windows",items:["Window Design 01","Window Design 02","Window Design 03"],img:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80"},
+ doors:{title:"Steel Doors",items:["Door Design 01","Door Design 02","Door Design 03"],img:"https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=700&q=80"},
+ gates:{title:"Screen & Security Gates",items:["Gate Design 01","Gate Design 02","Gate Design 03"],img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80"}
+};
+function openCatalogue(type){
+ const c=catalogue[type]; document.getElementById("catalogueTitle").textContent=c.title;
+ document.getElementById("productGrid").innerHTML=c.items.map((x,i)=>`<div class="product-item"><img src="${c.img}" alt="${x}"><div><h4>${x}</h4><p>Sample position for a real Mutasa Steel Works product photo, description and specifications.</p></div></div>`).join("");
+ document.getElementById("catalogueModal").classList.add("open");
+}
+function closeCatalogue(){document.getElementById("catalogueModal").classList.remove("open");}
+function toggleMenu(){document.getElementById("mobileNav").classList.toggle("open");}
+function closeMenu(){document.getElementById("mobileNav").classList.remove("open");}
+
+function submitQuote(e){e.preventDefault();document.getElementById('success').classList.add('open');}
+function closeSuccess(){document.getElementById('success').classList.remove('open');}
+</script></body></html>
