@@ -47,13 +47,25 @@ footer{background:#14251a;color:#fff;padding:35px 0}.footer-flex{display:flex;ju
 .overlay{position:fixed;inset:0;background:#101828aa;display:none;align-items:center;justify-content:center;padding:18px;z-index:80}.overlay.open{display:flex}.drawer{background:#fff;width:100%;max-width:570px;max-height:90vh;overflow:auto;border-radius:18px;padding:25px}
 .drawer-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#eef1ef;border-radius:50%;width:36px;height:36px;font-size:20px}.cart-item{display:flex;justify-content:space-between;gap:15px;padding:14px 0;border-bottom:1px solid var(--line)}.qty button{border:1px solid var(--line);background:#fff;border-radius:6px;width:28px;height:28px}.cart-total{font-size:22px;font-weight:900;text-align:right;margin:20px 0}.whatsapp{background:#167c3d;width:100%;border:0;color:#fff;padding:14px;border-radius:10px;font-weight:900}.empty{text-align:center;color:var(--muted);padding:25px}
 .notice{display:none;margin-top:15px;background:#ecfdf3;color:#067647;padding:12px;border-radius:9px;font-size:14px}
+
+.login-btn{border:1px solid #b7c8bc;background:#fff;color:var(--green);border-radius:9px;padding:9px 12px;font-weight:800;font-size:13px;cursor:pointer}
+.staff-login{background:#173923;color:#fff;border-color:#173923}
+.login-panel,.portal{background:#fff;width:100%;max-width:500px;max-height:90vh;overflow:auto;border-radius:18px;padding:26px}
+.portal{max-width:850px}.login-fields{display:grid;gap:11px;margin:18px 0}.login-fields input{border:1px solid #cfd8d1;border-radius:10px;padding:12px}
+.demo-creds{background:var(--soft);border:1px solid #cfe2d5;border-radius:10px;padding:12px;font-size:13px;margin:14px 0}
+.portal-top{display:flex;justify-content:space-between;gap:15px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:15px}
+.portal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.portal-card,.action-card{border:1px solid var(--line);border-radius:13px;padding:17px;background:#f7faf8}.portal-card strong{display:block;font-size:21px;color:var(--green)}.portal-card span{font-size:12px;color:var(--muted)}
+.order-box{border:1px solid var(--line);border-radius:13px;padding:17px}.progress{display:flex;gap:5px;margin:12px 0}.progress span{height:7px;flex:1;background:#dce5de;border-radius:10px}.progress .done{background:var(--green)}
+.staff-actions{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.action-card p{color:var(--muted);font-size:13px}.small-btn{border:0;background:var(--green);color:#fff;border-radius:8px;padding:9px 12px;font-weight:800}
+@media(max-width:680px){.login-btn{display:none}.portal-grid,.staff-actions{grid-template-columns:1fr}}
+
 @media(max-width:900px){.products{grid-template-columns:repeat(2,1fr)}.hero-grid{grid-template-columns:1fr}.admin-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:680px){nav a{display:none}.departments,.products{grid-template-columns:1fr}.toolbar,.admin-grid{grid-template-columns:1fr}.hero{padding:50px 0}.hero-actions .btn{width:100%;text-align:center}.stats{grid-template-columns:1fr}.admin-head,.footer-flex{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
 <div class="demo-bar"><strong>Lrim-Tech Solutions Demo</strong> — Fictional business created for demonstration purposes.</div>
-<header><div class="wrap nav"><a class="brand" href="#">Mavambo <span>Superstore</span></a><nav><a href="#departments">Departments</a><a href="#shop">Shop</a><a href="#staff">Staff Demo</a><button class="cart-btn" onclick="openCart()">Basket <span id="cartCount">0</span></button></nav></div></header>
+<header><div class="wrap nav"><a class="brand" href="#">Mavambo <span>Superstore</span></a><nav><a href="#departments">Departments</a><a href="#shop">Shop</a><a href="#staff">Staff Demo</a><button class="login-btn" onclick="openLogin('customer')">Customer Login</button><button class="login-btn staff-login" onclick="openLogin('staff')">Staff Login</button><button class="cart-btn" onclick="openCart()">Basket <span id="cartCount">0</span></button></nav></div></header>
 
 <main>
 <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">Everything you need • One store</div><h1>Three departments.<br>One convenient shop.</h1><p class="lead">Shop everyday groceries, practical home essentials and reliable hardware from one trusted local superstore.</p><div class="hero-actions"><a class="btn" href="#shop">Browse Products</a><a class="btn secondary" href="#departments">Explore Departments</a></div></div>
@@ -78,6 +90,31 @@ footer{background:#14251a;color:#fff;padding:35px 0}.footer-flex{display:flex;ju
 <footer><div class="wrap footer-flex"><div><strong style="font-size:20px">Mavambo Superstore</strong><p>Groceries • Home & Retail • Hardware<br>This is a fictional demonstration website created by Lrim-Tech Solutions.</p></div><div><strong>Demo by Lrim-Tech Solutions</strong><p>Professional websites and business applications.</p></div></div></footer>
 
 <div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><div class="drawer"><div class="drawer-head"><h2>Your Basket</h2><button class="close" onclick="closeCart()">×</button></div><div id="cartItems"></div><div class="cart-total" id="cartTotal"></div><button class="whatsapp" onclick="sendWhatsApp()">Send Order / Enquiry via WhatsApp</button><p style="font-size:12px;color:var(--muted);text-align:center">Demo only — no message will be sent to a real business number.</p></div></div>
+
+
+<div class="overlay" id="loginOverlay" onclick="if(event.target===this)closeLogin()"><div class="login-panel">
+<div class="drawer-head"><div><div class="eyebrow">Demo Secure Access</div><h2 id="loginTitle">Customer Login</h2></div><button class="close" onclick="closeLogin()">×</button></div>
+<p id="loginText"></p><div class="demo-creds" id="demoCreds"></div>
+<div class="login-fields"><input id="loginEmail" type="email" placeholder="Email address"><input id="loginPassword" type="password" placeholder="Password"></div>
+<button class="btn" style="width:100%" onclick="demoLogin()">Sign In</button>
+<p style="font-size:11px;color:var(--muted);text-align:center">Demo only. A production system would use real authentication, protected database rules and secure staff permissions.</p>
+</div></div>
+
+<div class="overlay" id="customerPortal" onclick="if(event.target===this)closePortal('customerPortal')"><div class="portal">
+<div class="portal-top"><div><div class="eyebrow">Customer Account</div><h2 style="margin:4px 0">Welcome, Tendai</h2></div><button class="close" onclick="closePortal('customerPortal')">×</button></div>
+<div class="portal-grid"><div class="portal-card"><strong>2</strong><span>Active orders</span></div><div class="portal-card"><strong>1</strong><span>Saved basket</span></div><div class="portal-card"><strong>$68.50</strong><span>Latest order</span></div></div>
+<h3>Recent Order</h3><div class="order-box"><strong>Order #MS-1048</strong><br><small>Home & Retail + Hardware • $68.50</small><div class="progress"><span class="done"></span><span class="done"></span><span class="done"></span><span></span></div><small>Order received → Confirmed → Preparing → Ready for collection</small></div>
+</div></div>
+
+<div class="overlay" id="staffPortal" onclick="if(event.target===this)closePortal('staffPortal')"><div class="portal">
+<div class="portal-top"><div><div class="eyebrow">Staff Dashboard</div><h2 style="margin:4px 0">Mavambo Operations</h2></div><button class="close" onclick="closePortal('staffPortal')">×</button></div>
+<div class="portal-grid"><div class="portal-card"><strong>12</strong><span>Demo products</span></div><div class="portal-card"><strong>4</strong><span>New orders</span></div><div class="portal-card"><strong>3</strong><span>Low-stock items</span></div></div>
+<div class="staff-actions">
+<div class="action-card"><h3>Products & Prices</h3><p>Add products, change prices, categories and availability.</p><button class="small-btn" onclick="closePortal('staffPortal');document.getElementById('staff').scrollIntoView()">Manage Catalogue</button></div>
+<div class="action-card"><h3>Customer Orders</h3><p>Review orders and update preparation or collection status.</p><button class="small-btn" onclick="alert('Demo: This would open live order management.')">View Orders</button></div>
+<div class="action-card"><h3>Stock Overview</h3><p>Identify low-stock products and online availability.</p><button class="small-btn" onclick="alert('Demo: Real stock would come from the database or supported POS integration.')">View Stock</button></div>
+<div class="action-card"><h3>Reports</h3><p>View online sales, popular products and department activity.</p><button class="small-btn" onclick="alert('Demo: Reporting is part of the full management system.')">View Reports</button></div>
+</div></div></div>
 
 <script>
 let products=[
@@ -137,6 +174,26 @@ function addProduct(){
  document.getElementById("departmentFilter").value="All";renderProducts();
  const n=document.getElementById("notice");n.style.display="block";setTimeout(()=>n.style.display="none",2500);
 }
+
+let loginRole="customer";
+function openLogin(role){
+ loginRole=role; const c=role==="customer";
+ document.getElementById("loginTitle").textContent=c?"Customer Login":"Staff Login";
+ document.getElementById("loginText").textContent=c?"Sign in to view orders and account activity.":"Authorised staff can manage products, orders and store activity.";
+ document.getElementById("demoCreds").innerHTML=c?"<strong>Demo account</strong><br>customer@mavambo.demo<br>Password: demo123":"<strong>Demo staff account</strong><br>staff@mavambo.demo<br>Password: staff123";
+ document.getElementById("loginEmail").value=c?"customer@mavambo.demo":"staff@mavambo.demo";
+ document.getElementById("loginPassword").value=c?"demo123":"staff123";
+ document.getElementById("loginOverlay").classList.add("open");
+}
+function closeLogin(){document.getElementById("loginOverlay").classList.remove("open");}
+function demoLogin(){
+ const e=document.getElementById("loginEmail").value.trim(),p=document.getElementById("loginPassword").value;
+ const ok=loginRole==="customer"?(e==="customer@mavambo.demo"&&p==="demo123"):(e==="staff@mavambo.demo"&&p==="staff123");
+ if(!ok){alert("Please use the demo login details shown.");return;}
+ closeLogin(); document.getElementById(loginRole==="customer"?"customerPortal":"staffPortal").classList.add("open");
+}
+function closePortal(id){document.getElementById(id).classList.remove("open");}
+
 renderProducts();
 </script>
 </body>
