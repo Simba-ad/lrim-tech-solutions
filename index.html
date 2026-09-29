@@ -7,6 +7,21 @@
 <meta name="description" content="Lrim-Tech Solutions — smart technology, better business, better choices. Discover useful products and services or request a professional website or application for your business.">
 
 <title>Lrim-Tech Solutions | Smart Technology. Better Business.</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lrim-Tech Solutions">
+<meta property="og:title" content="Lrim-Tech Solutions | Smart Technology. Better Business.">
+<meta property="og:description" content="Professional websites, applications and business systems designed to help businesses work smarter, reach customers and grow.">
+<meta property="og:url" content="https://lrimtechsolutions.com/">
+<meta property="og:image" content="https://lrimtechsolutions.com/lrim-tech-solutions-preview.jpg">
+<meta property="og:image:secure_url" content="https://lrimtechsolutions.com/lrim-tech-solutions-preview.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lrim-Tech Solutions — smart technology and digital solutions for growing businesses">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lrim-Tech Solutions | Smart Technology. Better Business.">
+<meta name="twitter:description" content="Professional websites, applications and business systems designed to help businesses work smarter and grow.">
+<meta name="twitter:image" content="https://lrimtechsolutions.com/lrim-tech-solutions-preview.jpg">
 
 <style>
 :root{
@@ -81,13 +96,22 @@ header{
 }
 
 .brand{
-  font-weight:800;
-  font-size:20px;
-  white-space:nowrap;
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
 }
 
-.brand span{
-  color:var(--accent);
+.brand img{
+  display:block;
+  width:210px;
+  max-width:100%;
+  height:auto;
+}
+
+@media(max-width:760px){
+  .brand img{
+    width:190px;
+  }
 }
 
 nav{
@@ -1005,8 +1029,8 @@ footer{
 <header>
   <div class="wrap nav">
 
-    <a class="brand" href="index.html">
-      Lrim-Tech <span>Solutions</span>
+    <a class="brand" href="index.html" aria-label="Lrim-Tech Solutions home">
+      <img src="lrim-tech-logo.png" alt="Lrim-Tech Solutions">
     </a>
 
     <nav>
