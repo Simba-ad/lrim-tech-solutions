@@ -1,15 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TransHaul Logistics | Fleet & Transport Management System</title>
-<meta name="description" content="Interactive fleet and transport management system concept by Lrim-Tech Solutions — loads, fleet, expenses, PODs, payments, maintenance and profitability.">
-<meta property="og:title" content="TransHaul Logistics | Fleet & Transport Management System">
-<meta property="og:description" content="Interactive fleet operations demo by Lrim-Tech Solutions. Manage loads, trucks, expenses, PODs, payments and profitability.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://lrimtechsolutions.com/demos/transhaul-logistics/">
-<meta property="og:image" content="https://lrimtechsolutions.com/demos/transhaul-logistics/transhaul-logistics-preview.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="TransHaul Logistics | Fleet & Transport Management System">
-<meta name="twitter:description" content="Interactive fleet operations demo by Lrim-Tech Solutions.">
-<meta name="twitter:image" content="https://lrimtechsolutions.com/demos/transhaul-logistics/transhaul-logistics-preview.jpg">
+<title>TransHaul Logistics V3</title>
 <style>
 :root{--n:#10233f;--b:#1769e0;--bg:#f4f7fb;--m:#667085;--l:#e4e9f1;--g:#16845b;--a:#b76b00;--r:#b93838}
 *{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#162033}button,input,select,textarea{font:inherit}button{cursor:pointer}
@@ -23,11 +13,11 @@ table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;p
 .modal{position:fixed;inset:0;background:#09152799;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.show{display:flex}.dialog{background:#fff;width:min(700px,100%);border-radius:15px;padding:20px;max-height:92vh;overflow:auto}.form{display:grid;grid-template-columns:1fr 1fr;gap:11px}.field label{display:block;font-size:10px;font-weight:800;color:var(--m);margin-bottom:4px}.field input,.field select,.field textarea{width:100%;padding:9px;border:1px solid #cbd3df;border-radius:7px}.full{grid-column:1/-1}.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}.notice{padding:12px 16px;font-size:11px;color:var(--m)}
 @media(max-width:1000px){.cards{grid-template-columns:repeat(3,1fr)}.profile{grid-template-columns:repeat(2,1fr)}}@media(max-width:760px){.shell{display:block}aside{height:auto;position:static}.demo{display:none}nav{display:flex;overflow:auto}.brand{padding-bottom:10px}nav button{min-width:max-content}main{padding:14px}.cards{grid-template-columns:repeat(2,1fr)}.panel{overflow:auto}table{min-width:800px}.form{grid-template-columns:1fr}.full{grid-column:auto}}
 </style></head><body>
-<div class="shell"><aside><div class="brand">Trans<b>Haul</b><small>LOGISTICS • FLEET & TRANSPORT MANAGEMENT</small></div><nav>
+<div class="shell"><aside><div class="brand">Trans<b>Haul</b><small>LOGISTICS • FLEET MANAGEMENT V3</small></div><nav>
 <button class="active" data-p="dash">▦ Dashboard</button><button data-p="loads">▣ Loads</button><button data-p="fleet">▤ Fleet</button><button data-p="drivers">♙ Drivers</button><button data-p="expenses">$ Fuel & Expenses</button><button data-p="maintenance">⚙ Maintenance</button><button data-p="pods">✓ POD & Payments</button><button data-p="reports">↗ Reports</button><button data-p="audit">☷ Audit Log</button><button data-p="users">♙ Users & Permissions</button></nav><div class="demo">Interactive concept demo by <b>Lrim-Tech Solutions</b>.<br>Sample data only.</div></aside><main>
 <section id="dash" class="page active"><div class="top"><div><h1>Operations Dashboard</h1><div class="sub">Fleet position, financial exposure and operating profitability</div></div><button class="btn pri" onclick="openLoad()">+ New Load</button></div><div class="cards" id="metrics"></div><div class="panel"><div class="ph">Fleet Performance</div><div id="performance"></div></div></section>
 <section id="loads" class="page"><div class="top"><div><h1>Loads</h1><div class="sub">Update each job from Assigned → In Transit → Delivered.</div></div></div><div class="panel" id="loadtbl"></div></section>
-<section id="fleet" class="page"><div class="top"><div><h1>Fleet</h1><div class="sub">Truck status and physical location remain separate.</div></div></div><div class="panel" id="fleettbl"></div><div id="truckprofile"></div></section>
+<section id="fleet" class="page"><div class="top"><div><h1>Fleet</h1><div class="sub">Truck status and physical location remain separate. Retired trucks remain in history.</div></div><button class="btn pri" onclick="openTruckForm()">+ Add Truck</button></div><div class="panel" id="fleettbl"></div><div id="truckprofile"></div></section>
 <section id="drivers" class="page"><div class="top"><div><h1>Drivers</h1><div class="sub">Current driver assignments.</div></div></div><div class="panel" id="drivertbl"></div></section>
 <section id="expenses" class="page"><div class="top"><div><h1>Fuel & Expenses</h1><div class="sub">Every cost is linked to a specific load and truck.</div></div><button class="btn pri" onclick="openExpense()">+ Add Expense</button></div><div class="panel" id="exptbl"></div></section>
 <section id="maintenance" class="page"><div class="top"><div><h1>Maintenance</h1><div class="sub">Service and workshop overview.</div></div></div><div class="panel" id="mainttbl"></div></section>
@@ -52,6 +42,17 @@ table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;p
 </div><div class="actions"><button class="btn sec" onclick="expmodal.classList.remove('show')">Cancel</button><button class="btn pri" onclick="saveExpense()">Save Expense</button></div></div></div>
 
 <div class="modal" id="paymodal"><div class="dialog"><h2>Record POD Payment</h2><div class="form"><div class="field"><label>POD</label><input id="paypod" readonly></div><div class="field"><label>Amount Received</label><input id="payamt" type="number"></div><div class="field"><label>Payment Reference</label><input id="payref"></div><div class="field"><label>Recorded By</label><select id="payuser"><option>Accounts 01</option><option>Operations Manager</option></select></div></div><div class="actions"><button class="btn sec" onclick="paymodal.classList.remove('show')">Cancel</button><button class="btn pri" onclick="savePay()">Record Payment</button></div></div></div>
+
+<div class="modal" id="truckmodal"><div class="dialog"><h2 id="truckmodaltitle">Add Truck</h2><div class="form">
+<div class="field"><label>Registration / Truck ID</label><input id="truckid" placeholder="e.g. AGZ 1234"></div>
+<div class="field"><label>Make / Model</label><input id="trucktype" placeholder="e.g. Scania R450"></div>
+<div class="field"><label>Current Location</label><input id="truckloc" placeholder="e.g. Harare"></div>
+<div class="field"><label>Mileage (km)</label><input id="truckmileage" type="number" min="0"></div>
+<div class="field"><label>Next Service Date</label><input id="truckservice" type="date"></div>
+<div class="field"><label>Starting Status</label><select id="truckstatus"><option>Available</option><option>Maintenance</option></select></div>
+<div class="field"><label>Changed By</label><select id="truckuser"><option>Operations Manager</option><option>Workshop 01</option></select></div>
+<div class="field"><label>Reason / Note</label><input id="truckreason" placeholder="New vehicle, correction, etc."></div>
+</div><div class="actions"><button class="btn sec" onclick="truckmodal.classList.remove('show')">Cancel</button><button class="btn pri" onclick="saveTruck()">Save Truck</button></div></div></div>
 
 <div class="modal" id="locmodal"><div class="dialog"><h2>Update Truck Location</h2><div class="form"><div class="field"><label>Truck</label><input id="loctruck" readonly></div><div class="field"><label>New Location</label><input id="newloc"></div><div class="field"><label>Updated By</label><select id="locuser"><option>Dispatcher 01</option><option>Operations Manager</option></select></div><div class="field"><label>Reason</label><input id="locreason"></div></div><div class="actions"><button class="btn sec" onclick="locmodal.classList.remove('show')">Cancel</button><button class="btn pri" onclick="saveLoc()">Update Location</button></div></div></div>
 
@@ -78,13 +79,13 @@ function save(){localStorage.setItem('th3t',JSON.stringify(trucks));localStorage
 function cost(load){return expenses.filter(e=>e.load===load).reduce((s,e)=>s+Number(e.amount),0)}function perf(id){let ls=loads.filter(l=>l.truck===id),r=ls.reduce((s,l)=>s+l.revenue,0),c=expenses.filter(e=>e.truck===id).reduce((s,e)=>s+Number(e.amount),0);return{r,c,p:r-c}}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>show(b.dataset.p));function show(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.p===id));render()}
 function render(){let out=pods.reduce((s,p)=>s+p.amount-p.paid,0),rev=loads.reduce((s,l)=>s+l.revenue,0),c=expenses.reduce((s,e)=>s+Number(e.amount),0);
-$('metrics').innerHTML=[['Fleet',trucks.length],['Available',trucks.filter(t=>t.status==='Available').length],['Unsettled PODs',pods.filter(p=>p.status!=='Paid').length],['POD Outstanding',money(out)],['Recorded Profit',money(rev-c)]].map(x=>`<div class="card"><div class="lab">${x[0]}</div><div class="num">${x[1]}</div></div>`).join('');
+$('metrics').innerHTML=[['Fleet',trucks.filter(t=>!t.retired).length],['Available',trucks.filter(t=>!t.retired&&t.status==='Available').length],['Unsettled PODs',pods.filter(p=>p.status!=='Paid').length],['POD Outstanding',money(out)],['Recorded Profit',money(rev-c)]].map(x=>`<div class="card"><div class="lab">${x[0]}</div><div class="num">${x[1]}</div></div>`).join('');
 $('performance').innerHTML=`<table><thead><tr><th>Truck</th><th>Location</th><th>Revenue</th><th>Recorded Costs</th><th>Profit</th><th>Unsettled PODs</th></tr></thead><tbody>${trucks.map(t=>{let p=perf(t.id);return `<tr><td><button class="link" onclick="openTruck('${t.id}')">${t.id}</button></td><td>${t.location}</td><td>${money(p.r)}</td><td>${money(p.c)}</td><td><b>${money(p.p)}</b></td><td>${pods.filter(x=>x.truck===t.id&&x.status!=='Paid').length}</td></tr>`}).join('')}</tbody></table>`;
 $('loadtbl').innerHTML=`<table><thead><tr><th>Load</th><th>Truck</th><th>Driver</th><th>Route</th><th>Revenue</th><th>Expenses</th><th>Profit</th><th>Status</th><th>POD</th></tr></thead><tbody>${loads.map(l=>`<tr><td><b>${l.id}</b></td><td><button class="link" onclick="openTruck('${l.truck}')">${l.truck}</button></td><td>${l.driver}</td><td>${l.route}</td><td>${money(l.revenue)}</td><td>${money(cost(l.id))}</td><td><b>${money(l.revenue-cost(l.id))}</b></td><td><select class="status" onchange="changeStatus('${l.id}',this.value)">${['Assigned','In Transit','Delivered'].map(s=>`<option ${s===l.status?'selected':''}>${s}</option>`).join('')}</select></td><td>${l.pod||'—'}</td></tr>`).join('')}</tbody></table>`;
-$('fleettbl').innerHTML=`<table><thead><tr><th>Truck</th><th>Vehicle</th><th>Status</th><th>Current Location</th><th>Mileage</th><th>Next Service</th><th></th></tr></thead><tbody>${trucks.map(t=>`<tr><td><button class="link" onclick="openTruck('${t.id}')">${t.id}</button></td><td>${t.type}</td><td>${badge(t.status)}</td><td><b>${t.location}</b></td><td>${t.mileage.toLocaleString()} km</td><td>${t.service}</td><td><button class="btn sec" onclick="openLoc('${t.id}')">Update Location</button></td></tr>`).join('')}</tbody></table>`;
+$('fleettbl').innerHTML=`<table><thead><tr><th>Truck</th><th>Vehicle</th><th>Status</th><th>Current Location</th><th>Mileage</th><th>Next Service</th><th>Actions</th></tr></thead><tbody>${trucks.map(t=>`<tr><td><button class="link" onclick="openTruck('${t.id}')">${t.id}</button></td><td>${t.type}</td><td>${badge(t.retired?'Retired':t.status)}</td><td><b>${t.location}</b></td><td>${Number(t.mileage||0).toLocaleString()} km</td><td>${t.service||'—'}</td><td><button class="btn sec" onclick="openLoc('${t.id}')" ${t.retired?'disabled':''}>Location</button> <button class="btn sec" onclick="openTruckForm('${t.id}')">Edit</button> <button class="btn sec" onclick="toggleRetire('${t.id}')">${t.retired?'Restore':'Retire'}</button></td></tr>`).join('')}</tbody></table>`;
 let active=loads.filter(l=>l.status!=='Delivered');$('drivertbl').innerHTML=`<table><thead><tr><th>Driver</th><th>Status</th><th>Current Assignment</th></tr></thead><tbody>${drivers.map(d=>{let l=active.find(x=>x.driver===d);return `<tr><td><b>${d}</b></td><td>${badge(l?'Assigned':'Available')}</td><td>${l?l.id+' • '+l.route:'—'}</td></tr>`}).join('')}</tbody></table>`;
 $('exptbl').innerHTML=`<table><thead><tr><th>Date</th><th>Load</th><th>Truck</th><th>Type</th><th>Fuel Litres</th><th>Amount</th><th>Reference</th><th>Entered By</th><th>Notes</th></tr></thead><tbody>${expenses.slice().reverse().map(e=>`<tr><td>${e.date}</td><td>${e.load}</td><td>${e.truck}</td><td>${e.type}</td><td>${e.litres||'—'}</td><td><b>${money(e.amount)}</b></td><td>${e.ref||'—'}</td><td>${e.user}</td><td>${e.note||'—'}</td></tr>`).join('')}</tbody></table>`;
-$('mainttbl').innerHTML=`<table><thead><tr><th>Truck</th><th>Vehicle</th><th>Status</th><th>Location</th><th>Mileage</th><th>Next Service</th></tr></thead><tbody>${trucks.map(t=>`<tr><td>${t.id}</td><td>${t.type}</td><td>${badge(t.status)}</td><td>${t.location}</td><td>${t.mileage.toLocaleString()} km</td><td>${t.service}</td></tr>`).join('')}</tbody></table>`;
+$('mainttbl').innerHTML=`<table><thead><tr><th>Truck</th><th>Vehicle</th><th>Status</th><th>Location</th><th>Mileage</th><th>Next Service</th></tr></thead><tbody>${trucks.map(t=>`<tr><td>${t.id}</td><td>${t.type}</td><td>${badge(t.retired?'Retired':t.status)}</td><td>${t.location}</td><td>${Number(t.mileage||0).toLocaleString()} km</td><td>${t.service}</td></tr>`).join('')}</tbody></table>`;
 $('podtbl').innerHTML=`<table><thead><tr><th>POD</th><th>Load</th><th>Truck</th><th>Amount</th><th>Paid</th><th>Balance</th><th>Status</th><th>Reference</th><th></th></tr></thead><tbody>${pods.map(p=>`<tr><td><b>${p.id}</b></td><td>${p.load}</td><td>${p.truck}</td><td>${money(p.amount)}</td><td>${money(p.paid)}</td><td><b>${money(p.amount-p.paid)}</b></td><td>${badge(p.status)}</td><td>${p.ref}</td><td>${p.status!=='Paid'?`<button class="btn pri" onclick="openPay('${p.id}')">Record Payment</button>`:'Settled'}</td></tr>`).join('')}</tbody></table>`;
 $('reportcards').innerHTML=[['Total Load Revenue',money(rev)],['Recorded Expenses',money(c)],['Operating Profit',money(rev-c)],['Outstanding PODs',money(out)],['Fuel Used',expenses.reduce((s,e)=>s+Number(e.litres||0),0).toLocaleString()+' L']].map(x=>`<div class="card"><div class="lab">${x[0]}</div><div class="num">${x[1]}</div></div>`).join('');
 $('audittbl').innerHTML=`<table><thead><tr><th>Date/Time</th><th>User</th><th>Action</th><th>Record</th><th>Detail</th></tr></thead><tbody>${audit.map(a=>`<tr><td>${a.time}</td><td><b>${a.user}</b></td><td>${a.action}</td><td>${a.record}</td><td>${a.detail}</td></tr>`).join('')}</tbody></table>`}
@@ -116,7 +117,52 @@ function saveLoad(){
 function openExpense(){$('expload').innerHTML=loads.map(l=>`<option value="${l.id}">${l.id} — ${l.truck} — ${l.route}</option>`).join('');$('expmodal').classList.add('show')}
 function saveExpense(){let l=loads.find(x=>x.id===$('expload').value),amt=+$('expamt').value;if(!amt||amt<=0){alert('Enter a valid expense amount.');return}let e={id:Date.now(),load:l.id,truck:l.truck,type:$('exptype').value,amount:amt,litres:+$('expltrs').value||0,date:$('expdate').value,ref:$('expref').value||'—',user:$('expuser').value,note:$('expnote').value};expenses.push(e);audit.unshift({time:'29 Sep 2026 13:31',user:e.user,action:'Added expense',record:l.id,detail:`${e.type} ${money(e.amount)} for ${e.truck}; Ref ${e.ref}`});save();$('expmodal').classList.remove('show');render()}
 function openPay(id){let p=pods.find(x=>x.id===id);$('paypod').value=id;$('payamt').value=p.amount-p.paid;$('paymodal').classList.add('show')}function savePay(){let p=pods.find(x=>x.id===$('paypod').value),a=+$('payamt').value;if(!a||a>p.amount-p.paid){alert('Enter a valid amount within the outstanding balance.');return}let old=p.status;p.paid+=a;p.status=p.paid>=p.amount?'Paid':'Part Paid';p.ref=$('payref').value||p.ref;audit.unshift({time:'29 Sep 2026 13:32',user:$('payuser').value,action:'Recorded payment',record:p.id,detail:`${money(a)} received; ${old} → ${p.status}; Ref ${p.ref}`});save();$('paymodal').classList.remove('show');render()}
+let editingTruck=null;
+function nowStamp(){return new Date().toLocaleString()}
+function openTruckForm(id=null){
+  editingTruck=id;
+  $('truckmodaltitle').textContent=id?'Edit Truck':'Add Truck';
+  let t=id?trucks.find(x=>x.id===id):null;
+  $('truckid').value=t?t.id:'';
+  $('truckid').readOnly=!!t;
+  $('trucktype').value=t?t.type:'';
+  $('truckloc').value=t?t.location:'';
+  $('truckmileage').value=t?t.mileage:'';
+  $('truckservice').value=t?t.service:'';
+  $('truckstatus').value=t&&t.status==='Maintenance'?'Maintenance':'Available';
+  $('truckreason').value='';
+  $('truckmodal').classList.add('show');
+}
+function saveTruck(){
+  let id=$('truckid').value.trim().toUpperCase(),type=$('trucktype').value.trim(),loc=$('truckloc').value.trim(),m=+$('truckmileage').value,service=$('truckservice').value,status=$('truckstatus').value,user=$('truckuser').value,reason=$('truckreason').value.trim()||'Not specified';
+  if(!id||!type||!loc){alert('Enter the truck registration/ID, make/model and current location.');return}
+  if(!editingTruck&&trucks.some(t=>t.id===id)){alert('That truck ID already exists.');return}
+  if(editingTruck){
+    let t=trucks.find(x=>x.id===editingTruck),before=`${t.type}; ${t.location}; ${t.mileage} km; service ${t.service}; ${t.status}`;
+    t.type=type;t.location=loc;t.mileage=m;t.service=service;t.status=status;
+    audit.unshift({time:nowStamp(),user,action:'Edited truck details',record:t.id,detail:`${before} → ${type}; ${loc}; ${m} km; service ${service}; ${status}. Reason: ${reason}`});
+  }else{
+    trucks.push({id,type,status,location:loc,mileage:m,service,retired:false});
+    audit.unshift({time:nowStamp(),user,action:'Added truck',record:id,detail:`${type}; ${loc}; ${m} km; service ${service}; ${status}. Note: ${reason}`});
+  }
+  save();$('truckmodal').classList.remove('show');render();
+}
+function toggleRetire(id){
+  let t=trucks.find(x=>x.id===id);
+  if(!t)return;
+  if(!t.retired){
+    let active=loads.find(l=>l.truck===id&&l.status!=='Delivered');
+    if(active){alert(`Cannot retire ${id} while it has active load ${active.id}. Complete or reassign the load first.`);return}
+    if(!confirm(`Retire ${id} from the active fleet? Its historical loads, PODs and expenses will be kept.`))return;
+    t.retired=true;t.previousStatus=t.status;t.status='Retired';
+    audit.unshift({time:nowStamp(),user:'Operations Manager',action:'Retired truck',record:id,detail:'Removed from active fleet; historical records retained.'});
+  }else{
+    t.retired=false;t.status='Available';
+    audit.unshift({time:nowStamp(),user:'Operations Manager',action:'Restored truck',record:id,detail:'Returned to active fleet with Available status.'});
+  }
+  save();render();openTruck(id);
+}
 function openLoc(id){$('loctruck').value=id;$('newloc').value='';$('locmodal').classList.add('show')}function saveLoc(){let t=trucks.find(x=>x.id===$('loctruck').value),old=t.location,n=$('newloc').value.trim();if(!n){alert('Enter a location.');return}t.location=n;audit.unshift({time:'29 Sep 2026 13:33',user:$('locuser').value,action:'Updated location',record:t.id,detail:`${old} → ${n}. Reason: ${$('locreason').value||'Not specified'}`});save();$('locmodal').classList.remove('show');render();openTruck(t.id)}
-function openTruck(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$('fleet').classList.add('active');let t=trucks.find(x=>x.id===id),p=perf(id),ps=pods.filter(x=>x.truck===id),es=expenses.filter(x=>x.truck===id);$('truckprofile').innerHTML=`<div class="panel"><div class="ph">${id} — Truck Profile</div><div class="profile"><div class="info"><span>Status</span>${badge(t.status)}</div><div class="info"><span>Current Location</span><b>${t.location}</b></div><div class="info"><span>Profit</span><b>${money(p.p)}</b></div><div class="info"><span>Outstanding PODs</span><b>${money(ps.reduce((s,x)=>s+x.amount-x.paid,0))}</b></div></div><div class="ph">POD History</div><table><thead><tr><th>POD</th><th>Load</th><th>Amount</th><th>Balance</th><th>Status</th></tr></thead><tbody>${ps.map(x=>`<tr><td>${x.id}</td><td>${x.load}</td><td>${money(x.amount)}</td><td>${money(x.amount-x.paid)}</td><td>${badge(x.status)}</td></tr>`).join('')||'<tr><td colspan="5">No PODs</td></tr>'}</tbody></table><div class="ph">Recorded Expenses</div><table><thead><tr><th>Load</th><th>Type</th><th>Amount</th><th>Reference</th></tr></thead><tbody>${es.map(e=>`<tr><td>${e.load}</td><td>${e.type}</td><td>${money(e.amount)}</td><td>${e.ref}</td></tr>`).join('')||'<tr><td colspan="4">No expenses</td></tr>'}</tbody></table></div>`;scrollTo(0,0)}
+function openTruck(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$('fleet').classList.add('active');let t=trucks.find(x=>x.id===id),p=perf(id),ps=pods.filter(x=>x.truck===id),es=expenses.filter(x=>x.truck===id);$('truckprofile').innerHTML=`<div class="panel"><div class="ph">${id} — Truck Profile</div><div style="margin-bottom:14px"><button class="btn sec" onclick="openTruckForm('${id}')">Edit Truck</button> <button class="btn sec" onclick="toggleRetire('${id}')">${t.retired?'Restore to Fleet':'Retire from Fleet'}</button></div><div class="profile"><div class="info"><span>Status</span>${badge(t.retired?'Retired':t.status)}</div><div class="info"><span>Current Location</span><b>${t.location}</b></div><div class="info"><span>Profit</span><b>${money(p.p)}</b></div><div class="info"><span>Outstanding PODs</span><b>${money(ps.reduce((s,x)=>s+x.amount-x.paid,0))}</b></div></div><div class="ph">POD History</div><table><thead><tr><th>POD</th><th>Load</th><th>Amount</th><th>Balance</th><th>Status</th></tr></thead><tbody>${ps.map(x=>`<tr><td>${x.id}</td><td>${x.load}</td><td>${money(x.amount)}</td><td>${money(x.amount-x.paid)}</td><td>${badge(x.status)}</td></tr>`).join('')||'<tr><td colspan="5">No PODs</td></tr>'}</tbody></table><div class="ph">Recorded Expenses</div><table><thead><tr><th>Load</th><th>Type</th><th>Amount</th><th>Reference</th></tr></thead><tbody>${es.map(e=>`<tr><td>${e.load}</td><td>${e.type}</td><td>${money(e.amount)}</td><td>${e.ref}</td></tr>`).join('')||'<tr><td colspan="4">No expenses</td></tr>'}</tbody></table></div>`;scrollTo(0,0)}
 render();
 </script></body></html>
