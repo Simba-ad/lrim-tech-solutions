@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TradeNest Wholesale | Customer Accounts, Blue Card Pricing & Inventory V3.1</title>
+<style>
+:root{--navy:#12243b;--blue:#1769e0;--bg:#f4f7fb;--muted:#667085;--line:#e2e8f0;--green:#16845b;--amber:#b76b00;--red:#b93838}
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#172033}button,input,select{font:inherit}button{cursor:pointer}
+.shell{display:grid;grid-template-columns:245px 1fr;min-height:100vh}aside{background:var(--navy);color:white;padding:20px 14px;position:sticky;top:0;height:100vh}
+.brand{font-size:22px;font-weight:900;padding:0 9px 17px}.brand b{color:#69a7ff}.brand small{display:block;font-size:10px;color:#adbad0;margin-top:5px}
+nav button{width:100%;border:0;background:none;color:#cad5e6;text-align:left;padding:10px 11px;border-radius:8px;margin:2px 0}nav button.active,nav button:hover{background:#1d385b;color:#fff}
+.demo{position:absolute;bottom:15px;left:14px;right:14px;background:#0c1b2e;color:#a9b8cb;padding:10px;border-radius:8px;font-size:10px}
+main{padding:24px;min-width:0}.page{display:none}.page.active{display:block}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px}
+h1{margin:0;font-size:25px}.sub{color:var(--muted);font-size:12px;margin-top:4px}.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:8px;padding:8px 11px;font-weight:700}.pri{background:var(--blue);color:#fff}.sec{background:#fff;border:1px solid var(--line)}.danger{background:#fff0f0;color:var(--red);border:1px solid #f0caca}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-bottom:17px}.card,.panel{background:#fff;border:1px solid var(--line);border-radius:12px}.card{padding:15px}
+.lab{font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase}.num{font-size:23px;font-weight:900;margin-top:6px}.panel{overflow:auto;margin-bottom:16px}.ph{padding:13px 15px;border-bottom:1px solid var(--line);font-weight:800}
+table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:left;padding:10px 11px;border-bottom:1px solid var(--line);vertical-align:middle}th{font-size:10px;text-transform:uppercase;color:var(--muted);background:#fbfcfe}
+.badge{padding:4px 8px;border-radius:99px;font-size:10px;font-weight:800;display:inline-block}.available,.paid,.completed,.ready{background:#e8f7f0;color:var(--green)}.low,.partpaid,.packing{background:#fff2dc;color:var(--amber)}.confirmed,.pending{background:#e9f2ff;color:#1759b5}.cancelled,.disabled{background:#fff0f0;color:var(--red)}
+.catalogue{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.product{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}.pic{height:105px;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,#eaf2ff,#f8fbff)}
+.pb{padding:13px}.pb h3{margin:4px 0;font-size:15px}.meta{font-size:11px;color:var(--muted);line-height:1.6}.price{font-size:19px;font-weight:900;margin:8px 0}.stock{font-size:11px;font-weight:700}
+.filters{display:flex;gap:8px;margin-bottom:13px}.filters input,.filters select{padding:9px;border:1px solid #ccd5e0;border-radius:8px;background:white}
+.modal{position:fixed;inset:0;background:#08152699;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.show{display:flex}.dialog{background:#fff;width:min(720px,100%);border-radius:14px;padding:20px;max-height:92vh;overflow:auto}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:11px}.field label{display:block;font-size:10px;font-weight:800;color:var(--muted);margin-bottom:4px}.field input,.field select{width:100%;padding:9px;border:1px solid #cbd3df;border-radius:7px}.full{grid-column:1/-1}
+.mactions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}.notice{padding:12px 15px;color:var(--muted);font-size:11px}.cartline{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+@media(max-width:1050px){.cards{grid-template-columns:repeat(3,1fr)}.catalogue{grid-template-columns:repeat(2,1fr)}}@media(max-width:760px){.shell{display:block}aside{height:auto;position:static}.demo{display:none}nav{display:flex;overflow:auto}.brand{padding-bottom:9px}nav button{min-width:max-content}main{padding:14px}.cards{grid-template-columns:repeat(2,1fr)}.catalogue{grid-template-columns:1fr}.form{grid-template-columns:1fr}.full{grid-column:auto}.panel{overflow:auto}table{min-width:850px}}
+</style>
+
+<style>
+/* V2 customer-first storefront */
+body.storemode .shell{display:none}
+body.staffmode #storefront{display:none}
+#storefront{min-height:100vh;background:#fff;color:#162033}
+.storewrap{max-width:1180px;margin:auto;padding:0 22px}
+.storebar{background:#10233f;color:#fff;font-size:12px;text-align:center;padding:8px}
+.storehead{position:sticky;top:0;z-index:15;background:#ffffffee;backdrop-filter:blur(10px);border-bottom:1px solid #e8edf4}
+.storeheadin{height:72px;display:flex;align-items:center;gap:24px}
+.storelogo{font-size:25px;font-weight:900;color:#10233f}.storelogo span{color:#1769e0}
+.storelinks{display:flex;gap:20px;margin-left:auto;align-items:center}.storelinks a{font-size:13px;font-weight:700;color:#344054;text-decoration:none}
+.loginbtn{border:1px solid #d6deea;background:#fff;border-radius:9px;padding:9px 12px;font-weight:800;color:#243b5a}.staffbtn{background:#10233f;color:#fff;border:0}
+.hero{background:linear-gradient(120deg,#10233f 0%,#164f93 62%,#1769e0 100%);color:#fff}
+.heroin{min-height:390px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px;padding-top:48px;padding-bottom:48px}
+.kicker{font-size:11px;font-weight:900;letter-spacing:1.6px;color:#9fc5ff}.hero h1{font-size:47px;line-height:1.05;margin:10px 0 15px;max-width:650px}.hero p{max-width:600px;color:#d9e7fb;line-height:1.7}
+.herobuttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.shopbtn{border:0;border-radius:9px;padding:12px 17px;font-weight:900;background:#fff;color:#12325d}.outlinebtn{background:transparent;color:#fff;border:1px solid #86afe5}
+.herocard{background:#ffffff12;border:1px solid #ffffff26;border-radius:20px;padding:24px;box-shadow:0 25px 50px #07152b45}.herocard strong{font-size:20px}.heroitems{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.heroitem{background:#fff;color:#172033;border-radius:12px;padding:15px}.heroitem b{display:block;font-size:13px}.heroitem small{color:#667085}
+.storesection{padding:54px 0}.sectiontop{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}.sectiontop h2{font-size:29px;margin:0}.sectiontop p{color:#667085;margin:5px 0 0}
+.catcards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.catcard{border:1px solid #e4eaf1;border-radius:15px;padding:22px;background:#f8fafd;cursor:pointer}.catcard .emoji{font-size:35px}.catcard h3{margin:13px 0 4px}.catcard p{font-size:12px;color:#667085;margin:0}
+.storeproducts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.sp{border:1px solid #e3e9f1;border-radius:15px;overflow:hidden;background:#fff}.sppic{height:145px;display:flex;align-items:center;justify-content:center;font-size:58px;background:linear-gradient(135deg,#edf4ff,#fafcff)}.spbody{padding:15px}.spbody h3{font-size:15px;margin:5px 0}.sprice{font-size:20px;font-weight:900;margin:9px 0}.smeta{font-size:11px;color:#667085;line-height:1.55}.add{width:100%;margin-top:10px;background:#1769e0;color:#fff;border:0;border-radius:8px;padding:10px;font-weight:800}
+.accountband{background:#f1f6fd;border-top:1px solid #e0e9f4;border-bottom:1px solid #e0e9f4}.accountgrid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.benefits{display:grid;grid-template-columns:1fr 1fr;gap:10px}.benefit{background:#fff;border:1px solid #e0e7ef;border-radius:12px;padding:14px;font-size:12px}.benefit b{display:block;margin-bottom:4px}
+.storefooter{background:#0d1d31;color:#b8c5d6;padding:36px 0}.footin{display:flex;justify-content:space-between;gap:25px;align-items:center}.footlinks{display:flex;gap:10px}
+.storecart{position:fixed;right:18px;bottom:18px;z-index:16;background:#1769e0;color:#fff;border:0;border-radius:50px;padding:13px 18px;font-weight:900;box-shadow:0 10px 25px #1769e055}
+.authnote{background:#f5f8fc;border:1px solid #e0e7ef;padding:10px;border-radius:8px;font-size:11px;color:#667085;margin-bottom:12px}
+.draftbox{background:#edf5ff;border:1px solid #cfe1fb;border-radius:10px;padding:12px;margin-top:12px;font-size:12px}
+@media(max-width:900px){.heroin{grid-template-columns:1fr}.herocard{display:none}.hero h1{font-size:38px}.catcards,.storeproducts{grid-template-columns:repeat(2,1fr)}.accountgrid{grid-template-columns:1fr}.storelinks a{display:none}}
+@media(max-width:580px){.storewrap{padding:0 15px}.storeheadin{gap:7px}.storelogo{font-size:20px}.loginbtn{font-size:11px;padding:8px}.hero h1{font-size:33px}.catcards,.storeproducts{grid-template-columns:1fr}.benefits{grid-template-columns:1fr}.footin{display:block}.footlinks{margin-top:15px}}
+
+.bluepill{display:inline-block;background:#e8f2ff;color:#0756b5;border:1px solid #b8d7ff;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:900}.blueprice{color:#0756b5;font-weight:900}.oldprice{text-decoration:line-through;color:#98a2b3;font-size:12px}.tierhint{font-size:10px;color:#0756b5;margin-top:5px}.lookupok{background:#eaf8f2;border:1px solid #b9e7d4;color:#146b4d;padding:10px;border-radius:8px;font-size:12px}.lookupbad{background:#fff4f4;border:1px solid #f1c7c7;color:#9d3030;padding:10px;border-radius:8px;font-size:12px}.tierrow{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin:7px 0}.tierrow input{width:100%}
+</style>
+<style>
+.qtyctrl{display:inline-flex;align-items:center;gap:7px;margin-top:7px}
+.qtybtn{width:30px;height:30px;border:1px solid #cfd8e6;background:#fff;border-radius:7px;font-weight:900;font-size:17px;line-height:1;cursor:pointer;color:#17365f}
+.qtybtn:hover{background:#f0f5fb}.qtyval{min-width:34px;text-align:center;font-weight:900}
+</style><meta name="description" content="TradeNest Wholesale — a customer storefront and wholesale management system demo with saved orders, inventory, Blue Card quantity pricing and POS workflows.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TradeNest Wholesale | Wholesale Catalogue & Inventory Management System">
+<meta property="og:description" content="A complete wholesale storefront and management system with customer accounts, saved orders, inventory, Blue Card quantity pricing and POS workflows.">
+<meta property="og:url" content="https://lrimtechsolutions.com/demos/tradenest-wholesale/">
+<meta property="og:image" content="https://lrimtechsolutions.com/demos/tradenest-wholesale/tradenest-wholesale-preview.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TradeNest Wholesale | Wholesale Catalogue & Inventory Management System">
+<meta name="twitter:description" content="Wholesale storefront, customer accounts, inventory, Blue Card quantity pricing and POS workflows.">
+<meta name="twitter:image" content="https://lrimtechsolutions.com/demos/tradenest-wholesale/tradenest-wholesale-preview.jpg">
+</head>
+<body>
+
+<div id="storefront">
+<div class="storebar">WHOLESALE PRICES • BULK ORDERS • COLLECTION & DELIVERY</div>
+<header class="storehead"><div class="storewrap storeheadin">
+<div class="storelogo">Trade<span>Nest</span></div>
+<div class="storelinks"><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#wholesale">Wholesale Accounts</a></div>
+<button class="loginbtn" onclick="openCustomer()">Customer Login</button>
+<button class="loginbtn staffbtn" onclick="openStaff()">Staff Login</button>
+</div></header>
+<section class="hero"><div class="storewrap heroin"><div>
+<div class="kicker">WHOLESALE MADE SIMPLE</div><h1>Stock your business. Build your order at your pace.</h1>
+<p>Browse wholesale clothing, homeware, babywear and bags. Save large orders over several days, return when you're ready, and keep your purchasing history in one account.</p>
+<div class="herobuttons"><button class="shopbtn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Browse Wholesale Stock</button><button class="shopbtn outlinebtn" onclick="openCustomer(true)">Create Customer Account</button></div>
+</div><div class="herocard"><strong>Built for repeat wholesale buyers</strong><div class="heroitems">
+<div class="heroitem">📝 <b>Save Draft Orders</b><small>Build large orders over several days.</small></div>
+<div class="heroitem">↻ <b>Quick Reorder</b><small>Repeat previous purchases faster.</small></div>
+<div class="heroitem">📦 <b>Live Availability</b><small>See current available quantities.</small></div>
+<div class="heroitem">✓ <b>Track Orders</b><small>Follow confirmation through fulfilment.</small></div>
+</div></div></div></section>
+
+<section class="storesection" id="categories"><div class="storewrap"><div class="sectiontop"><div><h2>Shop by category</h2><p>Wholesale essentials for retailers and resellers.</p></div></div>
+<div class="catcards">
+<div class="catcard" onclick="storeFilter('Clothing')"><div class="emoji">👕</div><h3>Clothing</h3><p>Everyday fashion and clothing packs.</p></div>
+<div class="catcard" onclick="storeFilter('Homeware')"><div class="emoji">🏠</div><h3>Homeware</h3><p>Practical household and kitchen lines.</p></div>
+<div class="catcard" onclick="storeFilter('Babywear')"><div class="emoji">🧸</div><h3>Babywear</h3><p>Baby clothing, blankets and essentials.</p></div>
+<div class="catcard" onclick="storeFilter('Bags')"><div class="emoji">👜</div><h3>Bags</h3><p>Handbags, backpacks and everyday bags.</p></div>
+</div></div></section>
+
+<section class="storesection" id="shop" style="background:#f8fafc"><div class="storewrap"><div class="sectiontop"><div><h2>Wholesale catalogue</h2><p>Prices, minimum quantities and availability in one place.</p></div><select id="storefilter" class="loginbtn" onchange="renderStore()"><option>All</option><option>Clothing</option><option>Homeware</option><option>Babywear</option><option>Bags</option></select></div><div class="storeproducts" id="storegrid"></div></div></section>
+
+<section class="storesection accountband" id="wholesale"><div class="storewrap accountgrid"><div><div class="kicker" style="color:#1769e0">WHOLESALE CUSTOMER ACCOUNT</div><h2 style="font-size:31px;margin:8px 0">Large orders don't have to be finished in one sitting.</h2><p style="color:#667085;line-height:1.7">Create an account, save a draft, return later and continue adding products. When you're ready, submit the order for confirmation.</p><button class="btn pri" onclick="openCustomer(true)">Create Account</button></div>
+<div class="benefits"><div class="benefit"><b>Saved Drafts</b>Keep unfinished wholesale orders.</div><div class="benefit"><b>Order History</b>Find previous and active orders.</div><div class="benefit"><b>Reorder</b>Start from a previous purchase.</div><div class="benefit"><b>Balances</b>See order totals and recorded payments.</div></div></div></section>
+
+<footer class="storefooter"><div class="storewrap footin"><div><b style="color:#fff">TradeNest Wholesale</b><br><small>Wholesale Catalogue & Inventory Management System • Demo by Lrim-Tech Solutions</small></div><div class="footlinks"><button class="loginbtn" onclick="openCustomer()">Customer Login</button><button class="loginbtn staffbtn" onclick="openStaff()">Staff Login</button></div></div></footer>
+<button class="storecart" onclick="openStoreCart()">🛒 Order <span id="storecartcount">0</span></button>
+</div>
+
+<div class="modal" id="customerauth"><div class="dialog"><h2 id="authtitle">Customer Login</h2><div class="authnote">Demo account experience. A production system would use secure authentication and a central database.</div>
+<div class="form"><div class="field"><label>Business / Customer Name</label><input id="authname" placeholder="e.g. Tariro Fashions"></div><div class="field"><label>Phone / WhatsApp</label><input id="authphone" placeholder="07..."></div><div class="field full"><label>Email</label><input id="authemail" placeholder="customer@example.com"></div></div>
+<div class="draftbox">✓ Draft orders can be saved in the customer account and continued later. Drafts do not reserve stock until the order is submitted and confirmed.</div>
+<div class="mactions"><button class="btn sec" onclick="closeM('customerauth')">Cancel</button><button class="btn pri" onclick="customerEnter()">Continue to My Account</button></div></div></div>
+
+<div class="modal" id="accountmodal"><div class="dialog"><h2>My Wholesale Account</h2><div id="accounthello" class="notice"></div>
+<div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="lab">Current Draft</div><div class="num" id="draftunits">0</div></div><div class="card"><div class="lab">My Orders</div><div class="num" id="myorders">0</div></div><div class="card"><div class="lab">Outstanding</div><div class="num" id="mybalance">$0</div></div></div>
+<div class="panel"><div class="ph">Saved Draft Order</div><div id="draftlines" class="notice"></div></div>
+<div class="panel"><div class="ph">Order History</div><div id="historylines" class="notice"></div></div>
+<div class="mactions"><button class="btn sec" onclick="closeM('accountmodal')">Continue Shopping</button><button class="btn pri" onclick="submitSavedDraft()">Submit Draft Order</button></div></div></div>
+
+<div class="modal" id="staffauth"><div class="dialog"><h2>Staff Portal</h2><div class="authnote">Management access is separated from the customer storefront. For this portfolio demo, use Demo Manager Access.</div>
+<div class="form"><div class="field"><label>Staff Email / Username</label><input value="manager@tradenest.demo"></div><div class="field"><label>Password</label><input type="password" value="demo1234"></div></div>
+<div class="mactions"><button class="btn sec" onclick="closeM('staffauth')">Cancel</button><button class="btn pri" onclick="enterStaff()">Demo Manager Access</button></div></div></div>
+
+<div class="shell">
+<aside>
+<div class="brand">Trade<b>Nest</b><small>WHOLESALE • CATALOGUE • INVENTORY V3.1</small></div>
+<button class="btn sec" style="width:100%;margin-bottom:12px" onclick="backToStore()">← View Customer Store</button>
+<nav>
+<button class="active" data-p="dash">▦ Dashboard</button>
+<button data-p="catalogue">▦ Customer Catalogue</button>
+<button data-p="products">▤ Products</button>
+<button data-p="inventory">▥ Inventory</button>
+<button data-p="orders">▣ Orders</button>
+<button data-p="customers">♙ Customers</button>
+<button data-p="bluepricing">🔵 Blue Card Pricing</button>
+<button data-p="payments">$ Payments</button>
+<button data-p="reports">↗ Reports</button>
+<button data-p="audit">☷ Audit Log</button>
+<button data-p="users">♙ Users & Permissions</button>
+</nav>
+<div class="demo">Interactive concept demo by <b>Lrim-Tech Solutions</b>.<br>Sample data only. POS integration simulated.</div>
+</aside>
+<main>
+<section id="dash" class="page active">
+<div class="top"><div><h1>Wholesale Dashboard</h1><div class="sub">Live stock, wholesale orders and payment position</div></div>
+<div class="actions"><button class="btn sec" onclick="openPOS()">▣ Simulate POS Sale</button><button class="btn pri" onclick="show('catalogue')">+ Customer Order</button></div></div>
+<div class="cards" id="metrics"></div><div class="panel"><div class="ph">Inventory Snapshot</div><div id="snapshot"></div></div>
+</section>
+
+<section id="catalogue" class="page">
+<div class="top"><div><h1>Wholesale Catalogue</h1><div class="sub">Customer ordering with live available stock after reservations.</div></div><button class="btn pri" onclick="openCart()">Order Cart (<span id="cartcount">0</span>)</button></div>
+<div class="filters"><input id="search" placeholder="Search products..." oninput="renderCatalogue()"><select id="catfilter" onchange="renderCatalogue()"><option>All</option><option>Clothing</option><option>Homeware</option><option>Babywear</option><option>Bags</option></select></div><div class="catalogue" id="catgrid"></div>
+</section>
+
+<section id="products" class="page"><div class="top"><div><h1>Products</h1><div class="sub">Create, edit and disable products without destroying history.</div></div><button class="btn pri" onclick="openProduct()">+ Add Product</button></div><div class="panel" id="producttbl"></div></section>
+<section id="inventory" class="page"><div class="top"><div><h1>Inventory</h1><div class="sub">On-hand, reserved and available quantities.</div></div><button class="btn pri" onclick="openReceive()">+ Receive Stock</button></div><div class="panel" id="inventorytbl"></div></section>
+<section id="orders" class="page"><div class="top"><div><h1>Orders</h1><div class="sub">Pending → Confirmed → Packing → Ready → Completed. Cancelling restores reserved stock.</div></div></div><div class="panel" id="ordertbl"></div></section>
+<section id="customers" class="page"><div class="top"><div><h1>Customers</h1><div class="sub">Wholesale customer order history and balances.</div></div></div><div class="panel" id="customertbl"></div></section>
+<section id="bluepricing" class="page"><div class="top"><div><h1>Blue Card Pricing</h1><div class="sub">Manager-controlled product pricing based on qualifying quantities.</div></div></div><div class="notice">Blue Card membership alone does not guarantee a special price. The customer must also meet the quantity tier configured for that product. Historical orders keep the price actually applied at purchase.</div><div class="panel" id="bluepricingtbl"></div></section>
+<section id="payments" class="page"><div class="top"><div><h1>Payments</h1><div class="sub">Record partial or full payments.</div></div></div><div class="panel" id="paymenttbl"></div></section>
+<section id="reports" class="page"><div class="top"><div><h1>Reports</h1><div class="sub">Sales, stock and recorded gross margin.</div></div></div><div class="cards" id="reportcards"></div></section>
+<section id="audit" class="page"><div class="top"><div><h1>Audit Log</h1><div class="sub">Stock, order, payment and product actions remain traceable.</div></div></div><div class="panel" id="audittbl"></div></section>
+<section id="users" class="page"><div class="top"><div><h1>Users & Permissions</h1><div class="sub">Example access model for a production deployment.</div></div></div>
+<div class="panel"><table><thead><tr><th>User</th><th>Role</th><th>Rights</th></tr></thead><tbody>
+<tr><td>Owner / Manager</td><td>Administrator</td><td>All modules, reports, users and audit review</td></tr>
+<tr><td>Sales 01</td><td>Sales</td><td>Catalogue, orders, customers, POS sales</td></tr>
+<tr><td>Stores 01</td><td>Inventory</td><td>Products, stock receiving and stock counts</td></tr>
+<tr><td>Accounts 01</td><td>Accounts</td><td>Payments, balances and financial reports</td></tr>
+</tbody></table><div class="notice">Production version would use authenticated accounts, a central database and enforced permissions.</div></div></section>
+</main></div>
+
+<div class="modal" id="posmodal"><div class="dialog"><h2>Simulate Handheld POS Sale</h2><div class="notice">Demo simulation: in production this stock event could come from a compatible POS API or integration.</div>
+<div class="form"><div class="field full"><label>Customer Account Number (optional)</label><div style="display:flex;gap:8px"><input id="posaccount" placeholder="e.g. TN-BC-00427"><button class="btn sec" type="button" onclick="lookupPOSCustomer()">Look Up</button></div><div id="poscustomerresult" style="margin-top:8px"></div></div><div class="field"><label>Product</label><select id="posproduct"></select></div><div class="field"><label>Quantity Sold</label><input id="posqty" type="number" min="1"></div><div class="field"><label>POS Reference</label><input id="posref"></div><div class="field"><label>Cashier</label><select id="posuser"><option>Sales 01</option><option>Owner / Manager</option></select></div></div>
+<div class="mactions"><button class="btn sec" onclick="closeM('posmodal')">Cancel</button><button class="btn pri" onclick="savePOS()">Complete POS Sale</button></div></div></div>
+
+<div class="modal" id="productmodal"><div class="dialog"><h2 id="producttitle">Add Product</h2><div class="form">
+<div class="field"><label>Product Name</label><input id="pname"></div><div class="field"><label>Category</label><select id="pcat"><option>Clothing</option><option>Homeware</option><option>Babywear</option><option>Bags</option></select></div>
+<div class="field"><label>Wholesale Price USD</label><input id="pprice" type="number" step=".01"></div><div class="field"><label>Cost USD</label><input id="pcost" type="number" step=".01"></div>
+<div class="field"><label>Minimum Order Qty</label><input id="pmin" type="number" min="1"></div><div class="field"><label>Opening Stock</label><input id="pstock" type="number" min="0"></div>
+<div class="field full"><label>Variants</label><input id="pvariants" placeholder="e.g. S, M, L / Blue, Black"></div><div class="field full"><label>Blue Card Quantity Pricing</label><div class="notice">Optional. Set the minimum qualifying quantity and Blue Card unit price. Add multiple tiers where needed.</div><div id="ptiers"></div><button type="button" class="btn sec" onclick="addTierRow()">+ Add Pricing Tier</button></div></div>
+<div class="mactions"><button class="btn sec" onclick="closeM('productmodal')">Cancel</button><button class="btn pri" onclick="saveProduct()">Save Product</button></div></div></div>
+
+<div class="modal" id="receivemodal"><div class="dialog"><h2>Receive Stock</h2><div class="form">
+<div class="field"><label>Product</label><select id="receiveproduct"></select></div><div class="field"><label>Quantity Received</label><input id="receiveqty" type="number" min="1"></div>
+<div class="field"><label>Reference</label><input id="receiveref" placeholder="e.g. GRN-204"></div><div class="field"><label>Received By</label><select id="receiveuser"><option>Stores 01</option><option>Owner / Manager</option></select></div></div>
+<div class="mactions"><button class="btn sec" onclick="closeM('receivemodal')">Cancel</button><button class="btn pri" onclick="saveReceive()">Receive Stock</button></div></div></div>
+
+<div class="modal" id="cartmodal"><div class="dialog"><h2>Wholesale Order</h2><div id="cartlines"></div><div class="form" style="margin-top:14px">
+<div class="field"><label>Customer / Business Name</label><input id="custname"></div><div class="field"><label>Phone / WhatsApp</label><input id="custphone"></div>
+<div class="field"><label>Fulfilment</label><select id="fulfil"><option>Collection</option><option>Delivery</option></select></div><div class="field"><label>Order Source</label><select id="ordersource"><option>WhatsApp / Catalogue Link</option><option>Walk-in</option><option>Phone</option></select></div></div>
+<div class="mactions"><button class="btn sec" onclick="closeM('cartmodal')">Continue Shopping</button><button class="btn pri" onclick="submitOrder()">Submit Wholesale Order</button></div></div></div>
+
+<div class="modal" id="paymodal"><div class="dialog"><h2>Record Payment</h2><div class="form">
+<div class="field"><label>Order</label><input id="payorder" readonly></div><div class="field"><label>Amount Received</label><input id="payamt" type="number" step=".01"></div>
+<div class="field"><label>Reference</label><input id="payref"></div><div class="field"><label>Recorded By</label><select id="payuser"><option>Accounts 01</option><option>Owner / Manager</option></select></div></div>
+<div class="mactions"><button class="btn sec" onclick="closeM('paymodal')">Cancel</button><button class="btn pri" onclick="savePayment()">Record Payment</button></div></div></div>
+
+
+<div class="modal" id="customeradmin"><div class="dialog"><h2>Customer Account</h2><div id="customeradminbody"></div><div class="mactions"><button class="btn sec" onclick="closeM('customeradmin')">Close</button></div></div></div>
+<script>
+const $=x=>document.getElementById(x), money=n=>'$'+Number(n||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+const icons={Clothing:'👕',Homeware:'🏠',Babywear:'🧸',Bags:'👜'};
+const badge=s=>`<span class="badge ${String(s).toLowerCase().replaceAll(' ','')}">${s}</span>`;
+let products=JSON.parse(localStorage.getItem('tn_products')||'null')||[
+{id:'TN-P001',name:'Ladies T-Shirt Pack',cat:'Clothing',price:4.5,cost:2.8,min:6,stock:72,reserved:6,variants:'S, M, L, XL',enabled:true,blueTiers:[{min:12,price:4.10},{min:24,price:3.80}]},
+{id:'TN-P002',name:'Baby Blanket Set',cat:'Babywear',price:6.5,cost:4.1,min:6,stock:48,reserved:0,variants:'Pink, Blue, Cream',enabled:true,blueTiers:[{min:12,price:5.90},{min:24,price:5.50}]},
+{id:'TN-P003',name:'3-Piece Storage Bowl Set',cat:'Homeware',price:5.25,cost:3.2,min:4,stock:36,reserved:4,variants:'Assorted colours',enabled:true,blueTiers:[]},
+{id:'TN-P004',name:'Everyday Handbag',cat:'Bags',price:9.5,cost:6,min:3,stock:27,reserved:0,variants:'Black, Brown, Tan',enabled:true,blueTiers:[{min:6,price:8.75}]},
+{id:'TN-P005',name:'Kids Tracksuit Set',cat:'Clothing',price:8.75,cost:5.4,min:6,stock:18,reserved:0,variants:'Ages 2–8',enabled:true,blueTiers:[]},
+{id:'TN-P006',name:'Kitchen Towel Pack',cat:'Homeware',price:3.2,cost:1.9,min:12,stock:14,reserved:0,variants:'Assorted',enabled:true,blueTiers:[{min:24,price:2.85}]},
+{id:'TN-P007',name:'Baby Bodysuit Pack',cat:'Babywear',price:7.8,cost:4.8,min:6,stock:9,reserved:0,variants:'0–12 months',enabled:true,blueTiers:[]},
+{id:'TN-P008',name:'School Backpack',cat:'Bags',price:7.25,cost:4.5,min:4,stock:32,reserved:0,variants:'Black, Navy, Pink',enabled:true,blueTiers:[{min:12,price:6.75}]}
+];
+let orders=JSON.parse(localStorage.getItem('tn_orders')||'null')||[
+{id:'TN-1006',customer:'Makanaka Boutique',phone:'0772 555 120',source:'WhatsApp / Catalogue Link',fulfil:'Collection',status:'Confirmed',paid:27,total:27,items:[{pid:'TN-P001',qty:6,price:4.5}],reserved:true},
+{id:'TN-1005',customer:'BrightHome Traders',phone:'0713 330 481',source:'Walk-in',fulfil:'Delivery',status:'Confirmed',paid:10,total:21,items:[{pid:'TN-P003',qty:4,price:5.25}],reserved:true}
+];
+let posSales=JSON.parse(localStorage.getItem('tn_pos')||'null')||[];
+let audit=JSON.parse(localStorage.getItem('tn_audit')||'null')||[
+{time:'29 Sep 2026 09:10',user:'Stores 01',action:'Stock received',record:'TN-P002',detail:'24 units received; stock now 48'},
+{time:'29 Sep 2026 08:45',user:'Sales 01',action:'Order confirmed',record:'TN-1006',detail:'6 units reserved for Makanaka Boutique'}
+];
+let customers=JSON.parse(localStorage.getItem('tn_customers')||'null')||[
+{id:'TN-BC-00427',name:'Makanaka Boutique',phone:'0772 555 120',email:'makanaka@example.com',blueCard:true,active:true,approvedBy:'Owner / Manager',approvedAt:'29 Sep 2026'},
+{id:'TN-C-00428',name:'BrightHome Traders',phone:'0713 330 481',email:'bright@example.com',blueCard:false,active:true,approvedBy:'',approvedAt:''}
+];
+let cart=[],editing=null,posCustomer=null;
+products.forEach(p=>{if(!Array.isArray(p.blueTiers))p.blueTiers=[]});
+function customerById(id){return customers.find(c=>c.id.toLowerCase()===String(id||'').trim().toLowerCase())}
+function customerByName(n){return customers.find(c=>c.name===n)}
+function bluePrice(p,qty,c){if(!c||!c.blueCard||!c.active||!p.blueTiers?.length)return {price:p.price,tier:null};let tiers=p.blueTiers.filter(t=>qty>=t.min).sort((a,b)=>b.min-a.min);return tiers.length?{price:+tiers[0].price,tier:tiers[0]}:{price:p.price,tier:null}}
+function linePrice(p,qty,c){return bluePrice(p,qty,c).price}
+function nextCustomerId(blue=false){let n=Math.max(428,...customers.map(c=>+(c.id.match(/(\d+)$/)||[,0])[1]));return (blue?'TN-BC-':'TN-C-')+String(n+1).padStart(5,'0')}
+
+function save(){localStorage.setItem('tn_products',JSON.stringify(products));localStorage.setItem('tn_orders',JSON.stringify(orders));localStorage.setItem('tn_pos',JSON.stringify(posSales));localStorage.setItem('tn_audit',JSON.stringify(audit));localStorage.setItem('tn_customers',JSON.stringify(customers))}
+function now(){return new Date().toLocaleString()} function available(p){return Math.max(0,p.stock-p.reserved)} function pname(id){let p=products.find(x=>x.id===id);return p?p.name:id}
+function closeM(id){$(id).classList.remove('show')}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>show(b.dataset.p));
+function show(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.p===id));render()}
+function inventoryTable(){return `<table><thead><tr><th>SKU</th><th>Product</th><th>On Hand</th><th>Reserved</th><th>Available</th><th>Minimum</th><th>Stock Health</th></tr></thead><tbody>${products.map(p=>`<tr><td>${p.id}</td><td><b>${p.name}</b></td><td>${p.stock}</td><td>${p.reserved}</td><td><b>${available(p)}</b></td><td>${p.min}</td><td>${badge(available(p)<=p.min*2?'Low':'Available')}</td></tr>`).join('')}</tbody></table>`}
+function render(){
+let low=products.filter(p=>p.enabled&&available(p)<=p.min*2).length,out=orders.filter(o=>o.status!=='Cancelled').reduce((s,o)=>s+Math.max(0,o.total-o.paid),0),sales=orders.filter(o=>o.status==='Completed').reduce((s,o)=>s+o.total,0)+posSales.reduce((s,x)=>s+x.total,0);
+$('metrics').innerHTML=[['Active Products',products.filter(p=>p.enabled).length],['Low Stock',low],['Open Orders',orders.filter(o=>!['Completed','Cancelled'].includes(o.status)).length],['Customer Balances',money(out)],['Recorded Sales',money(sales)]].map(x=>`<div class="card"><div class="lab">${x[0]}</div><div class="num">${x[1]}</div></div>`).join('');
+$('snapshot').innerHTML=inventoryTable(); $('inventorytbl').innerHTML=inventoryTable();
+$('producttbl').innerHTML=`<table><thead><tr><th>SKU</th><th>Product</th><th>Category</th><th>Wholesale</th><th>Minimum</th><th>Variants</th><th>Blue Card Tiers</th><th>Status</th><th></th></tr></thead><tbody>${products.map(p=>`<tr><td>${p.id}</td><td><b>${p.name}</b></td><td>${p.cat}</td><td>${money(p.price)}</td><td>${p.min}</td><td>${p.variants}</td><td>${p.blueTiers?.length?p.blueTiers.map(t=>`${t.min}+ @ ${money(t.price)}`).join('<br>'):'—'}</td><td>${badge(p.enabled?'Available':'Disabled')}</td><td><button class="btn sec" onclick="openProduct('${p.id}')">Edit</button> <button class="btn sec" onclick="toggleProduct('${p.id}')">${p.enabled?'Disable':'Enable'}</button></td></tr>`).join('')}</tbody></table>`;
+$('ordertbl').innerHTML=`<table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Paid</th><th>Balance</th><th>Fulfilment</th><th>Status</th><th>Action</th></tr></thead><tbody>${orders.map(o=>`<tr><td><b>${o.id}</b><br><small>${o.source}</small></td><td>${o.customer}<br><small>${o.phone}</small></td><td>${o.items.map(i=>`${pname(i.pid)} × ${i.qty}`).join('<br>')}</td><td>${money(o.total)}</td><td>${money(o.paid)}</td><td><b>${money(Math.max(0,o.total-o.paid))}</b></td><td>${o.fulfil}</td><td>${badge(o.status)}</td><td>${orderActions(o)}</td></tr>`).join('')}</tbody></table>`;
+let cs={};orders.forEach(o=>{if(!cs[o.customer])cs[o.customer]={phone:o.phone,n:0,total:0,paid:0};cs[o.customer].n++;if(o.status!=='Cancelled'){cs[o.customer].total+=o.total;cs[o.customer].paid+=o.paid}});
+$('customertbl').innerHTML=`<table><thead><tr><th>Account</th><th>Customer</th><th>Phone</th><th>Membership</th><th>Orders</th><th>Balance</th><th></th></tr></thead><tbody>${customers.map(c=>{let x=cs[c.name]||{n:0,total:0,paid:0};return `<tr><td><b>${c.id}</b></td><td>${c.name}</td><td>${c.phone}</td><td>${c.blueCard?'<span class="bluepill">🔵 Blue Card</span>':'Standard'}</td><td>${x.n}</td><td><b>${money(x.total-x.paid)}</b></td><td><button class="btn sec" onclick="manageCustomer('${c.id}')">Manage</button></td></tr>`}).join('')}</tbody></table>`;
+$('bluepricingtbl').innerHTML=`<table><thead><tr><th>Product</th><th>Normal Price</th><th>Blue Card Quantity Tiers</th><th></th></tr></thead><tbody>${products.map(p=>`<tr><td><b>${p.name}</b><br><small>${p.id}</small></td><td>${money(p.price)}</td><td>${p.blueTiers?.length?p.blueTiers.sort((a,b)=>a.min-b.min).map(t=>`<span class="bluepill">${t.min}+ units → ${money(t.price)} each</span>`).join(' '):'No Blue Card offer'}</td><td><button class="btn sec" onclick="openProduct('${p.id}')">Edit Pricing</button></td></tr>`).join('')}</tbody></table>`;
+$('paymenttbl').innerHTML=`<table><thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th><th></th></tr></thead><tbody>${orders.filter(o=>o.status!=='Cancelled').map(o=>`<tr><td>${o.id}</td><td>${o.customer}</td><td>${money(o.total)}</td><td>${money(o.paid)}</td><td><b>${money(o.total-o.paid)}</b></td><td>${badge(o.paid>=o.total?'Paid':o.paid?'Part Paid':'Pending')}</td><td>${o.paid<o.total?`<button class="btn pri" onclick="openPay('${o.id}')">Record Payment</button>`:'Settled'}</td></tr>`).join('')}</tbody></table>`;
+let completed=orders.filter(o=>o.status==='Completed'),cost=completed.reduce((s,o)=>s+o.items.reduce((z,i)=>z+(products.find(p=>p.id===i.pid)?.cost||0)*i.qty,0),0),rev=completed.reduce((s,o)=>s+o.total,0);
+$('reportcards').innerHTML=[['Completed Order Sales',money(rev)],['POS Sales',money(posSales.reduce((s,x)=>s+x.total,0))],['Recorded Gross Margin',money(rev-cost)],['Units On Hand',products.reduce((s,p)=>s+p.stock,0)],['Units Reserved',products.reduce((s,p)=>s+p.reserved,0)]].map(x=>`<div class="card"><div class="lab">${x[0]}</div><div class="num">${x[1]}</div></div>`).join('');
+$('audittbl').innerHTML=`<table><thead><tr><th>Date / Time</th><th>User</th><th>Action</th><th>Record</th><th>Detail</th></tr></thead><tbody>${audit.map(a=>`<tr><td>${a.time}</td><td><b>${a.user}</b></td><td>${a.action}</td><td>${a.record}</td><td>${a.detail}</td></tr>`).join('')}</tbody></table>`;
+renderCatalogue();$('cartcount').textContent=cart.reduce((s,x)=>s+x.qty,0)
+}
+function renderCatalogue(){let q=($('search')?.value||'').toLowerCase(),c=$('catfilter')?.value||'All';$('catgrid').innerHTML=products.filter(p=>p.enabled&&(c==='All'||p.cat===c)&&p.name.toLowerCase().includes(q)).map(p=>`<div class="product"><div class="pic">${icons[p.cat]||'📦'}</div><div class="pb"><div class="lab">${p.cat} • ${p.id}</div><h3>${p.name}</h3><div class="meta">${p.variants}<br>Minimum wholesale quantity: ${p.min}</div><div class="price">${money(p.price)} <small>each</small></div><div class="stock">${available(p)} available ${p.reserved?`• ${p.reserved} reserved`:''}</div><button class="btn pri" style="margin-top:9px" onclick="addCart('${p.id}')">Add Minimum (${p.min})</button></div></div>`).join('')}
+function addCart(id){let p=products.find(x=>x.id===id),x=cart.find(i=>i.pid===id);if(available(p)<p.min){alert('Not enough available stock for the minimum wholesale quantity.');return}if(x){if(x.qty+p.min>available(p)){alert('Not enough available stock.');return}x.qty+=p.min}else cart.push({pid:id,qty:p.min,price:p.price});render()}
+function openCart(){if(!cart.length){alert('Add products to the wholesale order first.');return}$('cartlines').innerHTML=cart.map(i=>`<div class="cartline"><span><b>${pname(i.pid)}</b> × ${i.qty}</span><b>${money(i.qty*i.price)}</b></div>`).join('')+`<div class="cartline"><strong>Total</strong><strong>${money(cart.reduce((s,i)=>s+i.qty*i.price,0))}</strong></div>`;$('cartmodal').classList.add('show')}
+function submitOrder(){let n=$('custname').value.trim(),ph=$('custphone').value.trim();if(!n||!ph){alert('Enter customer/business name and phone/WhatsApp.');return}for(let i of cart){let p=products.find(x=>x.id===i.pid);if(i.qty>available(p)){alert(`${p.name} no longer has enough available stock.`);return}}let nums=orders.map(o=>+o.id.split('-')[1]).filter(Number.isFinite),id='TN-'+(Math.max(1006,...nums)+1),total=cart.reduce((s,i)=>s+i.qty*i.price,0);orders.unshift({id,customer:n,phone:ph,source:$('ordersource').value,fulfil:$('fulfil').value,status:'Pending',paid:0,total,items:cart.map(x=>({...x})),reserved:false});audit.unshift({time:now(),user:'Customer Catalogue',action:'Order submitted',record:id,detail:`${n}; ${money(total)}; awaiting stock confirmation`});cart=[];save();closeM('cartmodal');render();show('orders')}
+function orderActions(o){if(o.status==='Pending')return `<button class="btn pri" onclick="confirmOrder('${o.id}')">Confirm & Reserve</button> <button class="btn danger" onclick="cancelOrder('${o.id}')">Cancel</button>`;if(o.status==='Confirmed')return `<button class="btn pri" onclick="setStatus('${o.id}','Packing')">Start Packing</button> <button class="btn danger" onclick="cancelOrder('${o.id}')">Cancel</button>`;if(o.status==='Packing')return `<button class="btn pri" onclick="setStatus('${o.id}','Ready')">Mark Ready</button> <button class="btn danger" onclick="cancelOrder('${o.id}')">Cancel</button>`;if(o.status==='Ready')return `<button class="btn pri" onclick="completeOrder('${o.id}')">Complete</button> <button class="btn danger" onclick="cancelOrder('${o.id}')">Cancel</button>`;return '—'}
+function confirmOrder(id){let o=orders.find(x=>x.id===id);for(let i of o.items){let p=products.find(x=>x.id===i.pid);if(i.qty>available(p)){alert(`Not enough available stock for ${p.name}.`);return}}o.items.forEach(i=>products.find(p=>p.id===i.pid).reserved+=i.qty);o.reserved=true;o.status='Confirmed';audit.unshift({time:now(),user:'Sales 01',action:'Order confirmed',record:id,detail:'Stock reserved for wholesale order'});save();render()}
+function setStatus(id,s){let o=orders.find(x=>x.id===id),old=o.status;o.status=s;audit.unshift({time:now(),user:'Sales 01',action:'Order status updated',record:id,detail:`${old} → ${s}`});save();render()}
+function completeOrder(id){let o=orders.find(x=>x.id===id);if(o.reserved){o.items.forEach(i=>{let p=products.find(x=>x.id===i.pid);p.stock-=i.qty;p.reserved-=i.qty});o.reserved=false}o.status='Completed';audit.unshift({time:now(),user:'Sales 01',action:'Order completed',record:id,detail:'Reserved stock deducted from on-hand inventory'});save();render()}
+function cancelOrder(id){let o=orders.find(x=>x.id===id);if(!confirm(`Cancel ${id}? Reserved stock will be released.`))return;if(o.reserved){o.items.forEach(i=>products.find(p=>p.id===i.pid).reserved-=i.qty);o.reserved=false}o.status='Cancelled';audit.unshift({time:now(),user:'Sales 01',action:'Order cancelled',record:id,detail:'Reserved stock released back to available inventory'});save();render()}
+function openPOS(){posCustomer=null;$('posaccount').value='';$('poscustomerresult').innerHTML='';$('posproduct').innerHTML=products.filter(p=>p.enabled&&available(p)>0).map(p=>`<option value="${p.id}">${p.id} — ${p.name} — ${available(p)} available</option>`).join('');$('posqty').value=1;$('posref').value='POS-'+Date.now().toString().slice(-5);$('posmodal').classList.add('show')}
+function lookupPOSCustomer(){let id=$('posaccount').value.trim();if(!id){posCustomer=null;$('poscustomerresult').innerHTML='<div class="notice">No account entered. Standard wholesale pricing will apply.</div>';return}let c=customerById(id);if(!c||!c.active){posCustomer=null;$('poscustomerresult').innerHTML='<div class="lookupbad">Account not found or inactive. Standard pricing only.</div>';return}posCustomer=c;$('poscustomerresult').innerHTML=`<div class="lookupok"><b>${c.name}</b> • ${c.id} ${c.blueCard?'• <span class="bluepill">🔵 Blue Card Active</span>':'• Standard account'}</div>`}
+function savePOS(){let p=products.find(x=>x.id===$('posproduct').value),q=+$('posqty').value;if(!p||!q||q<1||q>available(p)){alert('Enter a valid quantity within available stock.');return}let applied=bluePrice(p,q,posCustomer),unit=applied.price;p.stock-=q;let total=q*unit,ref=$('posref').value||'POS';posSales.unshift({id:ref,pid:p.id,qty:q,unitPrice:unit,total,time:now(),customerId:posCustomer?.id||'',customer:posCustomer?.name||'Walk-in',blueCard:!!applied.tier,pricingTier:applied.tier?`${applied.tier.min}+ @ ${money(unit)}`:'Standard'});audit.unshift({time:now(),user:$('posuser').value,action:'POS sale synced',record:ref,detail:`${p.name} × ${q}; ${posCustomer?posCustomer.name+' '+posCustomer.id:'walk-in'}; ${applied.tier?'Blue Card tier '+applied.tier.min+'+':'standard price'} ${money(unit)} each; stock now ${p.stock}`});save();closeM('posmodal');render()}
+function openReceive(){$('receiveproduct').innerHTML=products.map(p=>`<option value="${p.id}">${p.id} — ${p.name}</option>`).join('');$('receiveqty').value='';$('receiveref').value='';$('receivemodal').classList.add('show')}
+function saveReceive(){let p=products.find(x=>x.id===$('receiveproduct').value),q=+$('receiveqty').value;if(!p||!q||q<1){alert('Enter a valid quantity.');return}p.stock+=q;audit.unshift({time:now(),user:$('receiveuser').value,action:'Stock received',record:p.id,detail:`${q} units received; on-hand stock now ${p.stock}; Ref ${$('receiveref').value||'—'}`});save();closeM('receivemodal');render()}
+function openProduct(id=null){editing=id;let p=id?products.find(x=>x.id===id):null;$('producttitle').textContent=id?'Edit Product':'Add Product';$('pname').value=p?p.name:'';$('pcat').value=p?p.cat:'Clothing';$('pprice').value=p?p.price:'';$('pcost').value=p?p.cost:'';$('pmin').value=p?p.min:1;$('pstock').value=p?p.stock:0;$('pstock').disabled=!!p;$('pvariants').value=p?p.variants:'';renderTierEditor(p?.blueTiers||[]);$('productmodal').classList.add('show')}
+function renderTierEditor(tiers=[]){$('ptiers').innerHTML='';tiers.sort((a,b)=>a.min-b.min).forEach(t=>addTierRow(t.min,t.price))}
+function addTierRow(min='',price=''){$('ptiers').insertAdjacentHTML('beforeend',`<div class="tierrow"><input class="tiermin" type="number" min="1" placeholder="Minimum qty" value="${min}"><input class="tierprice" type="number" min="0.01" step=".01" placeholder="Blue Card unit price" value="${price}"><button type="button" class="btn danger" onclick="this.parentElement.remove()">Remove</button></div>`) }
+function collectTiers(){let mins=[...document.querySelectorAll('.tiermin')],prices=[...document.querySelectorAll('.tierprice')],out=[];for(let i=0;i<mins.length;i++){let m=+mins[i].value,p=+prices[i].value;if(m>0&&p>0)out.push({min:m,price:p})}return out.sort((a,b)=>a.min-b.min)}
+function saveProduct(){let n=$('pname').value.trim(),price=+$('pprice').value,cost=+$('pcost').value,min=+$('pmin').value;if(!n||price<=0||min<1){alert('Enter product name, wholesale price and minimum quantity.');return}if(editing){let p=products.find(x=>x.id===editing);p.name=n;p.cat=$('pcat').value;p.price=price;p.cost=cost;p.min=min;p.variants=$('pvariants').value;p.blueTiers=collectTiers();audit.unshift({time:now(),user:'Owner / Manager',action:'Product edited',record:p.id,detail:n})}else{let nums=products.map(p=>+p.id.replace('TN-P','')).filter(Number.isFinite),id='TN-P'+String(Math.max(0,...nums)+1).padStart(3,'0');products.push({id,name:n,cat:$('pcat').value,price,cost,min,stock:+$('pstock').value||0,reserved:0,variants:$('pvariants').value,enabled:true,blueTiers:collectTiers()});audit.unshift({time:now(),user:'Owner / Manager',action:'Product added',record:id,detail:n})}save();closeM('productmodal');render()}
+function toggleProduct(id){let p=products.find(x=>x.id===id);p.enabled=!p.enabled;audit.unshift({time:now(),user:'Owner / Manager',action:p.enabled?'Product enabled':'Product disabled',record:id,detail:p.name});save();render()}
+function manageCustomer(id){let c=customerById(id),os=orders.filter(o=>o.customer===c.name),bal=os.filter(o=>o.status!=='Cancelled').reduce((s,o)=>s+Math.max(0,o.total-o.paid),0);$('customeradminbody').innerHTML=`<div class="notice"><b>${c.name}</b><br>Account: <b>${c.id}</b> • ${c.phone}<br>${c.email||''}</div><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="lab">Membership</div><div class="num" style="font-size:18px">${c.blueCard?'🔵 Blue Card':'Standard'}</div></div><div class="card"><div class="lab">Orders</div><div class="num">${os.length}</div></div><div class="card"><div class="lab">Balance</div><div class="num">${money(bal)}</div></div></div><div class="notice">${c.blueCard?`Approved by ${c.approvedBy||'Manager'} • ${c.approvedAt||'—'}`:'Only authorized management can approve Blue Card status.'}</div><button class="btn ${c.blueCard?'danger':'pri'}" onclick="toggleBlueCard('${c.id}')">${c.blueCard?'Remove Blue Card Membership':'Approve Blue Card Membership'}</button>`;$('customeradmin').classList.add('show')}
+function toggleBlueCard(id){let c=customerById(id),was=c.blueCard;c.blueCard=!c.blueCard;if(c.blueCard){c.approvedBy='Owner / Manager';c.approvedAt=now();if(!c.id.startsWith('TN-BC-'))c.id='TN-BC-'+c.id.match(/(\d+)$/)[1]}else{c.approvedBy='';c.approvedAt='';if(c.id.startsWith('TN-BC-'))c.id='TN-C-'+c.id.match(/(\d+)$/)[1]}audit.unshift({time:now(),user:'Owner / Manager',action:c.blueCard?'Blue Card approved':'Blue Card removed',record:c.id,detail:`${c.name}; membership changed from ${was?'Blue Card':'Standard'} to ${c.blueCard?'Blue Card':'Standard'}`});save();closeM('customeradmin');render()}
+function openPay(id){let o=orders.find(x=>x.id===id);$('payorder').value=id;$('payamt').value=(o.total-o.paid).toFixed(2);$('payref').value='';$('paymodal').classList.add('show')}
+function savePayment(){let o=orders.find(x=>x.id===$('payorder').value),a=+$('payamt').value;if(!o||!a||a<=0||a>o.total-o.paid){alert('Enter a valid amount within the outstanding balance.');return}o.paid+=a;audit.unshift({time:now(),user:$('payuser').value,action:'Payment recorded',record:o.id,detail:`${money(a)} received; Ref ${$('payref').value||'—'}`});save();closeM('paymodal');render()}
+
+let storeCart=JSON.parse(localStorage.getItem('tn_store_draft')||'[]');
+let customer=JSON.parse(localStorage.getItem('tn_customer')||'null');
+function saveDraft(){localStorage.setItem('tn_store_draft',JSON.stringify(storeCart));renderStore()}
+function renderStore(){
+ if(!$('storegrid'))return;
+ let f=$('storefilter')?$('storefilter').value:'All';
+ $('storegrid').innerHTML=products.filter(p=>p.enabled&&(f==='All'||p.cat===f)).map(p=>`<div class="sp"><div class="sppic">${icons[p.cat]||'📦'}</div><div class="spbody"><div class="lab">${p.cat} • ${p.id}</div><h3>${p.name}</h3><div class="smeta">${p.variants}<br>Minimum order: <b>${p.min}</b> • ${available(p)} available</div><div class="sprice">${customer?.blueCard&&p.blueTiers?.length?`<span class="oldprice">${money(p.price)}</span> <span class="blueprice">Blue Card from ${money(Math.min(...p.blueTiers.map(t=>t.price)))}</span>`:`${money(p.price)}`} <small>each</small></div>${customer?.blueCard&&p.blueTiers?.length?`<div class="tierhint">🔵 ${p.blueTiers.sort((a,b)=>a.min-b.min).map(t=>`${t.min}+ = ${money(t.price)}`).join(' • ')}</div>`:''}<button class="add" onclick="storeAdd('${p.id}')">Add ${p.min} to Draft</button></div></div>`).join('');
+ $('storecartcount').textContent=storeCart.reduce((a,b)=>a+b.qty,0);
+}
+function storeFilter(c){$('storefilter').value=c;renderStore();$('shop').scrollIntoView({behavior:'smooth'})}
+function storeAdd(id){let p=products.find(x=>x.id===id),x=storeCart.find(i=>i.pid===id);let next=(x?x.qty:0)+p.min;if(next>available(p)){alert('The requested quantity is currently above available stock.');return}if(x){x.qty=next;x.price=linePrice(p,x.qty,customer)}else storeCart.push({pid:id,qty:p.min,price:linePrice(p,p.min,customer)});saveDraft();alert(`${p.name} added to your saved draft order.`)}
+function openStoreCart(){if(!customer){openCustomer(true);return}renderAccount();$('accountmodal').classList.add('show')}
+function openCustomer(create=false){$('authtitle').textContent=create?'Create Wholesale Customer Account':'Customer Login';if(customer){$('authname').value=customer.name||'';$('authphone').value=customer.phone||'';$('authemail').value=customer.email||''}$('customerauth').classList.add('show')}
+function customerEnter(){let name=$('authname').value.trim(),phone=$('authphone').value.trim();if(!name||!phone){alert('Enter your business/customer name and phone/WhatsApp.');return}let existing=customers.find(c=>c.phone===phone||($('authemail').value.trim()&&c.email===$('authemail').value.trim()));if(existing){customer=existing}else{customer={id:nextCustomerId(false),name,phone,email:$('authemail').value.trim(),blueCard:false,active:true,approvedBy:'',approvedAt:''};customers.push(customer);audit.unshift({time:now(),user:'Customer Account',action:'Customer account created',record:customer.id,detail:customer.name});save()}localStorage.setItem('tn_customer',JSON.stringify(customer));closeM('customerauth');renderAccount();$('accountmodal').classList.add('show')}
+function renderAccount(){if(!customer)return;customer=customerById(customer.id)||customer;storeCart.forEach(i=>{let p=products.find(x=>x.id===i.pid);if(p)i.price=linePrice(p,i.qty,customer)});localStorage.setItem('tn_customer',JSON.stringify(customer));localStorage.setItem('tn_store_draft',JSON.stringify(storeCart));$('accounthello').innerHTML=`Signed in as <b>${customer.name}</b> • Account <b>${customer.id||'—'}</b> • ${customer.phone} ${customer.blueCard?'• <span class="bluepill">🔵 Blue Card Member</span>':''}. Your unfinished order is saved below.`;$('draftunits').textContent=storeCart.reduce((s,i)=>s+i.qty,0);let mine=orders.filter(o=>o.customer===customer.name);$('myorders').textContent=mine.length;$('mybalance').textContent=money(mine.filter(o=>o.status!=='Cancelled').reduce((s,o)=>s+Math.max(0,o.total-o.paid),0));$('draftlines').innerHTML=storeCart.length?storeCart.map(i=>`<div class="cartline"><span><b>${pname(i.pid)}</b><br><small>${money(i.price)} each${customer?.blueCard?' • Blue Card pricing checked automatically':''}</small><br><span class="qtyctrl"><button class="qtybtn" onclick="adjustDraft('${i.pid}',-1)" aria-label="Reduce quantity">−</button><span class="qtyval">${i.qty}</span><button class="qtybtn" onclick="adjustDraft('${i.pid}',1)" aria-label="Increase quantity">+</button></span></span><span><b>${money(i.qty*i.price)}</b><br><button class="link" onclick="removeDraft('${i.pid}')">Remove</button></span></div>`).join('')+`<div class="cartline"><b>Draft total</b><b>${money(storeCart.reduce((s,i)=>s+i.qty*i.price,0))}</b></div>`:'No products in your saved draft yet.';$('historylines').innerHTML=mine.length?mine.map(o=>`<div class="cartline"><span><b>${o.id}</b> • ${o.status}<br><small>${o.items.map(i=>pname(i.pid)+' × '+i.qty).join(', ')}</small></span><span><b>${money(o.total)}</b><br><button class="link" onclick="reorder('${o.id}')">Reorder</button></span></div>`).join(''):'No submitted orders yet.'}
+function adjustDraft(id,change){
+ let i=storeCart.find(x=>x.pid===id),p=products.find(x=>x.id===id);
+ if(!i||!p)return;
+ let next=i.qty+change;
+ if(next<p.min){alert(`Minimum order quantity for ${p.name} is ${p.min}. Use Remove if you want to remove the item completely.`);return}
+ if(next>available(p)){alert(`Only ${available(p)} units of ${p.name} are currently available.`);return}
+ i.qty=next;i.price=linePrice(p,i.qty,customer);
+ localStorage.setItem('tn_store_draft',JSON.stringify(storeCart));
+ renderStore();renderAccount();
+}
+function removeDraft(id){storeCart=storeCart.filter(i=>i.pid!==id);saveDraft();renderAccount()}
+function submitSavedDraft(){if(!customer){openCustomer();return}if(!storeCart.length){alert('Your draft order is empty.');return}for(let i of storeCart){let p=products.find(x=>x.id===i.pid);if(i.qty>available(p)){alert(`${p.name} availability changed. Please reduce the quantity before submitting.`);return}}let priced=storeCart.map(i=>{let p=products.find(x=>x.id===i.pid),bp=bluePrice(p,i.qty,customer);return {...i,price:bp.price,pricing:bp.tier?`Blue Card ${bp.tier.min}+`:'Standard'}}),nums=orders.map(o=>+o.id.split('-')[1]).filter(Number.isFinite),id='TN-'+(Math.max(1006,...nums)+1),total=priced.reduce((s,i)=>s+i.qty*i.price,0);orders.unshift({id,customer:customer.name,customerId:customer.id,phone:customer.phone,source:'Customer Account / Storefront',fulfil:'Collection',status:'Pending',paid:0,total,items:priced,reserved:false});audit.unshift({time:now(),user:'Customer Account',action:'Order submitted',record:id,detail:`${customer.name}; ${money(total)}; awaiting staff confirmation`});storeCart=[];saveDraft();save();render();renderAccount();alert(`Order ${id} submitted successfully. Stock will be reserved when staff confirm the order.`)}
+function reorder(id){let o=orders.find(x=>x.id===id);if(!o)return;storeCart=o.items.map(i=>{let p=products.find(p=>p.id===i.pid);return {pid:i.pid,qty:i.qty,price:p?linePrice(p,i.qty,customer):i.price}});saveDraft();renderAccount();alert('Previous order copied into your draft. Review current prices and availability before submitting.')}
+function openStaff(){$('staffauth').classList.add('show')}
+function enterStaff(){closeM('staffauth');document.body.classList.remove('storemode');document.body.classList.add('staffmode');show('dash')}
+function backToStore(){document.body.classList.remove('staffmode');document.body.classList.add('storemode');window.scrollTo(0,0);renderStore()}
+document.body.classList.add('storemode');
+renderStore();
+
+render();
+</script>
+</body></html>
