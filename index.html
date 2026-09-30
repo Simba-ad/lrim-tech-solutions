@@ -276,6 +276,7 @@ nav a:hover{
   display:flex;
   align-items:center;
   justify-content:center;
+  padding:18px 0;
 }
 
 .hero-visual-card{
@@ -305,9 +306,9 @@ nav a:hover{
   backdrop-filter:blur(8px);
 }
 
-.hero-float.one{top:42px;left:-18px}
-.hero-float.two{top:112px;right:-10px;background:rgba(63,45,185,.9)}
-.hero-float.three{bottom:38px;right:20px;background:rgba(0,115,91,.9)}
+.hero-float.one{top:34px;left:18px}
+.hero-float.two{top:96px;right:18px;background:rgba(63,45,185,.9)}
+.hero-float.three{bottom:38px;right:18px;background:rgba(0,115,91,.9)}
 
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr}
@@ -321,12 +322,57 @@ nav a:hover{
   .hero-buttons{flex-direction:column}
   .hero-buttons .btn{width:100%;text-align:center}
   .hero-benefits{grid-template-columns:1fr 1fr}
-  .hero-visual{min-height:330px;margin-top:6px}
+  .hero-visual{
+    min-height:0;
+    margin-top:18px;
+    padding-top:108px;
+    display:block;
+  }
   .hero-visual-card{min-height:320px;border-radius:20px}
-  .hero-float{font-size:11px;padding:9px 11px}
-  .hero-float.one{top:20px;left:8px}
-  .hero-float.two{top:72px;right:8px}
-  .hero-float.three{bottom:18px;right:8px}
+  .hero-float{
+    font-size:11px;
+    padding:9px 11px;
+    top:auto;
+    bottom:auto;
+    right:auto;
+    left:0;
+  }
+  .hero-float.one{top:0;left:0}
+  .hero-float.two{top:0;left:50%;right:auto;transform:translateX(-50%);background:rgba(63,45,185,.9)}
+  .hero-float.three{top:52px;left:0;right:auto;background:rgba(0,115,91,.9)}
+}
+
+/* Restore Lrim-Tech primary button styling */
+.btn,
+.hero .btn{
+  background:#155eef;
+  color:#fff;
+  border:1px solid #155eef;
+}
+.btn:hover,
+.hero .btn:hover{
+  background:#0b4fce;
+  color:#fff;
+  border-color:#0b4fce;
+}
+.btn-secondary{
+  background:#fff;
+  color:#155eef;
+  border:1px solid #b8ccf8;
+}
+.btn-secondary:hover{
+  background:#f7f9ff;
+  color:#0b4fce;
+}
+.hero .btn-secondary{
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.42);
+}
+.hero .btn-secondary:hover{
+  background:rgba(255,255,255,.16);
+  color:#fff;
+  border-color:rgba(255,255,255,.62);
 }
 
 /* =========================
