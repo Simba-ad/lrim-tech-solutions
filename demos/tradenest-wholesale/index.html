@@ -39,11 +39,25 @@ body.staffmode #storefront{display:none}
 .storelogo{font-size:25px;font-weight:900;color:#10233f}.storelogo span{color:#1769e0}
 .storelinks{display:flex;gap:20px;margin-left:auto;align-items:center}.storelinks a{font-size:13px;font-weight:700;color:#344054;text-decoration:none}
 .loginbtn{border:1px solid #d6deea;background:#fff;border-radius:9px;padding:9px 12px;font-weight:800;color:#243b5a}.staffbtn{background:#10233f;color:#fff;border:0}
-.hero{background:linear-gradient(120deg,#10233f 0%,#164f93 62%,#1769e0 100%);color:#fff}
-.heroin{min-height:390px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px;padding-top:48px;padding-bottom:48px}
-.kicker{font-size:11px;font-weight:900;letter-spacing:1.6px;color:#9fc5ff}.hero h1{font-size:47px;line-height:1.05;margin:10px 0 15px;max-width:650px}.hero p{max-width:600px;color:#d9e7fb;line-height:1.7}
-.herobuttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.shopbtn{border:0;border-radius:9px;padding:12px 17px;font-weight:900;background:#fff;color:#12325d}.outlinebtn{background:transparent;color:#fff;border:1px solid #86afe5}
-.herocard{background:#ffffff12;border:1px solid #ffffff26;border-radius:20px;padding:24px;box-shadow:0 25px 50px #07152b45}.herocard strong{font-size:20px}.heroitems{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.heroitem{background:#fff;color:#172033;border-radius:12px;padding:15px}.heroitem b{display:block;font-size:13px}.heroitem small{color:#667085}
+.hero{position:relative;overflow:hidden;background:
+radial-gradient(circle at 80% 20%,#1778ff55 0,transparent 34%),
+linear-gradient(120deg,#061c46 0%,#073b87 52%,#0b67df 100%);color:#fff}
+.hero:after{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:54px 54px;pointer-events:none}
+.heroin{position:relative;z-index:1;min-height:470px;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:34px;padding-top:52px;padding-bottom:52px}
+.kicker{display:inline-block;font-size:11px;font-weight:900;letter-spacing:1.5px;color:#bcd8ff;border:1px solid #ffffff44;border-radius:30px;padding:7px 11px}
+.hero h1{font-size:50px;line-height:1.03;margin:14px 0 16px;max-width:650px}
+.hero h1 span{color:#ffad32}
+.hero p{max-width:610px;color:#dceaff;line-height:1.7;font-size:16px}
+.herobuttons{display:flex;gap:11px;flex-wrap:wrap;margin-top:24px}
+.shopbtn{border:1px solid #fff;border-radius:10px;padding:13px 18px;font-weight:900;background:#fff;color:#12325d;cursor:pointer}
+.outlinebtn{background:transparent;color:#fff;border:1px solid #9fc7ff}
+.hero-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:25px;max-width:620px}
+.hero-benefit{border-top:1px solid #ffffff35;padding-top:11px;font-size:12px;color:#dceaff}
+.hero-benefit b{display:block;color:#fff;font-size:13px;margin-bottom:3px}
+.herovisual{position:relative;min-height:370px;border:1px solid #ffffff35;border-radius:24px;background:url("tradenest-hero-visual.jpg") center/cover no-repeat;box-shadow:0 28px 60px #02132d70}
+.herobadge{position:absolute;background:#fff;color:#12325d;border-radius:13px;padding:11px 14px;font-size:12px;font-weight:900;box-shadow:0 12px 30px #061b3f55}
+.herobadge.blue{top:18px;right:18px;background:#155eef;color:#fff}
+.herobadge.orange{bottom:18px;left:18px;background:#ff9d1b;color:#172033}
 .storesection{padding:54px 0}.sectiontop{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}.sectiontop h2{font-size:29px;margin:0}.sectiontop p{color:#667085;margin:5px 0 0}
 .catcards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.catcard{border:1px solid #e4eaf1;border-radius:15px;padding:22px;background:#f8fafd;cursor:pointer}.catcard .emoji{font-size:35px}.catcard h3{margin:13px 0 4px}.catcard p{font-size:12px;color:#667085;margin:0}
 .storeproducts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.sp{border:1px solid #e3e9f1;border-radius:15px;overflow:hidden;background:#fff}.sppic{height:145px;display:flex;align-items:center;justify-content:center;font-size:58px;background:linear-gradient(135deg,#edf4ff,#fafcff)}.spbody{padding:15px}.spbody h3{font-size:15px;margin:5px 0}.sprice{font-size:20px;font-weight:900;margin:9px 0}.smeta{font-size:11px;color:#667085;line-height:1.55}.add{width:100%;margin-top:10px;background:#1769e0;color:#fff;border:0;border-radius:8px;padding:10px;font-weight:800}
@@ -52,8 +66,8 @@ body.staffmode #storefront{display:none}
 .storecart{position:fixed;right:18px;bottom:18px;z-index:16;background:#1769e0;color:#fff;border:0;border-radius:50px;padding:13px 18px;font-weight:900;box-shadow:0 10px 25px #1769e055}
 .authnote{background:#f5f8fc;border:1px solid #e0e7ef;padding:10px;border-radius:8px;font-size:11px;color:#667085;margin-bottom:12px}
 .draftbox{background:#edf5ff;border:1px solid #cfe1fb;border-radius:10px;padding:12px;margin-top:12px;font-size:12px}
-@media(max-width:900px){.heroin{grid-template-columns:1fr}.herocard{display:none}.hero h1{font-size:38px}.catcards,.storeproducts{grid-template-columns:repeat(2,1fr)}.accountgrid{grid-template-columns:1fr}.storelinks a{display:none}}
-@media(max-width:580px){.storewrap{padding:0 15px}.storeheadin{gap:7px}.storelogo{font-size:20px}.loginbtn{font-size:11px;padding:8px}.hero h1{font-size:33px}.catcards,.storeproducts{grid-template-columns:1fr}.benefits{grid-template-columns:1fr}.footin{display:block}.footlinks{margin-top:15px}}
+@media(max-width:900px){.heroin{grid-template-columns:1fr;padding-top:38px;padding-bottom:38px}.hero h1{font-size:40px}.herovisual{min-height:340px}.catcards,.storeproducts{grid-template-columns:repeat(2,1fr)}.accountgrid{grid-template-columns:1fr}.storelinks a{display:none}}
+@media(max-width:580px){.storewrap{padding:0 15px}.storeheadin{gap:7px}.storelogo{font-size:20px}.loginbtn{font-size:11px;padding:8px}.hero h1{font-size:34px}.hero-benefits{grid-template-columns:1fr}.herovisual{min-height:285px;border-radius:18px}.herobadge{font-size:10px;padding:8px 10px}.catcards,.storeproducts{grid-template-columns:1fr}.benefits{grid-template-columns:1fr}.footin{display:block}.footlinks{margin-top:15px}}
 
 .bluepill{display:inline-block;background:#e8f2ff;color:#0756b5;border:1px solid #b8d7ff;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:900}.blueprice{color:#0756b5;font-weight:900}.oldprice{text-decoration:line-through;color:#98a2b3;font-size:12px}.tierhint{font-size:10px;color:#0756b5;margin-top:5px}.lookupok{background:#eaf8f2;border:1px solid #b9e7d4;color:#146b4d;padding:10px;border-radius:8px;font-size:12px}.lookupbad{background:#fff4f4;border:1px solid #f1c7c7;color:#9d3030;padding:10px;border-radius:8px;font-size:12px}.tierrow{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin:7px 0}.tierrow input{width:100%}
 </style>
@@ -83,16 +97,26 @@ body.staffmode #storefront{display:none}
 <button class="loginbtn" onclick="openCustomer()">Customer Login</button>
 <button class="loginbtn staffbtn" onclick="openStaff()">Staff Login</button>
 </div></header>
-<section class="hero"><div class="storewrap heroin"><div>
-<div class="kicker">WHOLESALE MADE SIMPLE</div><h1>Stock your business. Build your order at your pace.</h1>
-<p>Browse wholesale clothing, homeware, babywear and bags. Save large orders over several days, return when you're ready, and keep your purchasing history in one account.</p>
-<div class="herobuttons"><button class="shopbtn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Browse Wholesale Stock</button><button class="shopbtn outlinebtn" onclick="openCustomer(true)">Create Customer Account</button></div>
-</div><div class="herocard"><strong>Built for repeat wholesale buyers</strong><div class="heroitems">
-<div class="heroitem">📝 <b>Save Draft Orders</b><small>Build large orders over several days.</small></div>
-<div class="heroitem">↻ <b>Quick Reorder</b><small>Repeat previous purchases faster.</small></div>
-<div class="heroitem">📦 <b>Live Availability</b><small>See current available quantities.</small></div>
-<div class="heroitem">✓ <b>Track Orders</b><small>Follow confirmation through fulfilment.</small></div>
-</div></div></div></section>
+<section class="hero"><div class="storewrap heroin">
+<div>
+<div class="kicker">WHOLESALE MADE SIMPLE</div>
+<h1>Wholesale ordering built for <span>growing businesses.</span></h1>
+<p>Browse wholesale stock, build large orders at your pace and manage repeat purchasing in one account. Eligible Blue Card customers automatically receive quantity-based member pricing.</p>
+<div class="herobuttons">
+<button class="shopbtn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Browse Wholesale Stock</button>
+<button class="shopbtn outlinebtn" onclick="openCustomer(true)">Create Customer Account</button>
+</div>
+<div class="hero-benefits">
+<div class="hero-benefit"><b>Blue Card Pricing</b>Quantity-based member offers.</div>
+<div class="hero-benefit"><b>Saved Draft Orders</b>Build large orders over time.</div>
+<div class="hero-benefit"><b>Live Availability</b>See stock available to order.</div>
+</div>
+</div>
+<div class="herovisual" role="img" aria-label="TradeNest wholesale catalogue shown on laptop and mobile devices">
+<div class="herobadge blue">BLUE CARD MEMBER PRICING</div>
+<div class="herobadge orange">WHOLESALE CATALOGUE</div>
+</div>
+</div></section>
 
 <section class="storesection" id="categories"><div class="storewrap"><div class="sectiontop"><div><h2>Shop by category</h2><p>Wholesale essentials for retailers and resellers.</p></div></div>
 <div class="catcards">
