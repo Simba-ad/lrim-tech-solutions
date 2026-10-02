@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BrightPath Academy | School Website & Management System</title>
+<meta name="description" content="Lrim-Tech Solutions Demo #15 — a connected school website and management system with admissions, parent portal, teacher tools, finance and administration.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BrightPath Academy | School Website & Management System">
+<meta property="og:description" content="Demo #15 by Lrim-Tech Solutions — admissions, parent portal, report cards, teacher tools, finance and school administration in one connected experience.">
+<meta property="og:url" content="https://lrimtechsolutions.com/demos/brightpath-academy/">
+<meta property="og:image" content="https://lrimtechsolutions.com/demos/brightpath-academy/brightpath-academy-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BrightPath Academy | School Website & Management System">
+<meta name="twitter:description" content="Lrim-Tech Solutions Demo #15 — a connected digital experience for school and family.">
+<meta name="twitter:image" content="https://lrimtechsolutions.com/demos/brightpath-academy/brightpath-academy-preview.jpg">
+<style>
+:root{
+  --navy:#0a2852;--blue:#155eef;--sky:#eaf3ff;--gold:#f2a900;--ink:#122033;
+  --muted:#667085;--line:#e4e7ec;--bg:#f6f8fb;--white:#fff;--green:#14804a;--red:#c9362b;
+  --shadow:0 14px 38px rgba(16,24,40,.10)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:auto;padding:0 22px}
+.top{background:var(--navy);color:#dbe8ff;font-size:13px}.top .wrap{display:flex;justify-content:space-between;gap:18px;padding-top:8px;padding-bottom:8px}
+header{background:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line)}
+.nav{height:74px;display:flex;align-items:center;gap:22px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy);margin-right:auto}
+.crest{width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,var(--blue),var(--navy));color:#fff;display:grid;place-items:center;font-size:22px}
+.navlinks{display:flex;gap:20px;font-size:14px;font-weight:700;color:#344054}.navlinks a:hover{color:var(--blue)}
+.btn{border:0;border-radius:10px;padding:11px 16px;font-weight:800;background:var(--blue);color:#fff}.btn.alt{background:#fff;color:var(--navy);border:1px solid #cfd8e6}.btn.gold{background:var(--gold);color:#13233b}.btn.small{padding:8px 11px;font-size:13px}.btn.danger{background:#fff0ef;color:var(--red);border:1px solid #f4c7c3}
+.hero{background:linear-gradient(125deg,#08264d 0%,#104b94 58%,#1672cf 100%);color:#fff;overflow:hidden}
+.hero .wrap{min-height:520px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:44px;padding-top:58px;padding-bottom:58px}
+.kicker{font-size:12px;letter-spacing:2px;font-weight:900;color:#b9d8ff}.hero h1{font-size:52px;line-height:1.05;margin:12px 0 18px;max-width:680px}.hero p{font-size:18px;color:#e5efff;max-width:650px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.hero .btn.alt{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.4);color:#fff}
+.hero-card{background:#fff;color:var(--ink);border-radius:22px;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,.22)}
+.hero-card h3{margin:0 0 4px}.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.mini{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fbfcfe}.mini b{display:block;color:var(--blue);font-size:22px}.mini span{font-size:12px;color:var(--muted)}
+.section{padding:72px 0}.section.white{background:#fff}.section-title{text-align:center;max-width:760px;margin:0 auto 38px}.section-title h2{font-size:36px;margin:0 0 10px;color:var(--navy)}.section-title p{color:var(--muted);margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 4px 18px rgba(16,24,40,.04)}.card h3{margin:10px 0 7px;color:var(--navy)}.card p{color:var(--muted);font-size:14px}.icon{width:42px;height:42px;border-radius:12px;background:var(--sky);display:grid;place-items:center;font-size:20px}
+.band{background:#eef5ff;border-top:1px solid #d9e8ff;border-bottom:1px solid #d9e8ff}.band .wrap{padding-top:38px;padding-bottom:38px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center}.stat b{font-size:28px;color:var(--navy);display:block}.stat span{font-size:13px;color:var(--muted)}
+.portal{display:none;min-height:100vh;background:#f3f6fa}.portal.active{display:block}.public.hidden{display:none}
+.portal-top{height:66px;background:var(--navy);color:#fff;display:flex;align-items:center;padding:0 22px;gap:16px;position:sticky;top:0;z-index:25}.portal-top .title{font-weight:800;margin-right:auto}.portal-shell{display:grid;grid-template-columns:235px 1fr;min-height:calc(100vh - 66px)}
+.side{background:#fff;border-right:1px solid var(--line);padding:20px 14px}.side button{width:100%;text-align:left;border:0;background:transparent;padding:11px 12px;border-radius:9px;margin:2px 0;color:#344054;font-weight:700}.side button:hover,.side button.on{background:#eaf3ff;color:var(--blue)}
+.main{padding:28px}.dash-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}.dash-head h2{margin:0;color:var(--navy)}.dash-head p{margin:4px 0 0;color:var(--muted)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}.metric{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}.metric span{font-size:12px;color:var(--muted)}.metric b{display:block;font-size:26px;margin-top:6px;color:var(--navy)}
+.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:20px;margin-bottom:18px;overflow:auto}.panel h3{margin:0 0 14px;color:var(--navy)}
+table{width:100%;border-collapse:collapse;min-width:620px}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);font-size:13px}th{color:#475467;background:#f8fafc}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#e8f7ef;color:var(--green);font-size:11px;font-weight:800}.badge.warn{background:#fff5d8;color:#8a5a00}.badge.blue{background:#eaf3ff;color:var(--blue)}.badge.red{background:#fff0ef;color:var(--red)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.child-card{display:flex;gap:14px;align-items:center}.avatar{width:54px;height:54px;border-radius:50%;background:var(--sky);display:grid;place-items:center;font-weight:900;color:var(--blue)}
+.report{border:1px solid var(--line);border-radius:14px;padding:18px}.report-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.report h3{margin:0}.notice{padding:12px 14px;border-left:4px solid var(--blue);background:#f5f9ff;border-radius:8px;margin:9px 0}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;padding:10px;border:1px solid #cfd5df;border-radius:9px;background:#fff}.field.full{grid-column:1/-1}
+.modal{display:none;position:fixed;inset:0;background:rgba(4,18,38,.62);z-index:50;padding:20px;align-items:center;justify-content:center}.modal.show{display:flex}.modal-box{width:min(520px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:18px;padding:24px;box-shadow:var(--shadow)}.modal-box h2{margin-top:0;color:var(--navy)}.login-grid{display:grid;gap:10px}.login-choice{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:left;background:#fff}.login-choice:hover{border-color:var(--blue);background:#f6f9ff}
+footer{background:#071c39;color:#c7d5e8;padding:38px 0}.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.foot b{color:#fff}
+.demo-note{font-size:12px;color:#667085;background:#fff8df;border:1px solid #f4df9c;padding:10px 12px;border-radius:9px}
+@media(max-width:900px){
+ .navlinks{display:none}.hero .wrap{grid-template-columns:1fr}.hero h1{font-size:42px}.cards{grid-template-columns:1fr 1fr}.band .wrap{grid-template-columns:1fr 1fr}
+ .portal-shell{grid-template-columns:1fr}.side{display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--line);padding:8px}.side button{min-width:max-content;width:auto}.metrics{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ .top{display:none}.nav{height:64px}.brand span:last-child{font-size:14px}.hero .wrap{min-height:auto;padding-top:42px}.hero h1{font-size:36px}.cards{grid-template-columns:1fr}.band .wrap{grid-template-columns:1fr 1fr}.main{padding:18px 12px}.metrics{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
+}
+</style>
+
+<style>
+/* BrightPath V3 presentation polish */
+:root{--navy:#082b5c;--blue:#1769d2;--sky:#eaf4ff;--gold:#f5b82e;--ink:#10233f}
+body{background:#f5f8fc}
+header{box-shadow:0 3px 18px rgba(8,43,92,.06)}
+.crest{background:linear-gradient(145deg,#1d78df,#082b5c);box-shadow:0 7px 16px rgba(23,105,210,.22)}
+.hero{position:relative;background:
+ radial-gradient(circle at 83% 22%,rgba(65,161,255,.32),transparent 28%),
+ radial-gradient(circle at 74% 80%,rgba(245,184,46,.13),transparent 25%),
+ linear-gradient(125deg,#061d3e 0%,#0b4382 54%,#1769d2 100%)}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to left,#000,transparent 72%)}
+.hero .wrap{position:relative;z-index:1;min-height:570px}
+.hero h1{font-size:56px;letter-spacing:-1.8px}
+.hero-card{position:relative;border:1px solid rgba(255,255,255,.7);box-shadow:0 30px 70px rgba(0,0,0,.25)}
+.hero-card:before{content:"BRIGHTPATH DIGITAL CAMPUS";position:absolute;right:18px;top:-13px;background:var(--gold);color:#17253a;font-size:10px;font-weight:900;letter-spacing:1px;padding:7px 10px;border-radius:999px}
+.mini{transition:.2s}.mini:hover{transform:translateY(-2px);border-color:#bdd8f7}
+.section-title h2{letter-spacing:-.6px}.card{transition:.2s}.card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(16,24,40,.08)}
+.icon{font-weight:900;color:var(--blue)}
+.portal-top{background:linear-gradient(90deg,#061d3e,#0b4382)}
+.side button{transition:.15s}.metric{box-shadow:0 4px 16px rgba(16,24,40,.035)}
+.metric b{letter-spacing:-.5px}.panel{box-shadow:0 5px 20px rgba(16,24,40,.035)}
+.portal-label{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;font-weight:900;color:#7f8fa4;margin:16px 12px 7px}
+.school-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.school-pill{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.09);padding:12px 14px;border-radius:12px;color:#eaf3ff;font-size:13px}
+.school-pill b{display:block;color:#fff;margin-bottom:2px}
+@media(max-width:900px){.hero h1{font-size:44px}.school-strip{grid-template-columns:1fr}}
+@media(max-width:600px){.hero h1{font-size:38px;letter-spacing:-1px}.hero .wrap{padding-bottom:48px}.hero-card:before{right:10px}.school-strip{gap:8px}}
+</style>
+
+</head>
+<body>
+<div class="public" id="publicSite">
+  <div class="top"><div class="wrap"><span>BrightPath Academy • Excellence • Character • Opportunity</span><span>Demo #15 • V3 by Lrim-Tech Solutions</span></div></div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#"><span class="crest">B</span><span>BrightPath Academy</span></a>
+      <nav class="navlinks"><a href="#about">About</a><a href="#academics">Academics</a><a href="#admissions">Admissions</a><a href="#life">School Life</a><a href="#contact">Contact</a></nav>
+      <button class="btn alt small" onclick="openLogin('parent')">Parent Portal</button>
+      <button class="btn small" onclick="openLogin('staff')">Staff Portal</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="kicker">LEARN • GROW • LEAD</div>
+        <h1>One connected digital experience for school and family.</h1>
+        <p>A modern school website and management experience connecting admissions, academics, parents and administration — from first enquiry to published report cards.</p>
+        <div class="actions">
+          <button class="btn gold" onclick="document.getElementById('admissions').scrollIntoView()">Apply / Enquire</button>
+          <button class="btn alt" onclick="openLogin('parent')">Experience Parent Portal</button>
+        </div>
+        <div class="school-strip">
+          <div class="school-pill"><b>Admissions</b>Enquiries to enrolment</div>
+          <div class="school-pill"><b>Parent Access</b>Reports, fees & notices</div>
+          <div class="school-pill"><b>School Management</b>Role-based staff tools</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="kicker" style="color:var(--blue)">CONNECTED SCHOOL OVERVIEW</div>
+        <h3>BrightPath Academy</h3>
+        <p style="color:var(--muted);margin-top:4px">A fictional school used to demonstrate Lrim-Tech's school technology solution.</p>
+        <div class="mini-grid">
+          <div class="mini"><b>486</b><span>Students</span></div>
+          <div class="mini"><b>96%</b><span>Attendance today</span></div>
+          <div class="mini"><b>24</b><span>Teaching staff</span></div>
+          <div class="mini"><b>18</b><span>Clubs & activities</span></div>
+        </div>
+        <div class="demo-note" style="margin-top:15px">Demo data only. No real student or parent information is used.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band"><div class="wrap">
+    <div class="stat"><b>Strong</b><span>Academic foundation</span></div>
+    <div class="stat"><b>Easy</b><span>Admissions enquiries</span></div>
+    <div class="stat"><b>Connected</b><span>Parents & school</span></div>
+    <div class="stat"><b>Secure</b><span>Role-based portal concept</span></div>
+  </div></div>
+
+  <section class="section white" id="about">
+    <div class="wrap">
+      <div class="section-title"><h2>A school website that does more.</h2><p>Present the school professionally to prospective families while giving current parents and staff useful digital services.</p></div>
+      <div class="cards">
+        <div class="card"><div class="icon">A</div><h3>Admissions</h3><p>Share requirements, receive enquiries and demonstrate a digital application workflow.</p></div>
+        <div class="card"><div class="icon">P</div><h3>Parent Portal</h3><p>Parents can view report cards, attendance, fee information, notices, events and documents for their own children.</p></div>
+        <div class="card"><div class="icon">M</div><h3>Management</h3><p>Administrators, teachers and finance staff get role-appropriate tools instead of one unrestricted dashboard.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="academics">
+    <div class="wrap">
+      <div class="section-title"><h2>Learning at BrightPath</h2><p>A polished public-facing section for curriculum, academic departments and school programmes.</p></div>
+      <div class="cards">
+        <div class="card"><div class="icon">1</div><h3>Junior School</h3><p>Strong foundations in literacy, numeracy, science, creativity and character development.</p></div>
+        <div class="card"><div class="icon">2</div><h3>Senior School</h3><p>Structured academic pathways supported by progress tracking and teacher feedback.</p></div>
+        <div class="card"><div class="icon">3</div><h3>Digital Learning</h3><p>Notices, documents, reports and school information can be made accessible to families online.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section white" id="admissions">
+    <div class="wrap">
+      <div class="section-title"><h2>Admissions made easier.</h2><p>Prospective parents can understand the process and submit an enquiry without first visiting the school office.</p></div>
+      <div class="two">
+        <div class="panel">
+          <h3>Admission Journey</h3>
+          <p><b>1.</b> Parent submits enquiry/application</p>
+          <p><b>2.</b> Admissions team reviews it</p>
+          <p><b>3.</b> Interview/assessment where required</p>
+          <p><b>4.</b> Offer and acceptance</p>
+          <p><b>5.</b> Student enrolment and parent portal setup</p>
+        </div>
+        <div class="panel">
+          <h3>Send a Demo Enquiry</h3>
+          <div class="form-grid">
+            <div class="field"><label>Parent/Guardian</label><input id="inqParent" value="Tendai Moyo"></div>
+            <div class="field"><label>Student</label><input id="inqStudent" value="Ruvimbo Moyo"></div>
+            <div class="field"><label>Applying For</label><select id="inqGrade"><option>Grade 6</option><option>Form 1</option><option>Form 2</option></select></div>
+            <div class="field"><label>Phone</label><input value="+263 7X XXX XXXX"></div>
+            <div class="field full"><label>Message</label><textarea rows="3">Please send me admission requirements and fee information.</textarea></div>
+          </div>
+          <button class="btn" style="margin-top:12px" onclick="submitEnquiry()">Submit Demo Enquiry</button>
+          <div id="inqMsg" style="margin-top:10px"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="life">
+    <div class="wrap">
+      <div class="section-title"><h2>Beyond the classroom</h2><p>Show parents the wider school experience: sport, clubs, leadership, culture and events.</p></div>
+      <div class="cards">
+        <div class="card"><div class="icon">S</div><h3>Sport</h3><p>Football, athletics, netball, swimming and inter-school competitions.</p></div>
+        <div class="card"><div class="icon">C</div><h3>Clubs</h3><p>Debate, coding, music, science, art and entrepreneurship activities.</p></div>
+        <div class="card"><div class="icon">E</div><h3>Events</h3><p>Keep families informed about consultation days, fixtures, ceremonies and school programmes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section white" id="contact">
+    <div class="wrap">
+      <div class="section-title"><h2>Talk to BrightPath Academy</h2><p>Sample contact section for the school website.</p></div>
+      <div class="panel" style="text-align:center"><b>Admissions Office</b><br>+263 7X XXX XXXX • admissions@example-school.co.zw<br><br><button class="btn" onclick="document.getElementById('admissions').scrollIntoView()">Start an Enquiry</button></div>
+    </div>
+  </section>
+
+  <footer><div class="wrap foot"><div><b>BrightPath Academy</b><br><small>Fictional school demonstration.</small></div><div><b>Lrim-Tech Solutions Demo #15</b><br><small>School Website & Management System • V3</small></div></div></footer>
+</div>
+
+<!-- PARENT PORTAL -->
+<div class="portal" id="parentPortal">
+  <div class="portal-top"><span class="crest" style="width:36px;height:36px;font-size:18px">B</span><span class="title">BrightPath • Parent Portal</span><button class="btn alt small" onclick="logout()">Return to Website</button></div>
+  <div class="portal-shell">
+    <aside class="side" id="parentSide">
+      <div class="portal-label">My Family</div>
+      <button class="on" onclick="parentView('overview',this)">Overview</button>
+      <button onclick="parentView('reports',this)">Report Cards</button>
+      <button onclick="parentView('attendance',this)">Attendance</button>
+      <button onclick="parentView('fees',this)">Fees & Payments</button>
+      <button onclick="parentView('notices',this)">Notices & Events</button>
+      <button onclick="parentView('documents',this)">Documents</button>
+    </aside>
+    <main class="main">
+      <div class="dash-head"><div><h2 id="parentTitle">Welcome, Mrs Moyo</h2><p>Only children linked to this demo parent account are shown.</p></div><select id="childSelect" onchange="renderParent()"><option value="tariro">Tariro Moyo — Form 2</option><option value="tinashe">Tinashe Moyo — Grade 6</option></select></div>
+      <div id="parentContent"></div>
+    </main>
+  </div>
+</div>
+
+<!-- STAFF PORTAL -->
+<div class="portal" id="staffPortal">
+  <div class="portal-top"><span class="crest" style="width:36px;height:36px;font-size:18px">B</span><span class="title">BrightPath • School Management</span><span id="roleBadge" class="badge blue">Administrator</span><button class="btn alt small" onclick="logout()">Return to Website</button></div>
+  <div class="portal-shell">
+    <aside class="side" id="staffSide"></aside>
+    <main class="main">
+      <div class="dash-head"><div><h2 id="staffTitle">Executive Dashboard</h2><p id="staffSub">Role-based demonstration using fictional school data.</p></div><button class="btn small" onclick="switchRole()">Switch Demo Role</button></div>
+      <div id="staffContent"></div>
+    </main>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+    <h2 id="loginTitle">Demo Login</h2>
+    <p style="color:var(--muted)">Choose a demo account. A production system would use secure authentication, database permissions and protected sessions.</p>
+    <div id="loginChoices" class="login-grid"></div>
+    <button class="btn alt" style="margin-top:14px;width:100%" onclick="closeLogin()">Cancel</button>
+  </div>
+</div>
+
+<script>
+const students={
+ tariro:{name:'Tariro Moyo',class:'Form 2 Blue',attendance:94,fees:'Paid',balance:0,report:'Term 1 — 2026',avg:78,
+ subjects:[['English',82,'A'],['Mathematics',76,'B'],['Integrated Science',81,'A'],['Geography',74,'B'],['History',77,'B'],['ICT',80,'A']]},
+ tinashe:{name:'Tinashe Moyo',class:'Grade 6 Gold',attendance:97,fees:'Part Paid',balance:180,report:'Term 1 — 2026',avg:84,
+ subjects:[['English',86,'A'],['Mathematics',88,'A'],['Science',82,'A'],['Social Studies',79,'B'],['ICT',85,'A']]}
+};
+let parentPage='overview', staffRole='Administrator', staffPage='dashboard';
+let applications=JSON.parse(localStorage.getItem('bp_apps')||'null')||[
+ {id:'BP-1041',student:'Nyasha Dube',level:'Form 1',status:'Under Review'},
+ {id:'BP-1042',student:'Anesu Ncube',level:'Grade 5',status:'Assessment'},
+ {id:'BP-1043',student:'Ropafadzo M.',level:'Form 1',status:'New'}
+];
+
+function openLogin(type){
+ const m=document.getElementById('loginModal'), box=document.getElementById('loginChoices');
+ m.classList.add('show'); box.innerHTML='';
+ if(type==='parent'){
+  document.getElementById('loginTitle').textContent='Parent Portal Demo';
+  box.innerHTML='<button class="login-choice" onclick="loginParent()"><b>Mrs Moyo — Parent</b><br><small>View Tariro and Tinashe Moyo</small></button>';
+ }else{
+  document.getElementById('loginTitle').textContent='Staff Portal Demo';
+  ['Administrator','Teacher','Bursar'].forEach(r=>box.innerHTML+=`<button class="login-choice" onclick="loginStaff('${r}')"><b>${r}</b><br><small>${roleDesc(r)}</small></button>`);
+ }
+}
+function roleDesc(r){return r==='Administrator'?'School-wide administration and reports':r==='Teacher'?'Assigned classes, attendance and results':'Fees, payments and financial records'}
+function closeLogin(){document.getElementById('loginModal').classList.remove('show')}
+function showPortal(id){document.getElementById('publicSite').classList.add('hidden');document.querySelectorAll('.portal').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');closeLogin();window.scrollTo(0,0)}
+function logout(){document.querySelectorAll('.portal').forEach(x=>x.classList.remove('active'));document.getElementById('publicSite').classList.remove('hidden');window.scrollTo(0,0)}
+function loginParent(){showPortal('parentPortal');renderParent()}
+function loginStaff(r){staffRole=r;staffPage='dashboard';showPortal('staffPortal');renderStaffNav();renderStaff()}
+function parentView(v,b){parentPage=v;document.querySelectorAll('#parentSide button').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderParent()}
+function renderParent(){
+ const s=students[document.getElementById('childSelect').value], c=document.getElementById('parentContent');
+ if(parentPage==='overview') c.innerHTML=`
+ <div class="metrics"><div class="metric"><span>Attendance</span><b>${s.attendance}%</b></div><div class="metric"><span>Fees Status</span><b style="font-size:18px">${s.fees}</b></div><div class="metric"><span>Latest Average</span><b>${s.avg}%</b></div><div class="metric"><span>Next Event</span><b style="font-size:16px">18 Oct</b></div></div>
+ <div class="two"><div class="panel"><h3>Student Profile</h3><div class="child-card"><div class="avatar">${s.name[0]}</div><div><b>${s.name}</b><br><span style="color:var(--muted)">${s.class}</span><br><span class="badge">Active Student</span></div></div></div>
+ <div class="panel"><h3>Latest Updates</h3><div class="notice"><b>${s.report} report available</b><br><small>Published by Academic Office</small></div><div class="notice"><b>Parents Consultation Day</b><br><small>18 October • 09:00–13:00</small></div></div></div>`;
+ if(parentPage==='reports') c.innerHTML=reportHTML(s);
+ if(parentPage==='attendance') c.innerHTML=`<div class="panel"><h3>${s.name} — Attendance</h3><div class="metrics"><div class="metric"><span>Term Attendance</span><b>${s.attendance}%</b></div><div class="metric"><span>Present</span><b>${Math.round(s.attendance*.62)}</b></div><div class="metric"><span>Absent</span><b>${Math.round((100-s.attendance)*.62)}</b></div><div class="metric"><span>Late</span><b>2</b></div></div><p class="demo-note">A production system can record attendance by day/class and expose only the appropriate child's record to the linked parent.</p></div>`;
+ if(parentPage==='fees') c.innerHTML=`<div class="panel"><h3>Fees & Payments — ${s.name}</h3><div class="metrics"><div class="metric"><span>Term Status</span><b style="font-size:18px">${s.fees}</b></div><div class="metric"><span>Outstanding</span><b>$${s.balance}</b></div><div class="metric"><span>Last Payment</span><b style="font-size:17px">$350</b></div><div class="metric"><span>Receipt</span><b style="font-size:17px">BP-8831</b></div></div><table><tr><th>Date</th><th>Description</th><th>Amount</th><th>Status</th></tr><tr><td>05 Sep 2026</td><td>Term fee payment</td><td>$350</td><td><span class="badge">Recorded</span></td></tr><tr><td>12 Aug 2026</td><td>Activities levy</td><td>$40</td><td><span class="badge">Recorded</span></td></tr></table></div>`;
+ if(parentPage==='notices') c.innerHTML=`<div class="panel"><h3>School Notices & Events</h3><div class="notice"><b>Parents Consultation Day — 18 October</b><br>Parents are invited to meet subject teachers between 09:00 and 13:00.</div><div class="notice"><b>Inter-House Athletics — 25 October</b><br>Students should bring sports kit and water bottles.</div><div class="notice"><b>Term Calendar Updated</b><br>The latest calendar is available under Documents.</div></div>`;
+ if(parentPage==='documents') c.innerHTML=`<div class="panel"><h3>Documents</h3><table><tr><th>Document</th><th>Type</th><th>Action</th></tr><tr><td>${s.report} Report Card</td><td>Academic</td><td><button class="btn small" onclick="downloadReport()">Download Demo Report</button></td></tr><tr><td>Term Calendar</td><td>School</td><td><button class="btn alt small" onclick="alert('Demo document download')">Download</button></td></tr><tr><td>Parent Handbook</td><td>General</td><td><button class="btn alt small" onclick="alert('Demo document download')">Download</button></td></tr></table></div>`;
+}
+function reportHTML(s){
+ let rows=s.subjects.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}%</td><td>${x[2]}</td><td>${x[1]>=80?'Excellent progress':x[1]>=75?'Good progress':'Continue practising'}</td></tr>`).join('');
+ return `<div class="report"><div class="report-head"><div><div class="kicker" style="color:var(--blue)">ACADEMIC REPORT</div><h3>${s.name}</h3><span>${s.class} • ${s.report}</span></div><button class="btn small" onclick="downloadReport()">Download Report Card</button></div><table style="margin-top:18px"><tr><th>Subject</th><th>Mark</th><th>Grade</th><th>Teacher Comment</th></tr>${rows}</table><div class="two" style="margin-top:16px"><div><b>Overall Average:</b> ${s.avg}%<br><b>Attendance:</b> ${s.attendance}%</div><div><b>Class Teacher Comment:</b><br>Consistent progress. Continue maintaining good study habits.</div></div></div>`;
+}
+function downloadReport(){
+ const s=students[document.getElementById('childSelect').value];
+ const txt=`BRIGHTPATH ACADEMY - DEMO REPORT CARD\n\nStudent: ${s.name}\nClass: ${s.class}\nPeriod: ${s.report}\nAttendance: ${s.attendance}%\nOverall Average: ${s.avg}%\n\n`+s.subjects.map(x=>`${x[0]}: ${x[1]}% (${x[2]})`).join('\n')+`\n\nDEMO ONLY - Fictional data.`;
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain'}));a.download=`${s.name.replaceAll(' ','-')}-demo-report.txt`;a.click();URL.revokeObjectURL(a.href);
+}
+
+const navs={
+ Administrator:[['dashboard','Dashboard'],['admissions','Admissions'],['students','Students'],['attendance','Attendance'],['academics','Results'],['fees','Fees'],['staff','Staff & Classes'],['reports','Reports'],['users','Users & Permissions'],['audit','Audit Log']],
+ Teacher:[['dashboard','Teacher Dashboard'],['classes','My Classes & Subjects'],['teacherresults','Enter Subject Results'],['classreports','Class Teacher Reports'],['attendance','Attendance'],['notices','Notices']],
+ Bursar:[['dashboard','Finance Dashboard'],['fees','Fees & Payments'],['students','Student Accounts'],['reports','Finance Reports']]
+};
+function renderStaffNav(){
+ const s=document.getElementById('staffSide');s.innerHTML='';
+ navs[staffRole].forEach((x,i)=>s.innerHTML+=`<button class="${i===0?'on':''}" onclick="staffView('${x[0]}',this)">${x[1]}</button>`);
+ document.getElementById('roleBadge').textContent=staffRole;
+}
+function staffView(v,b){staffPage=v;document.querySelectorAll('#staffSide button').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderStaff()}
+function switchRole(){openLogin('staff')}
+function renderStaff(){
+ const c=document.getElementById('staffContent'), t=document.getElementById('staffTitle');
+ if(staffPage==='dashboard'){
+  t.textContent=staffRole==='Administrator'?'Executive Dashboard':staffRole==='Teacher'?'Teacher Dashboard':'Finance Dashboard';
+  if(staffRole==='Administrator') c.innerHTML=`<div class="metrics"><div class="metric"><span>Total Enrolment</span><b>486</b></div><div class="metric"><span>Attendance Today</span><b>96%</b></div><div class="metric"><span>Outstanding Fees</span><b>$8,420</b></div><div class="metric"><span>New Applications</span><b>${applications.length}</b></div></div>${adminTables()}`;
+  if(staffRole==='Teacher') c.innerHTML=`<div class="metrics"><div class="metric"><span>Assigned Classes</span><b>3</b></div><div class="metric"><span>Subject</span><b style="font-size:18px">ICT</b></div><div class="metric"><span>Attendance</span><b>95%</b></div><div class="metric"><span>Results Pending</span><b>8</b></div></div><div class="panel"><h3>My Teaching Assignments</h3><table><tr><th>Class</th><th>Subject</th><th>Students</th><th>Permission</th></tr><tr><td>Form 1 Gold</td><td>ICT</td><td>32</td><td><span class="badge blue">ICT results only</span></td></tr><tr><td>Form 2 Blue</td><td>ICT</td><td>32</td><td><span class="badge blue">ICT results only</span></td></tr><tr><td>Form 3 Green</td><td>ICT</td><td>30</td><td><span class="badge blue">ICT results only</span></td></tr></table><p class="demo-note">This demo teacher can work with students in several classes, but only for the subject/classes assigned to that teacher.</p></div><div class="panel"><h3>Report Workflow</h3><p><b>Subject Teacher</b> enters marks and a subject comment → <b>Class Teacher</b> reviews the consolidated report and adds the overall comment → <b>Academic Admin</b> approves/publishes → <b>Parent</b> sees the report.</p></div>`;
+  if(staffRole==='Bursar') c.innerHTML=`<div class="metrics"><div class="metric"><span>Collected This Term</span><b>$72K</b></div><div class="metric"><span>Outstanding</span><b>$8.4K</b></div><div class="metric"><span>Paid Accounts</span><b>421</b></div><div class="metric"><span>Part Paid</span><b>65</b></div></div><div class="panel"><h3>Recent Payments</h3><table><tr><th>Student</th><th>Reference</th><th>Amount</th><th>Status</th></tr><tr><td>Tariro Moyo</td><td>BP-8831</td><td>$350</td><td><span class="badge">Recorded</span></td></tr><tr><td>Rudo Ncube</td><td>BP-8830</td><td>$250</td><td><span class="badge">Recorded</span></td></tr></table></div>`;
+  return;
+ }
+ t.textContent=(navs[staffRole].find(x=>x[0]===staffPage)||['','Management'])[1];
+ if(staffPage==='admissions') c.innerHTML=admissionsHTML();
+ else if(staffPage==='students') c.innerHTML=studentsHTML();
+ else if(staffPage==='attendance') c.innerHTML=attendanceHTML();
+ else if(staffPage==='academics') c.innerHTML=academicsHTML();
+ else if(staffPage==='fees') c.innerHTML=feesHTML();
+ else if(staffPage==='reports') c.innerHTML=reportsHTML();
+ else if(staffPage==='users') c.innerHTML=usersHTML();
+ else if(staffPage==='audit') c.innerHTML=auditHTML();
+ else if(staffPage==='classes') c.innerHTML=myAssignmentsHTML();
+ else if(staffPage==='teacherresults') c.innerHTML=teacherResultsHTML();
+ else if(staffPage==='classreports') c.innerHTML=classTeacherReportsHTML();
+ else if(staffPage==='notices') c.innerHTML=`<div class="panel"><h3>Teacher Notices</h3><div class="notice">Staff meeting — Friday 15:30</div><div class="notice">Term reports due — 10 October</div></div>`;
+ else c.innerHTML=`<div class="panel"><h3>${t.textContent}</h3><p>This section demonstrates how the production school system can be expanded for the school's exact workflow.</p></div>`;
+}
+
+const teacherAssignments=[
+ {cls:'Form 1 Gold',subject:'ICT',students:32,classTeacher:false},
+ {cls:'Form 2 Blue',subject:'ICT',students:32,classTeacher:true},
+ {cls:'Form 3 Green',subject:'ICT',students:30,classTeacher:false}
+];
+let teacherMarks=JSON.parse(localStorage.getItem('bp_teacher_marks')||'null')||{
+ 'Form 2 Blue|Tariro Moyo':{mark:80,comment:'Excellent progress',status:'Draft'},
+ 'Form 2 Blue|Rudo Ncube':{mark:77,comment:'Good progress',status:'Submitted'}
+};
+let classComments=JSON.parse(localStorage.getItem('bp_class_comments')||'null')||{
+ 'Tariro Moyo':'Consistent progress. Continue maintaining good study habits.'
+};
+
+function myAssignmentsHTML(){
+ return `<div class="panel"><h3>My Classes & Subjects</h3>
+ <table><tr><th>Class</th><th>Assigned Subject</th><th>Students</th><th>Role</th><th>Access</th></tr>
+ ${teacherAssignments.map(a=>`<tr><td>${a.cls}</td><td>${a.subject}</td><td>${a.students}</td><td>${a.classTeacher?'<span class="badge">Class Teacher</span>':'Subject Teacher'}</td><td><span class="badge blue">${a.subject} only</span></td></tr>`).join('')}
+ </table><p class="demo-note">Subject access follows the teacher's assignment. Being able to teach a student does not give permission to change that student's marks in other subjects.</p></div>`;
+}
+
+function teacherResultsHTML(){
+ const rows=['Tariro Moyo','Rudo Ncube','Takunda Dube'].map(name=>{
+   const key='Form 2 Blue|'+name, m=teacherMarks[key]||{mark:'',comment:'',status:'Not Started'};
+   return `<tr><td>${name}</td><td><input id="mark-${safeId(name)}" type="number" min="0" max="100" value="${m.mark}" style="width:75px;padding:7px"></td>
+   <td><input id="comment-${safeId(name)}" value="${m.comment}" placeholder="Subject comment" style="min-width:210px;padding:7px"></td>
+   <td><span class="badge ${m.status==='Submitted'?'':'warn'}">${m.status}</span></td>
+   <td><button class="btn alt small" onclick="saveTeacherResult('${name}',false)">Save Draft</button> <button class="btn small" onclick="saveTeacherResult('${name}',true)">Submit</button></td></tr>`;
+ }).join('');
+ return `<div class="panel"><h3>Enter Subject Results</h3>
+ <div class="two"><div class="field"><label>Assigned Class</label><select disabled><option>Form 2 Blue</option></select></div><div class="field"><label>Assigned Subject</label><select disabled><option>ICT</option></select></div></div>
+ <p class="demo-note">Demo teacher: Ms Chirwa. She can enter <b>ICT</b> results for Form 2 Blue, but cannot alter Mathematics, English or Science results.</p>
+ <table style="margin-top:14px"><tr><th>Student</th><th>ICT Mark %</th><th>Subject Comment</th><th>Status</th><th>Action</th></tr>${rows}</table></div>`;
+}
+function safeId(s){return s.replace(/[^a-z0-9]/gi,'_')}
+function saveTeacherResult(name,submit){
+ const id=safeId(name), mark=document.getElementById('mark-'+id).value, comment=document.getElementById('comment-'+id).value;
+ if(mark==='' || Number(mark)<0 || Number(mark)>100){alert('Enter a mark between 0 and 100.');return}
+ teacherMarks['Form 2 Blue|'+name]={mark:Number(mark),comment:comment,status:submit?'Submitted':'Draft'};
+ localStorage.setItem('bp_teacher_marks',JSON.stringify(teacherMarks)); renderStaff();
+}
+
+function classTeacherReportsHTML(){
+ const names=['Tariro Moyo','Rudo Ncube'];
+ return `<div class="panel"><h3>Class Teacher — Consolidated Reports</h3>
+ <p>Ms Chirwa is also the class teacher for <b>Form 2 Blue</b>. Subject marks are supplied by the teachers assigned to each subject. The class teacher adds the overall term comment.</p>
+ ${names.map(name=>{
+   const ict=teacherMarks['Form 2 Blue|'+name]||{mark:'Pending',status:'Not Started'};
+   return `<div class="report" style="margin:12px 0"><div class="report-head"><div><h3>${name}</h3><span>Form 2 Blue • Term 1 — 2026</span></div><span class="badge blue">Consolidated</span></div>
+   <table style="margin-top:12px"><tr><th>Subject</th><th>Mark</th><th>Entered By</th><th>Status</th></tr>
+   <tr><td>English</td><td>${name==='Tariro Moyo'?'82%':'79%'}</td><td>Mrs Ncube</td><td><span class="badge">Submitted</span></td></tr>
+   <tr><td>Mathematics</td><td>${name==='Tariro Moyo'?'76%':'74%'}</td><td>Mr Dube</td><td><span class="badge">Submitted</span></td></tr>
+   <tr><td>ICT</td><td>${ict.mark==='Pending'?'Pending':ict.mark+'%'}</td><td>Ms Chirwa</td><td><span class="badge ${ict.status==='Submitted'?'':'warn'}">${ict.status}</span></td></tr></table>
+   <div class="field" style="margin-top:12px"><label>Class Teacher Overall Comment</label><textarea id="overall-${safeId(name)}" rows="2">${classComments[name]||''}</textarea></div>
+   <button class="btn small" style="margin-top:9px" onclick="saveOverall('${name}')">Save Overall Comment</button></div>`;
+ }).join('')}
+ <p class="demo-note">The class teacher consolidates and comments on the report; they do not need to re-enter every subject teacher's marks.</p></div>`;
+}
+function saveOverall(name){
+ classComments[name]=document.getElementById('overall-'+safeId(name)).value;
+ localStorage.setItem('bp_class_comments',JSON.stringify(classComments));
+ alert('Class teacher comment saved. The report can now continue to Academic Admin review.');
+}
+
+function adminTables(){return `<div class="two"><div class="panel"><h3>Admissions Pipeline</h3><table><tr><th>Student</th><th>Level</th><th>Status</th></tr>${applications.slice(0,4).map(a=>`<tr><td>${a.student}</td><td>${a.level}</td><td><span class="badge blue">${a.status}</span></td></tr>`).join('')}</table></div><div class="panel"><h3>Operational Alerts</h3><div class="notice"><b>12 fee accounts need follow-up</b></div><div class="notice"><b>8 reports awaiting approval</b></div><div class="notice"><b>3 new admissions enquiries today</b></div></div></div>`}
+function admissionsHTML(){return `<div class="panel"><h3>Admissions Applications</h3><table><tr><th>ID</th><th>Student</th><th>Applying For</th><th>Status</th><th>Action</th></tr>${applications.map((a,i)=>`<tr><td>${a.id}</td><td>${a.student}</td><td>${a.level}</td><td><span class="badge blue">${a.status}</span></td><td><button class="btn small" onclick="advanceApp(${i})">Advance</button></td></tr>`).join('')}</table></div>`}
+function studentsHTML(){return `<div class="panel"><h3>Student Directory</h3><table><tr><th>Student</th><th>Class</th><th>Parent</th><th>Status</th></tr><tr><td>Tariro Moyo</td><td>Form 2 Blue</td><td>Mrs Moyo</td><td><span class="badge">Active</span></td></tr><tr><td>Tinashe Moyo</td><td>Grade 6 Gold</td><td>Mrs Moyo</td><td><span class="badge">Active</span></td></tr><tr><td>Rudo Ncube</td><td>Form 1 Gold</td><td>Mr Ncube</td><td><span class="badge">Active</span></td></tr></table></div>`}
+function attendanceHTML(){return `<div class="panel"><h3>Attendance Register — Form 2 Blue</h3><table><tr><th>Student</th><th>Today</th><th>Term %</th><th>Update</th></tr><tr><td>Tariro Moyo</td><td><span class="badge">Present</span></td><td>94%</td><td><button class="btn alt small" onclick="alert('Attendance update simulated')">Change</button></td></tr><tr><td>Rudo Ncube</td><td><span class="badge">Present</span></td><td>96%</td><td><button class="btn alt small" onclick="alert('Attendance update simulated')">Change</button></td></tr></table></div>`}
+function academicsHTML(){return `<div class="panel"><h3>Academic Admin — Review, Approve & Publish</h3><p>Completed subject results and class-teacher comments arrive here before parents can see them.</p><table><tr><th>Class</th><th>Subject Entries</th><th>Class Comments</th><th>Parent Visibility</th><th>Action</th></tr><tr><td>Form 2 Blue</td><td><span class="badge warn">Review Required</span></td><td>30/32</td><td><span class="badge red">Not Published</span></td><td><button class="btn small" onclick="alert('Demo: Academic Admin reviews completed reports, approves them, then publishes them to the linked parent accounts.')">Review / Approve</button></td></tr><tr><td>Grade 6 Gold</td><td><span class="badge">Complete</span></td><td>30/30</td><td><span class="badge">Published</span></td><td>Available to parents</td></tr></table><div class="notice"><b>Workflow:</b> Subject Teacher → Class Teacher → Academic Admin → Parent Portal</div><p class="demo-note">A production version would enforce these stages and permissions in the backend/database.</p></div>`}
+function feesHTML(){return `<div class="panel"><h3>Fees & Payments</h3><table><tr><th>Student</th><th>Account Status</th><th>Outstanding</th><th>Action</th></tr><tr><td>Tariro Moyo</td><td><span class="badge">Paid</span></td><td>$0</td><td><button class="btn alt small" onclick="alert('Account statement opened')">Statement</button></td></tr><tr><td>Tinashe Moyo</td><td><span class="badge warn">Part Paid</span></td><td>$180</td><td><button class="btn small" onclick="alert('Payment recording simulated')">Record Payment</button></td></tr></table></div>`}
+function reportsHTML(){return `<div class="metrics"><div class="metric"><span>Enrolment</span><b>486</b></div><div class="metric"><span>Attendance</span><b>96%</b></div><div class="metric"><span>Fee Collection</span><b>90%</b></div><div class="metric"><span>Applications</span><b>${applications.length}</b></div></div><div class="panel"><h3>Management Reporting</h3><p>Production reports can be tailored to the school's requirements: enrolment, attendance, fee collection, academic performance, admissions and operational summaries.</p></div>`}
+function usersHTML(){return `<div class="panel"><h3>Users & Permissions</h3><table><tr><th>User</th><th>Role</th><th>Example Access</th></tr><tr><td>School Administrator</td><td><span class="badge blue">Administrator</span></td><td>School-wide management</td></tr><tr><td>Ms Chirwa</td><td><span class="badge blue">Teacher</span></td><td>Assigned classes/results/attendance</td></tr><tr><td>Finance Office</td><td><span class="badge blue">Bursar</span></td><td>Fees/payments</td></tr><tr><td>Mrs Moyo</td><td><span class="badge blue">Parent</span></td><td>Only linked children</td></tr></table><p class="demo-note">The production version would enforce these permissions in the backend/database, not merely hide menu buttons.</p></div>`}
+function auditHTML(){return `<div class="panel"><h3>Audit Log</h3><table><tr><th>Time</th><th>User/Role</th><th>Action</th></tr><tr><td>10:32</td><td>Academic Admin</td><td>Published Grade 6 reports</td></tr><tr><td>09:48</td><td>Bursar</td><td>Recorded payment BP-8831</td></tr><tr><td>08:15</td><td>Teacher</td><td>Submitted Form 2 attendance</td></tr></table></div>`}
+function advanceApp(i){
+ const flow=['New','Under Review','Assessment','Accepted','Enrolled'];let p=flow.indexOf(applications[i].status);applications[i].status=flow[Math.min(p+1,flow.length-1)]||'Under Review';localStorage.setItem('bp_apps',JSON.stringify(applications));renderStaff();
+}
+function submitEnquiry(){
+ const name=document.getElementById('inqStudent').value.trim()||'New Applicant', level=document.getElementById('inqGrade').value;
+ applications.push({id:'BP-'+(1040+applications.length+1),student:name,level:level,status:'New'});localStorage.setItem('bp_apps',JSON.stringify(applications));
+ document.getElementById('inqMsg').innerHTML='<span class="badge">Enquiry received ✓</span> <small>This demo enquiry is now visible in the Administrator admissions pipeline.</small>';
+}
+renderParent();
+</script>
+</body>
+</html>
